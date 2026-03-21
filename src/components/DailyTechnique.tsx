@@ -1,5 +1,8 @@
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLang } from "@/hooks/useLang";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import type { Difficulty } from "@/lib/techniquesData";
+import type { Lang } from "@/lib/translations";
 import type { Difficulty } from "@/lib/techniquesData";
 
 const technique = {
