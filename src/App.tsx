@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LangProvider } from "@/hooks/useLang";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import AdminPromoCodes from "./pages/AdminPromoCodes.tsx";
 
 const queryClient = new QueryClient();
 
