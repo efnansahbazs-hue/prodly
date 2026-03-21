@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
 import { UpgradeModal } from "@/components/UpgradeModal";
-
-const genres = ["Techno", "House", "Trap", "Hip-Hop", "Drum & Bass", "Electronic", "Dubstep", "Ambient", "Trance", "Pop", "R&B", "Jazz", "Indie", "World", "Garage", "Future Bass"];
+import { GenreShowcase } from "@/components/GenreShowcase";
 
 export const HeroChatBar = () => {
   const { t } = useTranslation();
