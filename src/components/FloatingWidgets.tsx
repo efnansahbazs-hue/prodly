@@ -36,7 +36,7 @@ const W2_Streak = () => (
 const W3_Challenge = () => (
   <div className={widgetBase} style={{ width: 145, boxShadow: shadow, animation: "floatDrift 6s ease-in-out infinite 1s" }}>
     <p className="text-[10px] mb-1.5" style={{ color: "#6B7280" }}>This week</p>
-    <p className="text-[11px] font-semibold mb-1" style={{ color: "#F59E0B" }}>⏱ 3d 14h left</p>
+    <p className="text-[11px] font-semibold mb-1" style={{ color: "#34D399" }}>⏱ 3d 14h left</p>
     <p className="text-[11px] font-medium text-white mb-0.5">Sidechain Master</p>
     <p className="text-[10px] mb-2" style={{ color: "#34D399" }}>Win 1 month Studio free</p>
     <div className="flex items-center">

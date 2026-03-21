@@ -1,30 +1,46 @@
 import { Star } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import type { Lang } from "@/lib/translations";
 
-const testimonials = [
+const testimonials: { name: string; role: Record<Lang, string>; text: Record<Lang, string>; rating: number }[] = [
   {
     name: "Ayşe Kartal",
-    role: "Lo-Fi Producer",
-    text: "Prodly completely changed my workflow. I went from spending 6 hours on a beat to finishing in under 2. The AI mixing suggestions are scarily accurate.",
+    role: { en: "Lo-Fi Producer", tr: "Lo-Fi Prodüktör", de: "Lo-Fi-Produzentin", es: "Productora Lo-Fi" },
+    text: {
+      en: "Prodly helped me understand mixing in a way no tutorial ever did. The sourced answers gave me confidence to actually apply what I learned.",
+      tr: "Prodly, mix konusunu hiçbir eğitimin yapamadığı şekilde anlamamı sağladı. Kaynaklı cevaplar, öğrendiklerimi uygulamam için bana güven verdi.",
+      de: "Prodly hat mir Mixing so erklärt, wie es kein Tutorial je geschafft hat. Die belegten Antworten gaben mir Vertrauen.",
+      es: "Prodly me ayudó a entender la mezcla como ningún tutorial lo hizo. Las respuestas con fuentes me dieron confianza.",
+    },
     rating: 5,
   },
   {
     name: "Marcus Chen",
-    role: "Hip-Hop Engineer",
-    text: "The vocal processing alone is worth the subscription. Crystal clear results with zero artifacts. Best tool I've used in 12 years of production.",
+    role: { en: "Hip-Hop Engineer", tr: "Hip-Hop Mühendisi", de: "Hip-Hop-Engineer", es: "Ingeniero Hip-Hop" },
+    text: {
+      en: "Having DAW-specific answers is incredible. I ask about Ableton and get exact steps — not generic advice. Saved me hours of searching.",
+      tr: "DAW'a özel cevaplar almak inanılmaz. Ableton hakkında soruyorum ve tam adımlar alıyorum — genel tavsiyeler değil. Saatlerce aramaktan kurtardı.",
+      de: "DAW-spezifische Antworten sind unglaublich. Ich frage zu Ableton und bekomme exakte Schritte — keine generischen Tipps.",
+      es: "Las respuestas específicas por DAW son increíbles. Pregunto sobre Ableton y obtengo pasos exactos, no consejos genéricos.",
+    },
     rating: 5,
   },
   {
     name: "Lena Schreiber",
-    role: "EDM Artist",
-    text: "Live collaboration feature is a game-changer. Working with my co-producer in Berlin while I'm in Tokyo — zero latency issues.",
+    role: { en: "Electronic Producer", tr: "Elektronik Müzik Prodüktörü", de: "Elektronik-Produzentin", es: "Productora Electrónica" },
+    text: {
+      en: "The personal archive feature is a game-changer. Every answer I've ever gotten is searchable. It's like building my own production encyclopedia.",
+      tr: "Kişisel arşiv özelliği oyunun kurallarını değiştiriyor. Aldığım her cevap aranabilir. Kendi prodüksiyon ansiklopedimi oluşturmak gibi.",
+      de: "Das persönliche Archiv ist ein Gamechanger. Jede Antwort ist durchsuchbar — wie eine eigene Produktions-Enzyklopädie.",
+      es: "El archivo personal es revolucionario. Cada respuesta es buscable. Es como construir mi propia enciclopedia de producción.",
+    },
     rating: 5,
   },
 ];
 
 export const Testimonials = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   return (
     <section id="testimonials" className="relative py-24 px-5">
@@ -46,11 +62,11 @@ export const Testimonials = () => {
                   ))}
                 </div>
                 <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: "var(--text-secondary)" }}>
-                  "{item.text}"
+                  "{item.text[lang]}"
                 </p>
                 <div>
                   <p className="text-sm font-semibold text-white">{item.name}</p>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>{item.role}</p>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>{item.role[lang]}</p>
                 </div>
               </div>
             </ScrollReveal>
