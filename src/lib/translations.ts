@@ -119,4 +119,16 @@ export const translations: Record<string, Record<Lang, string>> = {
     de: "Prodly — KI-Musikproduktions-Assistent. Von Produzenten, für Produzenten.",
     es: "Prodly — Asistente de Producción Musical IA. Hecho por productores, para productores.",
   },
+
+  // Upgrade system
+  "upgrade.dailyLimit": { en: "Today's questions are up. Come back tomorrow — or unlock more.", tr: "Bugünkü sorularınız bitti. Yarın tekrar gelin — ya da daha fazlasını açın.", de: "Heutige Fragen aufgebraucht. Komm morgen wieder — oder schalte mehr frei.", es: "Las preguntas de hoy se agotaron. Vuelve mañana — o desbloquea más." },
+  "upgrade.seePremium": { en: "See Premium →", tr: "Premium'u Gör →", de: "Premium ansehen →", es: "Ver Premium →" },
+  "upgrade.title": { en: "Unlock Prodly Premium", tr: "Prodly Premium'u Aç", de: "Prodly Premium freischalten", es: "Desbloquea Prodly Premium" },
+  "upgrade.subtitle": { en: "20 questions per day. Deeper answers. Full archive.", tr: "Günde 20 soru. Daha derin cevaplar. Tam arşiv.", de: "20 Fragen pro Tag. Tiefere Antworten. Volles Archiv.", es: "20 preguntas al día. Respuestas más profundas. Archivo completo." },
+  "upgrade.benefit1": { en: "20 sourced answers per day", tr: "Günde 20 kaynaklı cevap", de: "20 belegte Antworten pro Tag", es: "20 respuestas con fuentes al día" },
+  "upgrade.benefit2": { en: "Personal knowledge archive", tr: "Kişisel bilgi arşivi", de: "Persönliches Wissensarchiv", es: "Archivo de conocimiento personal" },
+  "upgrade.benefit3": { en: "Genre-specific deep guidance", tr: "Türe özel detaylı rehberlik", de: "Genre-spezifische Tiefenberatung", es: "Guía profunda por género" },
+  "upgrade.benefit4": { en: "Priority response speed", tr: "Öncelikli yanıt hızı", de: "Prioritäts-Antwortgeschwindigkeit", es: "Velocidad de respuesta prioritaria" },
+  "upgrade.cta": { en: "Upgrade to Premium", tr: "Premium'a Yükselt", de: "Auf Premium upgraden", es: "Actualizar a Premium" },
+  "upgrade.later": { en: "Maybe later", tr: "Belki sonra", de: "Vielleicht später", es: "Quizás después" },
 };
