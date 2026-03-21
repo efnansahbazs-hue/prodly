@@ -31,7 +31,9 @@ const diffStyles: Record<Difficulty, { bg: string; color: string; label: string 
 
 export const DailyTechnique = () => {
   const { t } = useTranslation();
+  const { lang } = useLang();
   const diff = diffStyles[technique.difficulty];
+  const getLang = (obj: Record<string, string>) => obj[lang] || obj.en;
 
   return (
     <section className="relative py-16 px-5">
