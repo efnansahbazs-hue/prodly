@@ -376,4 +376,54 @@ export const translations: Record<string, Record<Lang, string>> = {
   "road.v2Desc": { en: "Upload your mixdown and get AI-powered analysis and suggestions.", tr: "Mixdown'ını yükle ve AI destekli analiz ve öneriler al.", de: "Lade deinen Mixdown hoch und erhalte KI-gestützte Analyse.", es: "Sube tu mezcla y recibe análisis y sugerencias de IA." },
   "road.v3Title": { en: "Sample pack marketplace", tr: "Sample pack pazarı", de: "Sample-Pack-Marktplatz", es: "Mercado de packs de samples" },
   "road.v3Desc": { en: "Share and discover community-made sample packs.", tr: "Topluluk yapımı sample pack'leri paylaşın ve keşfedin.", de: "Teile und entdecke Community-Sample-Packs.", es: "Comparte y descubre packs de samples de la comunidad." },
+
+  // Nav extras
+  "nav.suggestions": { en: "Suggestions", tr: "Öneriler", de: "Vorschläge", es: "Sugerencias" },
+
+  // Auth
+  "auth.login": { en: "Login", tr: "Giriş Yap", de: "Anmelden", es: "Iniciar sesión" },
+  "auth.register": { en: "Create account", tr: "Hesap oluştur", de: "Konto erstellen", es: "Crear cuenta" },
+  "auth.loginTitle": { en: "Welcome back", tr: "Tekrar hoş geldin", de: "Willkommen zurück", es: "Bienvenido de vuelta" },
+  "auth.loginDesc": { en: "Log in to continue your production journey.", tr: "Prodüksiyon yolculuğuna devam etmek için giriş yap.", de: "Melde dich an, um deine Produktionsreise fortzusetzen.", es: "Inicia sesión para continuar tu viaje de producción." },
+  "auth.registerTitle": { en: "Join Prodly", tr: "Prodly'ye katıl", de: "Tritt Prodly bei", es: "Únete a Prodly" },
+  "auth.registerDesc": { en: "Start learning music production for free.", tr: "Müzik prodüksiyonunu ücretsiz öğrenmeye başla.", de: "Lerne Musikproduktion kostenlos.", es: "Empieza a aprender producción musical gratis." },
+  "auth.username": { en: "Username", tr: "Kullanıcı adı", de: "Benutzername", es: "Nombre de usuario" },
+  "auth.required": { en: "All fields are required.", tr: "Tüm alanlar zorunludur.", de: "Alle Felder sind erforderlich.", es: "Todos los campos son obligatorios." },
+  "auth.weakPassword": { en: "Password must be at least 6 characters.", tr: "Şifre en az 6 karakter olmalı.", de: "Passwort muss mindestens 6 Zeichen haben.", es: "La contraseña debe tener al menos 6 caracteres." },
+  "auth.noAccount": { en: "Don't have an account?", tr: "Hesabın yok mu?", de: "Noch kein Konto?", es: "¿No tienes cuenta?" },
+  "auth.registerLink": { en: "Sign up free", tr: "Ücretsiz kaydol", de: "Kostenlos registrieren", es: "Regístrate gratis" },
+  "auth.hasAccount": { en: "Already have an account?", tr: "Zaten hesabın var mı?", de: "Bereits ein Konto?", es: "¿Ya tienes cuenta?" },
+  "auth.loginLink": { en: "Log in", tr: "Giriş yap", de: "Anmelden", es: "Iniciar sesión" },
+
+  // Onboarding
+  "onboard.dawTitle": { en: "What's your DAW?", tr: "DAW'ın hangisi?", de: "Welche DAW nutzt du?", es: "¿Cuál es tu DAW?" },
+  "onboard.dawDesc": { en: "We'll tailor answers to your workflow.", tr: "Cevapları iş akışına göre uyarlayacağız.", de: "Wir passen die Antworten an deinen Workflow an.", es: "Adaptaremos las respuestas a tu flujo." },
+  "onboard.genreTitle": { en: "What genre do you produce?", tr: "Hangi türde prodüksiyon yapıyorsun?", de: "Welches Genre produzierst du?", es: "¿Qué género produces?" },
+  "onboard.genreDesc": { en: "Pick your main genre. You can change this later.", tr: "Ana türünü seç. Daha sonra değiştirebilirsin.", de: "Wähle dein Hauptgenre. Kannst du später ändern.", es: "Elige tu género principal. Puedes cambiarlo después." },
+  "onboard.levelTitle": { en: "What's your production level?", tr: "Prodüksiyon seviyen nedir?", de: "Was ist dein Produktionslevel?", es: "¿Cuál es tu nivel de producción?" },
+  "onboard.levelDesc": { en: "This helps us adjust the depth of answers.", tr: "Bu cevapların derinliğini ayarlamamıza yardımcı olur.", de: "Das hilft uns, die Tiefe der Antworten anzupassen.", es: "Esto nos ayuda a ajustar la profundidad." },
+  "onboard.level.beginner": { en: "Beginner", tr: "Başlangıç", de: "Anfänger", es: "Principiante" },
+  "onboard.level.intermediate": { en: "Intermediate", tr: "Orta", de: "Fortgeschritten", es: "Intermedio" },
+  "onboard.level.advanced": { en: "Advanced", tr: "İleri", de: "Profi", es: "Avanzado" },
+  "onboard.goalTitle": { en: "What do you want to improve?", tr: "Neyi geliştirmek istiyorsun?", de: "Was möchtest du verbessern?", es: "¿Qué quieres mejorar?" },
+  "onboard.goalDesc": { en: "Pick your main focus area.", tr: "Ana odak alanını seç.", de: "Wähle deinen Hauptfokus.", es: "Elige tu área de enfoque." },
+  "onboard.goal.mixing": { en: "Mixing", tr: "Mixing", de: "Mixing", es: "Mezcla" },
+  "onboard.goal.sound_design": { en: "Sound Design", tr: "Ses Tasarımı", de: "Sound Design", es: "Diseño Sonoro" },
+  "onboard.goal.arrangement": { en: "Arrangement", tr: "Düzenleme", de: "Arrangement", es: "Arreglo" },
+  "onboard.goal.mastering": { en: "Mastering", tr: "Mastering", de: "Mastering", es: "Mastering" },
+  "onboard.frequencyTitle": { en: "How often do you produce?", tr: "Ne sıklıkla prodüksiyon yapıyorsun?", de: "Wie oft produzierst du?", es: "¿Con qué frecuencia produces?" },
+  "onboard.frequencyDesc": { en: "We'll adjust reminders and streak goals.", tr: "Hatırlatmaları ve seri hedeflerini ayarlayacağız.", de: "Wir passen Erinnerungen und Streak-Ziele an.", es: "Ajustaremos recordatorios y metas de racha." },
+  "onboard.frequency.daily": { en: "Every day", tr: "Her gün", de: "Täglich", es: "Todos los días" },
+  "onboard.frequency.few_week": { en: "A few times a week", tr: "Haftada birkaç kez", de: "Einige Male pro Woche", es: "Varias veces por semana" },
+  "onboard.frequency.weekends": { en: "Weekends only", tr: "Sadece hafta sonları", de: "Nur am Wochenende", es: "Solo fines de semana" },
+  "onboard.frequency.exploring": { en: "Just exploring", tr: "Sadece keşfediyorum", de: "Erkunde nur", es: "Solo explorando" },
+
+  // Dashboard
+  "dash.title": { en: "Your Dashboard", tr: "Kontrol Panelin", de: "Dein Dashboard", es: "Tu Panel" },
+
+  // Usage bar
+  "usage.questionsToday": { en: "questions used today", tr: "soru bugün kullanıldı", de: "Fragen heute genutzt", es: "preguntas usadas hoy" },
+
+  // Footer extras
+  "footer.techniques": { en: "Techniques", tr: "Teknikler", de: "Techniken", es: "Técnicas" },
 };

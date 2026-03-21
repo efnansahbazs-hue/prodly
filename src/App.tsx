@@ -11,6 +11,10 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
 import SuggestionsPage from "./pages/SuggestionsPage.tsx";
 import RoadmapPage from "./pages/RoadmapPage.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
+import RegisterPage from "./pages/RegisterPage.tsx";
+import OnboardingPage from "./pages/OnboardingPage.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
@@ -31,15 +35,29 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/auth/login" element={<LoginPage />} />
+            <Route path="/auth/register" element={<RegisterPage />} />
+            <Route path="/onboarding" element={<OnboardingPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/techniques" element={<TechniquesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/:username" element={<ProfilePage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/community/library" element={<CommunityPage />} />
+            <Route path="/community/challenges" element={<CommunityPage />} />
+            <Route path="/community/lounge" element={<CommunityPage />} />
+            <Route path="/community/trending" element={<CommunityPage />} />
+            <Route path="/community/collab" element={<CommunityPage />} />
             <Route path="/suggestions" element={<SuggestionsPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
+            <Route path="/tools/effects" element={<TechniquesPage />} />
+            <Route path="/tools/plugins" element={<TechniquesPage />} />
 
             {/* Admin */}
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
+              <Route path="login" element={<AdminDashboard />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="users" element={<AdminUsers />} />
               <Route path="reports" element={<AdminReports />} />
               <Route path="suggestions" element={<AdminSuggestions />} />
