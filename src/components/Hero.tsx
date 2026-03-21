@@ -2,6 +2,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useLang } from "@/hooks/useLang";
 import { HeroChatBar } from "@/components/HeroChatBar";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { TypingTagline } from "@/components/TypingTagline";
 
 const getTagline = () => {
   const h = new Date().getHours();
@@ -18,73 +19,47 @@ export const Hero = () => {
   const { t } = useTranslation();
   const { lang } = useLang();
   const tagline = getTagline();
-  const tagText = (lang === "tr" ? tagline.tr : tagline.en);
+  const tagText = lang === "tr" ? tagline.tr : tagline.en;
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-5 overflow-hidden">
-      {/* Background glows */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: 500,
-          height: 500,
-          top: "5%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          background: "radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%)",
-          filter: "blur(100px)",
-          animation: "floatDrift 14s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: 400,
-          height: 400,
-          bottom: "8%",
-          right: "10%",
-          background: "radial-gradient(circle, rgba(52,211,153,0.10), transparent 70%)",
-          filter: "blur(80px)",
-          animation: "floatDrift 16s ease-in-out infinite 3s",
-        }}
-      />
-
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto">
-        {/* Headline */}
-        <ScrollReveal>
-          <h1
-            className="text-center mb-4"
+        {/* Headline with stagger reveal */}
+        <h1
+          className="text-center mb-4"
+          style={{
+            fontFamily: "'Space Grotesk'",
+            fontSize: "clamp(48px, 7vw, 80px)",
+            fontWeight: 800,
+            lineHeight: 0.95,
+            letterSpacing: "-0.03em",
+          }}
+        >
+          <span
+            className="inline-block text-white opacity-0"
             style={{
-              fontFamily: "'Space Grotesk'",
-              fontSize: "clamp(40px, 6vw, 72px)",
-              fontWeight: 800,
-              lineHeight: 1.0,
-              letterSpacing: "-0.03em",
+              textShadow: "0 0 40px rgba(124,58,237,0.3)",
+              animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards",
             }}
           >
-            <span className="text-white">{t("hero.titleLine1")} </span>
-            <span className="text-gradient-mixed">{t("hero.titleLine2")}</span>
-          </h1>
-        </ScrollReveal>
+            {t("hero.titleLine1")}{" "}
+          </span>
+          <span
+            className="inline-block text-gradient-mixed opacity-0"
+            style={{
+              animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards",
+            }}
+          >
+            {t("hero.titleLine2")}
+          </span>
+        </h1>
 
-        {/* Dynamic tagline */}
-        <ScrollReveal delay={60}>
-          <p
-            className="text-center mb-10"
-            style={{
-              fontFamily: "'Inter'",
-              fontSize: 17,
-              color: "#8B8FA8",
-              lineHeight: 1.5,
-            }}
-          >
-            {tagText}
-          </p>
-        </ScrollReveal>
+        {/* Typing tagline */}
+        <TypingTagline text={tagText} />
 
         {/* Chat bar */}
-        <ScrollReveal delay={120}>
+        <ScrollReveal delay={200}>
           <HeroChatBar />
         </ScrollReveal>
       </div>

@@ -1,4 +1,5 @@
-import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
+import { DotGrid, Orbs } from "@/components/BackgroundEffects";
+import { AuroraMesh, GrainOverlay } from "@/components/AuroraMesh";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { WhatProdlyDoes } from "@/components/WhatProdlyDoes";
@@ -21,7 +22,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
-    <NoiseOverlay />
+    <AuroraMesh />
+    <GrainOverlay />
     <DotGrid />
     <Orbs />
     <Navbar />
