@@ -66,19 +66,33 @@ const ChallengeWidget = () => (
 );
 
 export const HeroWidgets = () => (
-  <div className="relative w-full max-w-5xl mx-auto">
-    {/* Atmospheric glow blobs */}
-    <div className="absolute pointer-events-none" style={{ width: 600, height: 600, top: -120, left: -100, background: "radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%)", filter: "blur(100px)", animation: "floatDrift 14s ease-in-out infinite" }} />
-    <div className="absolute pointer-events-none" style={{ width: 500, height: 500, bottom: -80, right: -60, background: "radial-gradient(circle, rgba(52,211,153,0.08), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 16s ease-in-out infinite 3s" }} />
-    <div className="absolute pointer-events-none" style={{ width: 400, height: 400, top: 20, right: 80, background: "radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 12s ease-in-out infinite 6s" }} />
+  <div className="absolute inset-0 flex items-center justify-center">
+    {/* Stronger atmospheric glow blobs */}
+    <div className="absolute pointer-events-none" style={{ width: 600, height: 600, top: "5%", left: "-5%", background: "radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%)", filter: "blur(100px)", animation: "floatDrift 14s ease-in-out infinite" }} />
+    <div className="absolute pointer-events-none" style={{ width: 500, height: 500, bottom: "5%", right: "-3%", background: "radial-gradient(circle, rgba(52,211,153,0.18), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 16s ease-in-out infinite 3s" }} />
+    <div className="absolute pointer-events-none" style={{ width: 400, height: 400, top: "15%", right: "10%", background: "radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 12s ease-in-out infinite 6s" }} />
+    <div className="absolute pointer-events-none" style={{ width: 300, height: 300, top: "10%", right: "25%", background: "radial-gradient(circle, rgba(52,211,153,0.10), transparent 70%)", filter: "blur(70px)", animation: "floatDrift 13s ease-in-out infinite 2s" }} />
 
-    {/* Widgets row */}
-    <div className="relative z-10 flex flex-wrap justify-center items-start gap-4">
-      <AnswerWidget />
-      <StreakWidget />
-      <TechniqueWidget />
-      <LevelWidget />
-      <ChallengeWidget />
+    {/* Scattered widgets — blurred, faded, ambient */}
+    <div className="hidden md:block" style={{ filter: "blur(2px)", opacity: 0.5 }}>
+      {/* Top center */}
+      <div className="absolute" style={{ top: "8%", left: "50%", transform: "translateX(-50%)" }}>
+        <AnswerWidget />
+      </div>
+      {/* Left side */}
+      <div className="absolute" style={{ top: "35%", left: "4%" }}>
+        <StreakWidget />
+      </div>
+      <div className="absolute" style={{ top: "60%", left: "8%" }}>
+        <LevelWidget />
+      </div>
+      {/* Right side */}
+      <div className="absolute" style={{ top: "30%", right: "4%" }}>
+        <TechniqueWidget />
+      </div>
+      <div className="absolute" style={{ top: "58%", right: "6%" }}>
+        <ChallengeWidget />
+      </div>
     </div>
   </div>
 );
