@@ -53,7 +53,7 @@
     @apply border-border;
   }
   body {
-    background: var(--bg-base);
+    background: #050508;
     color: var(--text-primary);
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
