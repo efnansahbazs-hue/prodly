@@ -1,62 +1,48 @@
-import { Play, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-import { MovingBorderButton, GlassButton } from "@/components/Buttons";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { GhostText } from "@/components/BackgroundEffects";
+import { OrbitalHub } from "@/components/OrbitalHub";
+import { FloatingWidgets } from "@/components/FloatingWidgets";
+import { HeroChatBar } from "@/components/HeroChatBar";
 
 export const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      <GhostText />
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-5">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-5 overflow-hidden">
+      {/* Top — label + headline + subtext */}
+      <div className="text-center max-w-xl mx-auto mb-10 md:mb-14">
         <ScrollReveal>
-          <div
-            className="inline-flex items-center gap-2 glass-card-static rounded-full px-4 py-1.5 text-xs font-medium mb-8"
-            style={{ color: "var(--text-secondary)", borderColor: "var(--border-accent)" }}
-          >
-            <span className="w-2 h-2 rounded-full bg-[var(--mint)] animate-pulse-glow" />
-            {t("hero.badge")}
-          </div>
+          <p className="text-[11px] font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "#34D399" }}>
+            {t("hero.label")}
+          </p>
         </ScrollReveal>
-
-        <ScrollReveal delay={100}>
+        <ScrollReveal delay={80}>
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.95] mb-6"
-            style={{ fontFamily: "'Space Grotesk'", textWrap: "balance" }}
+            className="text-4xl md:text-[58px] font-extrabold leading-[1.05] tracking-tight mb-5"
+            style={{ fontFamily: "'Space Grotesk'" }}
           >
-            <span className="text-gradient-purple">{t("hero.title1")}</span>{" "}
-            <span className="text-gradient-mint">{t("hero.title2")}</span>
+            <span className="text-white">{t("hero.title1")}</span>
             <br />
-            <span className="text-white">{t("hero.title3")}</span>
+            <span className="text-gradient-conic">{t("hero.title2")}</span>
           </h1>
         </ScrollReveal>
-
-        <ScrollReveal delay={200}>
-          <p
-            className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-            style={{ color: "var(--text-secondary)", textWrap: "pretty" }}
-          >
+        <ScrollReveal delay={160}>
+          <p className="text-[15px] leading-relaxed mx-auto" style={{ color: "#8B8FA8", maxWidth: 460 }}>
             {t("hero.desc")}
           </p>
         </ScrollReveal>
-
-        <ScrollReveal delay={300}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <MovingBorderButton>
-              <span className="flex items-center gap-2">
-                <Play className="w-4 h-4" /> {t("hero.cta")}
-              </span>
-            </MovingBorderButton>
-            <GlassButton>
-              <span className="flex items-center gap-2">
-                {t("hero.demo")} <ArrowRight className="w-4 h-4" />
-              </span>
-            </GlassButton>
-          </div>
-        </ScrollReveal>
       </div>
+
+      {/* Middle — orbital hub + floating widgets */}
+      <ScrollReveal delay={240}>
+        <div className="relative mx-auto" style={{ width: "fit-content" }}>
+          <FloatingWidgets />
+          <OrbitalHub />
+        </div>
+      </ScrollReveal>
+
+      {/* Bottom — chat bar + genre pills */}
+      <HeroChatBar />
     </section>
   );
 };
