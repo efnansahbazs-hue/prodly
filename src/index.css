@@ -232,3 +232,19 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(124,58,237,0.4) transparent;
 }
+
+/* ============ Genre Scroll Row ============ */
+.genre-scroll-row::-webkit-scrollbar {
+  height: 3px;
+}
+.genre-scroll-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+.genre-scroll-row::-webkit-scrollbar-thumb {
+  background: #7C3AED;
+  border-radius: 99px;
+}
+.genre-scroll-row {
+  scrollbar-width: thin;
+  scrollbar-color: #7C3AED transparent;
+}
