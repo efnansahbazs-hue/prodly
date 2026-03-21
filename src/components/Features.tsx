@@ -56,7 +56,7 @@ export const Features = () => {
         {/* Bento grid */}
         <div className="grid md:grid-cols-2 gap-5">
           {cards.map((c, i) => (
-            <ScrollReveal key={c.num} delay={i * 90}>
+            <ScrollReveal key={c.num} delay={i * 90} className={i === 0 ? "md:col-span-2" : ""}>
               <div
                 className="relative overflow-hidden rounded-[20px] p-6 h-full transition-all duration-300 group hover:-translate-y-0.5"
                 style={{
