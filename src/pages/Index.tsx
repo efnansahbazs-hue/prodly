@@ -5,6 +5,7 @@ import { DemoWidget } from "@/components/DemoWidget";
 import { SocialProof } from "@/components/SocialProof";
 import { Features } from "@/components/Features";
 import { Toolkit } from "@/components/Toolkit";
+import { BlankPageSection } from "@/components/BlankPageSection";
 import { GenreShowcase } from "@/components/GenreShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
