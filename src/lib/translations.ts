@@ -311,4 +311,31 @@ export const translations: Record<string, Record<Lang, string>> = {
   "comm.slOnline": { en: "online", tr: "çevrimiçi", de: "online", es: "en línea" },
 
   "comm.trendPosts": { en: "posts", tr: "gönderi", de: "Beiträge", es: "publicaciones" },
+
+  // Cancel modal
+  "cancel.title": { en: "Manage your subscription", tr: "Aboneliğini yönet", de: "Abo verwalten", es: "Gestionar suscripción" },
+  "cancel.pauseTitle": { en: "Pause for 1 month", tr: "1 ay duraklat", de: "1 Monat pausieren", es: "Pausar 1 mes" },
+  "cancel.pauseDesc": { en: "Your plan stays saved. Resume anytime.", tr: "Planın kaydedilir. İstediğin zaman devam et.", de: "Dein Plan bleibt gespeichert. Jederzeit fortfahren.", es: "Tu plan se guarda. Reanuda cuando quieras." },
+  "cancel.downgradeTitle": { en: "Downgrade to Free", tr: "Ücretsiz plana geç", de: "Auf Kostenlos wechseln", es: "Cambiar a Gratis" },
+  "cancel.downgradeDesc": { en: "Keep your archive. Lose premium features.", tr: "Arşivini koru. Premium özellikleri kaybedersin.", de: "Archiv behalten. Premium-Features verlieren.", es: "Conserva tu archivo. Pierde funciones premium." },
+  "cancel.cancelTitle": { en: "Cancel completely", tr: "Tamamen iptal et", de: "Komplett kündigen", es: "Cancelar completamente" },
+  "cancel.cancelDesc": { en: "Your data stays for 30 days if you change your mind.", tr: "Fikir değiştirirsen verin 30 gün saklanır.", de: "Deine Daten bleiben 30 Tage falls du es dir anders überlegst.", es: "Tus datos se guardan 30 días por si cambias de opinión." },
+  "cancel.keepPlan": { en: "Keep my plan", tr: "Planımı koru", de: "Plan behalten", es: "Mantener mi plan" },
+  "cancel.confirm": { en: "Confirm", tr: "Onayla", de: "Bestätigen", es: "Confirmar" },
+  "cancel.confirmed": { en: "Done", tr: "Tamamlandı", de: "Erledigt", es: "Listo" },
+  "cancel.accessUntil": { en: "Your access continues until", tr: "Erişimin şu tarihe kadar devam eder:", de: "Dein Zugang läuft bis", es: "Tu acceso continúa hasta" },
+  "cancel.close": { en: "Close", tr: "Kapat", de: "Schließen", es: "Cerrar" },
+
+  // Suggestions page
+  "sug.label": { en: "SUGGESTIONS", tr: "ÖNERİLER", de: "VORSCHLÄGE", es: "SUGERENCIAS" },
+  "sug.title": { en: "Shape the future of Prodly", tr: "Prodly'nin geleceğini şekillendir", de: "Gestalte die Zukunft von Prodly", es: "Moldea el futuro de Prodly" },
+  "sug.desc": { en: "Submit ideas, vote on features, and see what's coming next.", tr: "Fikir gönder, özelliklere oy ver ve sırada ne var gör.", de: "Reiche Ideen ein, stimme ab und sieh was als nächstes kommt.", es: "Envía ideas, vota por funciones y mira qué viene." },
+  "sug.submitTitle": { en: "Submit a suggestion", tr: "Bir öneri gönder", de: "Vorschlag einreichen", es: "Enviar una sugerencia" },
+  "sug.titlePlaceholder": { en: "Feature title...", tr: "Özellik başlığı...", de: "Feature-Titel...", es: "Título de la función..." },
+  "sug.descPlaceholder": { en: "Describe your idea in detail...", tr: "Fikrini detaylı anlat...", de: "Beschreibe deine Idee im Detail...", es: "Describe tu idea en detalle..." },
+  "sug.submit": { en: "Submit", tr: "Gönder", de: "Einreichen", es: "Enviar" },
+  "sug.submitted": { en: "Suggestion submitted!", tr: "Öneri gönderildi!", de: "Vorschlag eingereicht!", es: "¡Sugerencia enviada!" },
+  "sug.statusReview": { en: "Under Review", tr: "İnceleniyor", de: "In Prüfung", es: "En Revisión" },
+  "sug.statusPlanned": { en: "Planned", tr: "Planlandı", de: "Geplant", es: "Planificado" },
+  "sug.statusDone": { en: "Implemented", tr: "Uygulandı", de: "Umgesetzt", es: "Implementado" },
 };
