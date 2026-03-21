@@ -15,6 +15,8 @@ import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import OnboardingPage from "./pages/OnboardingPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
+import EffectsPage from "./pages/EffectsPage.tsx";
+import PluginsPage from "./pages/PluginsPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
@@ -50,8 +52,8 @@ const App = () => (
             <Route path="/community/collab" element={<CommunityPage />} />
             <Route path="/suggestions" element={<SuggestionsPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/tools/effects" element={<TechniquesPage />} />
-            <Route path="/tools/plugins" element={<TechniquesPage />} />
+            <Route path="/tools/effects" element={<EffectsPage />} />
+            <Route path="/tools/plugins" element={<PluginsPage />} />
 
             {/* Admin */}
             <Route path="/admin" element={<AdminLayout />}>
