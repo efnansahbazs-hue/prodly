@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LangProvider } from "@/hooks/useLang";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import AdminPromoCodes from "./pages/AdminPromoCodes.tsx";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/admin/promo-codes" element={<AdminPromoCodes />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

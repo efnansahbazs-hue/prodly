@@ -4,6 +4,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PricingToggle } from "@/components/PricingToggle";
 import { InviteSection } from "@/components/InviteSection";
+import { PromoCodeInput } from "@/components/PromoCodeInput";
 import type { Lang } from "@/lib/translations";
 
 type F = Record<Lang, string>;
@@ -184,6 +185,13 @@ export const Pricing = () => {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* Promo Code */}
+        <ScrollReveal delay={300}>
+          <div className="flex justify-center mt-10">
+            <PromoCodeInput />
+          </div>
+        </ScrollReveal>
 
         {/* Invite section */}
         <InviteSection />
