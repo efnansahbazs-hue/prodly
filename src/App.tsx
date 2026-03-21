@@ -7,6 +7,7 @@ import { LangProvider } from "@/hooks/useLang";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminPromoCodes from "./pages/AdminPromoCodes.tsx";
+import TechniquesPage from "./pages/TechniquesPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/admin/promo-codes" element={<AdminPromoCodes />} />
+            <Route path="/techniques" element={<TechniquesPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
