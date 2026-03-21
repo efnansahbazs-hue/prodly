@@ -1,110 +1,192 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { MovingBorderButton } from "@/components/Buttons";
+import { PricingToggle } from "@/components/PricingToggle";
+import { InviteSection } from "@/components/InviteSection";
+import type { Lang } from "@/lib/translations";
 
-const plans = [
-  {
-    nameKey: "price.free",
-    price: "$0",
-    ctaKey: "price.cta.free",
-    popular: false,
-    features: [
-      { en: "3 questions/day", tr: "Günde 3 soru", de: "3 Fragen/Tag", es: "3 preguntas/día" },
-      { en: "Basic sourced answers", tr: "Temel kaynaklı cevaplar", de: "Grundlegende belegte Antworten", es: "Respuestas básicas con fuentes" },
-      { en: "All DAW support", tr: "Tüm DAW desteği", de: "Alle DAWs unterstützt", es: "Soporte para todos los DAW" },
-      { en: "Community access", tr: "Topluluk erişimi", de: "Community-Zugang", es: "Acceso a la comunidad" },
-    ],
-  },
-  {
-    nameKey: "price.pro",
-    price: "$19",
-    ctaKey: "price.cta.pro",
-    popular: true,
-    features: [
-      { en: "20 questions/day", tr: "Günde 20 soru", de: "20 Fragen/Tag", es: "20 preguntas/día" },
-      { en: "Deep sourced answers", tr: "Detaylı kaynaklı cevaplar", de: "Tiefgehende belegte Antworten", es: "Respuestas profundas con fuentes" },
-      { en: "Personal archive", tr: "Kişisel arşiv", de: "Persönliches Archiv", es: "Archivo personal" },
-      { en: "Priority support", tr: "Öncelikli destek", de: "Prioritäts-Support", es: "Soporte prioritario" },
-      { en: "Genre-specific guidance", tr: "Türe özel rehberlik", de: "Genre-spezifische Anleitung", es: "Guía específica por género" },
-    ],
-  },
-  {
-    nameKey: "price.studio",
-    price: "$49",
-    ctaKey: "price.cta.studio",
-    popular: false,
-    features: [
-      { en: "Unlimited questions", tr: "Sınırsız soru", de: "Unbegrenzte Fragen", es: "Preguntas ilimitadas" },
-      { en: "Everything in Pro", tr: "Pro'daki her şey", de: "Alles aus Pro", es: "Todo en Pro" },
-      { en: "Team collaboration", tr: "Takım işbirliği", de: "Team-Zusammenarbeit", es: "Colaboración en equipo" },
-      { en: "API access", tr: "API erişimi", de: "API-Zugang", es: "Acceso a API" },
-      { en: "Dedicated account manager", tr: "Özel hesap yöneticisi", de: "Dedizierter Account Manager", es: "Gerente de cuenta dedicado" },
-    ],
-  },
+type F = Record<Lang, string>;
+const f = (en: string, tr: string, de: string, es: string): F => ({ en, tr, de, es });
+
+const freeFeatures: F[] = [
+  f("5 AI questions/day", "Günde 5 AI sorusu", "5 KI-Fragen/Tag", "5 preguntas IA/día"),
+  f("Problem Solver 1/day", "Günde 1 Problem Solver", "1 Problem Solver/Tag", "1 Problem Solver/día"),
+  f("Concept Dictionary", "Kavram Sözlüğü", "Konzept-Wörterbuch", "Diccionario de Conceptos"),
+  f("Daily Technique", "Günün Tekniği", "Tägliche Technik", "Técnica Diaria"),
+  f("Genre DNA (2 genres)", "Genre DNA (2 tür)", "Genre DNA (2 Genres)", "Genre DNA (2 géneros)"),
+  f("BPM + Key Calculator", "BPM + Key Hesaplayıcı", "BPM + Key Rechner", "Calculadora BPM + Key"),
+  f("Archive last 10", "Son 10 arşiv", "Archiv letzte 10", "Archivo últimos 10"),
+  f("Community read only", "Topluluk (salt okunur)", "Community (nur lesen)", "Comunidad (solo lectura)"),
+  f("All 4 languages", "4 dil desteği", "Alle 4 Sprachen", "Los 4 idiomas"),
+];
+
+const premiumFeatures: F[] = [
+  f("20 AI questions/day", "Günde 20 AI sorusu", "20 KI-Fragen/Tag", "20 preguntas IA/día"),
+  f("Problem Solver 10/day", "Günde 10 Problem Solver", "10 Problem Solver/Tag", "10 Problem Solver/día"),
+  f("All Genre DNA Maps", "Tüm Genre DNA Haritaları", "Alle Genre DNA Maps", "Todos los mapas Genre DNA"),
+  f("DAW-specific mode", "DAW'a özel mod", "DAW-spezifischer Modus", "Modo específico por DAW"),
+  f("Conversation memory (20 msgs)", "Konuşma hafızası (20 mesaj)", "Gesprächsspeicher (20 Nachr.)", "Memoria de conversación (20 msgs)"),
+  f("Unlimited archive + search", "Sınırsız arşiv + arama", "Unbegrenztes Archiv + Suche", "Archivo ilimitado + búsqueda"),
+  f("Mix checklist & Plugin DB", "Mix kontrol listesi & Plugin DB", "Mix-Checkliste & Plugin DB", "Lista de mix & Plugin DB"),
+  f("PDF export & Quiz", "PDF dışa aktarma & Quiz", "PDF-Export & Quiz", "Exportar PDF & Quiz"),
+  f("Weekly report", "Haftalık rapor", "Wochenbericht", "Informe semanal"),
+  f("Community posting", "Toplulukta paylaşım", "Community-Beiträge", "Publicar en comunidad"),
+  f("Streak freeze 1/month", "Ayda 1 seri dondurma", "Streak-Freeze 1/Monat", "Congelar racha 1/mes"),
+];
+
+const studioFeatures: F[] = [
+  f("35 AI questions/day", "Günde 35 AI sorusu", "35 KI-Fragen/Tag", "35 preguntas IA/día"),
+  f("Full session memory", "Tam oturum hafızası", "Vollständiger Sitzungsspeicher", "Memoria de sesión completa"),
+  f("DAW Screen Analyzer", "DAW Ekran Analizcisi", "DAW Screen Analyzer", "Analizador de pantalla DAW"),
+  f("Extended AI sessions", "Genişletilmiş AI oturumları", "Erweiterte KI-Sitzungen", "Sesiones IA extendidas"),
+  f("Blind A/B tool", "Kör A/B aracı", "Blind A/B-Tool", "Herramienta A/B ciega"),
+  f("Production Techniques Panel", "Prodüksiyon Teknikleri Paneli", "Produktionstechnik-Panel", "Panel de Técnicas de Producción"),
+  f("Monthly curated pack", "Aylık küratörlü paket", "Monatliches kuratiertes Paket", "Paquete curado mensual"),
+  f("30-day starter plan", "30 günlük başlangıç planı", "30-Tage-Starterplan", "Plan inicial de 30 días"),
+  f("Verified Producer badge", "Doğrulanmış Prodüktör rozeti", "Verifiziertes Produzenten-Badge", "Insignia de Productor Verificado"),
+  f("Beta access & Priority support", "Beta erişimi & Öncelikli destek", "Beta-Zugang & Prioritäts-Support", "Acceso beta & Soporte prioritario"),
+  f("Streak freeze 2/month", "Ayda 2 seri dondurma", "Streak-Freeze 2/Monat", "Congelar racha 2/mes"),
 ];
 
 export const Pricing = () => {
   const { t, lang } = useTranslation();
+  const [annual, setAnnual] = useState(false);
 
   return (
     <section id="pricing" className="relative py-24 md:py-32 px-5">
-      <div className="container mx-auto max-w-5xl">
+      <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <p className="section-label mb-3">{t("price.label")}</p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-14" style={{ fontFamily: "'Space Grotesk'" }}>
+          <p className="section-label mb-3 text-center">{t("price.label")}</p>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-center text-white" style={{ fontFamily: "'Space Grotesk'" }}>
             {t("price.title")}
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {plans.map((plan, i) => (
-            <ScrollReveal key={plan.nameKey} delay={i * 80}>
-              <div
-                className={`rounded-[20px] p-7 h-full flex flex-col ${plan.popular ? "border-2" : "glass-card"}`}
-                style={
-                  plan.popular
-                    ? { background: "var(--bg-card)", backdropFilter: "blur(20px)", borderImage: "linear-gradient(135deg, #7C3AED, #34D399) 1" }
-                    : undefined
-                }
+        <ScrollReveal delay={60}>
+          <PricingToggle annual={annual} onToggle={() => setAnnual(!annual)} />
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-5 mt-10">
+          {/* FREE */}
+          <ScrollReveal delay={80}>
+            <div
+              className="rounded-[20px] p-7 h-full flex flex-col"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(20px)" }}
+            >
+              <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>{t("price.free")}</h3>
+              <div className="flex items-baseline gap-1 mb-1">
+                <span className="text-4xl font-extrabold text-white" style={{ fontFamily: "'Space Grotesk'" }}>$0</span>
+                <span className="text-sm" style={{ color: "#6B7280" }}>{t("price.mo")}</span>
+              </div>
+              <p className="text-[11px] mb-6" style={{ color: "#6B7280" }}>{t("price.noCard")}</p>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {freeFeatures.map((feat) => (
+                  <li key={feat.en} className="flex items-start gap-2.5 text-sm" style={{ color: "#8B8FA8" }}>
+                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#34D399" }} />
+                    {feat[lang]}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                className="w-full rounded-full py-3 text-sm font-semibold transition-all active:scale-[0.97]"
+                style={{ border: "1px solid rgba(52,211,153,0.4)", color: "#34D399", background: "transparent" }}
               >
-                {plan.popular && (
-                  <span className="inline-block self-start text-xs font-semibold rounded-full px-3 py-1 mb-4 text-white bg-[var(--purple)]">
-                    {t("price.popular")}
-                  </span>
-                )}
-                <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>
-                  {t(plan.nameKey)}
-                </h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-extrabold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
-                    {plan.price}
-                  </span>
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>{t("price.mo")}</span>
-                </div>
+                {t("price.cta.free")}
+              </button>
+            </div>
+          </ScrollReveal>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feat) => (
-                    <li key={feat.en} className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-secondary)" }}>
-                      <Check className="w-4 h-4 flex-shrink-0 text-[var(--mint)]" />
-                      {feat[lang]}
-                    </li>
-                  ))}
-                </ul>
+          {/* PREMIUM */}
+          <ScrollReveal delay={160}>
+            <div
+              className="rounded-[20px] p-7 h-full flex flex-col relative overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.5)", backdropFilter: "blur(20px)", boxShadow: "0 0 60px rgba(124,58,237,0.15)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+              <span className="inline-block self-start text-[11px] font-semibold rounded-full px-3 py-1 mb-4" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+                {t("price.popular")}
+              </span>
 
-                {plan.popular ? (
-                  <MovingBorderButton className="w-full text-center justify-center">
-                    {t(plan.ctaKey)}
-                  </MovingBorderButton>
-                ) : (
-                  <button className="w-full glass-card-static rounded-full py-3 text-sm font-semibold text-white hover:border-[var(--border-accent)] transition-colors active:scale-[0.97]">
-                    {t(plan.ctaKey)}
-                  </button>
+              <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>Premium</h3>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-4xl font-extrabold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
+                  {annual ? "$129" : "$15"}
+                </span>
+                <span className="text-sm" style={{ color: "#6B7280" }}>{annual ? "/yr" : t("price.mo")}</span>
+                {annual && (
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(52,211,153,0.15)", color: "#34D399" }}>
+                    Save 28%
+                  </span>
                 )}
               </div>
-            </ScrollReveal>
-          ))}
+              <p className="text-[11px] mb-6" style={{ color: "#8B8FA8" }}>{t("price.includesFree")}</p>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {premiumFeatures.map((feat) => (
+                  <li key={feat.en} className="flex items-start gap-2.5 text-sm" style={{ color: "#8B8FA8" }}>
+                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#34D399" }} />
+                    {feat[lang]}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="rounded-full p-[2px] animate-move-border"
+                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
+              >
+                <button className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#7C3AED" }}>
+                  {t("price.cta.pro")}
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* STUDIO */}
+          <ScrollReveal delay={240}>
+            <div
+              className="rounded-[20px] p-7 h-full flex flex-col relative overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(52,211,153,0.2)", backdropFilter: "blur(20px)" }}
+            >
+              <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>{t("price.studio")}</h3>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-4xl font-extrabold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
+                  {annual ? "$239" : "$29"}
+                </span>
+                <span className="text-sm" style={{ color: "#6B7280" }}>{annual ? "/yr" : t("price.mo")}</span>
+                {annual && (
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(52,211,153,0.15)", color: "#34D399" }}>
+                    Save 31%
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] mb-6" style={{ color: "#8B8FA8" }}>{t("price.includesPremium")}</p>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {studioFeatures.map((feat) => (
+                  <li key={feat.en} className="flex items-start gap-2.5 text-sm" style={{ color: "#8B8FA8" }}>
+                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#34D399" }} />
+                    {feat[lang]}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="rounded-full p-[2px] animate-move-border"
+                style={{ background: "linear-gradient(135deg, #34D399, #7C3AED, #34D399)", backgroundSize: "200% 200%" }}
+              >
+                <button className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#0F0F18" }}>
+                  {t("price.cta.studio")}
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
+
+        {/* Invite section */}
+        <InviteSection />
       </div>
     </section>
   );
