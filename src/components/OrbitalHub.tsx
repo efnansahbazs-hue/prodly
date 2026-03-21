@@ -1,13 +1,38 @@
-/** Orbital hub — Lottie ring with Prodly face center */
-import Lottie from "lottie-react";
-import prodlyRing from "@/assets/prodly-ring.json";
-
+/** Orbital hub — spinning conic rings with Prodly face center */
 export const OrbitalHub = () => (
-  <div className="relative" style={{ width: 280, height: 280 }}>
-    <Lottie
-      animationData={prodlyRing}
-      loop
-      style={{ position: "absolute", inset: -30, width: 340, height: 340 }}
+  <div className="relative w-[220px] h-[220px] md:w-[260px] md:h-[260px] mx-auto">
+    {/* Outer slow ring */}
+    <div
+      className="absolute rounded-full animate-spin-ring-slow"
+      style={{
+        inset: -22,
+        border: "1px solid transparent",
+        background:
+          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 90deg, rgba(124,58,237,0.15), rgba(52,211,153,0.15), rgba(124,58,237,0.15)) border-box",
+        filter: "blur(2px)",
+      }}
+    />
+    {/* Main gradient ring */}
+    <div
+      className="absolute rounded-full animate-spin-ring"
+      style={{
+        inset: -10,
+        border: "2px solid transparent",
+        background:
+          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 0deg, #7C3AED, #9333EA, #34D399, #10B981, #7C3AED) border-box",
+      }}
+    />
+    {/* Glow behind ring */}
+    <div
+      className="absolute rounded-full animate-spin-ring"
+      style={{
+        inset: -4,
+        border: "6px solid transparent",
+        background:
+          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 180deg, #7C3AED, #34D399, #7C3AED) border-box",
+        filter: "blur(8px)",
+        animationDirection: "reverse",
+      }}
     />
     {/* Prodly face */}
     <div
