@@ -1,68 +1,55 @@
+import { DotGrid } from "@/components/BackgroundEffects";
+import { AuroraMesh, GrainOverlay } from "@/components/AuroraMesh";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
-import { DailyUsageBar } from "@/components/DailyUsageBar";
-import { ReturningGreeting } from "@/components/ReturningGreeting";
-import { ProdlySpin } from "@/components/ProdlySpin";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useExp } from "@/hooks/useExp";
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { DashboardChat } from "@/components/dashboard/DashboardChat";
+import { DashboardMain } from "@/components/dashboard/DashboardMain";
+import { DashboardTools } from "@/components/dashboard/DashboardTools";
 
 export default function DashboardPage() {
-  const { t } = useTranslation();
-  const { level, exp, progress } = useExp();
-
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <NoiseOverlay /><DotGrid /><Orbs /><Navbar />
-      <ReturningGreeting streakDays={5} />
-      <div className="container mx-auto px-5 pt-24 pb-20 max-w-4xl">
-        <ScrollReveal>
-          <h1
-            className="text-3xl font-bold text-white mb-6"
-            style={{ fontFamily: "'Space Grotesk'" }}
-          >
-            {t("dash.title")}
-          </h1>
-        </ScrollReveal>
+      {/* Darker aurora for studio vibe */}
+      <div style={{ opacity: 0.6 }}>
+        <AuroraMesh />
+      </div>
+      <GrainOverlay />
+      <DotGrid />
+      <Navbar />
 
-        <ScrollReveal delay={100}>
-          <DailyUsageBar used={12} max={20} />
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <ScrollReveal delay={200}>
-            <div className="glass-card-static p-5 rounded-2xl">
-              <span className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "#8B8FA8" }}>Level</span>
-              <p className="text-2xl font-bold text-white mt-1 tabular-nums">{level.level}</p>
-              <p className="text-xs mt-0.5" style={{ color: "#34D399" }}>{level.name.en}</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={300}>
-            <div className="glass-card-static p-5 rounded-2xl">
-              <span className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "#8B8FA8" }}>EXP</span>
-              <p className="text-2xl font-bold text-white mt-1 tabular-nums">{exp.toLocaleString()}</p>
-              <div className="w-full h-1.5 rounded-full mt-2" style={{ background: "rgba(255,255,255,0.06)" }}>
-                <div className="h-full rounded-full" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
-              </div>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={400}>
-            <div className="glass-card-static p-5 rounded-2xl">
-              <span className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "#8B8FA8" }}>Streak</span>
-              <p className="text-2xl font-bold text-white mt-1 tabular-nums">5 🔥</p>
-            </div>
-          </ScrollReveal>
+      {/* 3-column layout */}
+      <div className="relative z-10 flex gap-4 px-4 pt-20 pb-8 min-h-screen max-w-[1440px] mx-auto">
+        {/* Left — Chat */}
+        <div className="hidden lg:block flex-shrink-0 sticky top-20" style={{ height: "calc(100vh - 96px)" }}>
+          <DashboardChat />
         </div>
 
-        {/* Prodly Spin sidebar widget */}
-        <div className="mt-8">
-          <ScrollReveal delay={500}>
-            <ProdlySpin />
-          </ScrollReveal>
+        {/* Center — Main */}
+        <DashboardMain />
+
+        {/* Right — Quick Tools */}
+        <div className="hidden lg:block flex-shrink-0 sticky top-20" style={{ height: "calc(100vh - 96px)" }}>
+          <DashboardTools />
         </div>
       </div>
-      <Footer />
+
+      {/* Mobile: bottom chat trigger */}
+      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
+        <button
+          className="w-full flex items-center justify-center gap-2 rounded-2xl py-3 text-[13px] font-semibold text-white active:scale-[0.97] transition-transform"
+          style={{
+            background: "rgba(15,15,25,0.9)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            backdropFilter: "blur(20px)",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
+          }}
+        >
+          <span
+            className="rounded-full flex-shrink-0"
+            style={{ width: 8, height: 8, background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+          />
+          Prodly'ye Sor
+        </button>
+      </div>
     </div>
   );
 }
