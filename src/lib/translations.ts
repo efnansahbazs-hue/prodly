@@ -217,4 +217,23 @@ export const translations: Record<string, Record<Lang, string>> = {
   "bp.generateBlueprint": { en: "Generate Blueprint →", tr: "Taslak Oluştur →", de: "Blueprint generieren →", es: "Generar Plano →" },
   "bp.chordTitle": { en: "Chord Starter", tr: "Akor Başlatıcı", de: "Akkord-Starter", es: "Iniciador de Acordes" },
   "bp.grooveTitle": { en: "Groove Builder", tr: "Groove Oluşturucu", de: "Groove-Builder", es: "Constructor de Groove" },
+
+  // Problem Solver
+  "ps.label": { en: "THE PROBLEM SOLVER", tr: "PROBLEM ÇÖZÜCÜ", de: "DER PROBLEM-LÖSER", es: "EL SOLUCIONADOR" },
+  "ps.title": { en: "Describe the problem. Get the fix.", tr: "Sorunu tanımla. Çözümü al.", de: "Beschreibe das Problem. Erhalte die Lösung.", es: "Describe el problema. Obtén la solución." },
+  "ps.desc": { en: "Pick a category, describe what's wrong, and get a step-by-step diagnosis.", tr: "Kategori seç, sorunu anlat, adım adım teşhis al.", de: "Wähle eine Kategorie, beschreibe das Problem, erhalte eine Diagnose.", es: "Elige una categoría, describe el problema, obtén un diagnóstico." },
+  "ps.catMix": { en: "Mixing Issues", tr: "Mix Sorunları", de: "Mixing-Probleme", es: "Problemas de Mezcla" },
+  "ps.catSound": { en: "Sound Design", tr: "Ses Tasarımı", de: "Sound Design", es: "Diseño Sonoro" },
+  "ps.catLoud": { en: "Loudness & Mastering", tr: "Loudness & Mastering", de: "Lautheit & Mastering", es: "Loudness y Mastering" },
+  "ps.catArr": { en: "Arrangement", tr: "Düzenleme", de: "Arrangement", es: "Arreglo" },
+  "ps.catPerf": { en: "Performance & CPU", tr: "Performans & CPU", de: "Performance & CPU", es: "Rendimiento y CPU" },
+
+  // Daily Technique
+  "dt.label": { en: "TODAY'S TECHNIQUE", tr: "GÜNÜN TEKNİĞİ", de: "HEUTIGE TECHNIK", es: "TÉCNICA DEL DÍA" },
+
+  // Streak
+  "streak.label": { en: "YOUR STREAK", tr: "SERİN", de: "DEIN STREAK", es: "TU RACHA" },
+  "streak.days": { en: "days in a row", tr: "gün üst üste", de: "Tage in Folge", es: "días seguidos" },
+  "streak.freeze": { en: "freeze left", tr: "dondurma hakkı", de: "Freeze übrig", es: "congelación" },
+  "streak.milestones": { en: "Milestones", tr: "Kilometre Taşları", de: "Meilensteine", es: "Hitos" },
 };
