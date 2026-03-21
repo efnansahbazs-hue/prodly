@@ -197,6 +197,8 @@
 .animate-spin-ring-slow { animation: spinRing 6s linear infinite; }
 .animate-float-widget { animation: floatWidget 6s ease-in-out infinite; }
 .animate-pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+@keyframes dashMove { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -28; } }
+.animate-dash { animation: dashMove 1.5s linear infinite; }
 
 .text-gradient-conic {
   background: conic-gradient(from 180deg, #7C3AED, #34D399);
