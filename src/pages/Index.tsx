@@ -13,9 +13,11 @@ import { GenreShowcase } from "@/components/GenreShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
+import { ProdlySpin } from "@/components/ProdlySpin";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { FloatingReportButton } from "@/components/FloatingReportButton";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
@@ -36,6 +38,16 @@ const Index = () => (
     <HowItWorks />
     <Testimonials />
     <Pricing />
+
+    {/* Prodly Spin section */}
+    <section className="py-20 px-5">
+      <div className="container mx-auto max-w-lg">
+        <ScrollReveal>
+          <ProdlySpin />
+        </ScrollReveal>
+      </div>
+    </section>
+
     <FinalCTA />
     <Footer />
     <FloatingReportButton />
