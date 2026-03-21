@@ -147,4 +147,16 @@ export const translations: Record<string, Record<Lang, string>> = {
   "upgrade.benefit4": { en: "Priority response speed", tr: "Öncelikli yanıt hızı", de: "Prioritäts-Antwortgeschwindigkeit", es: "Velocidad de respuesta prioritaria" },
   "upgrade.cta": { en: "Upgrade to Premium", tr: "Premium'a Yükselt", de: "Auf Premium upgraden", es: "Actualizar a Premium" },
   "upgrade.later": { en: "Maybe later", tr: "Belki sonra", de: "Vielleicht später", es: "Quizás después" },
+
+  // Promo codes
+  "promo.placeholder": { en: "Have a promo code?", tr: "Promosyon kodunuz var mı?", de: "Haben Sie einen Promo-Code?", es: "¿Tienes un código promo?" },
+  "promo.apply": { en: "Apply", tr: "Uygula", de: "Einlösen", es: "Aplicar" },
+  "promo.applied": { en: "Code applied!", tr: "Kod uygulandı!", de: "Code eingelöst!", es: "¡Código aplicado!" },
+  "promo.invalid": { en: "This code is not valid or has expired", tr: "Bu kod geçerli değil veya süresi dolmuş", de: "Dieser Code ist ungültig oder abgelaufen", es: "Este código no es válido o ha expirado" },
+
+  // Admin
+  "admin.promoLabel": { en: "ADMIN", tr: "YÖNETİM", de: "ADMIN", es: "ADMIN" },
+  "admin.promoTitle": { en: "Promo Code Management", tr: "Promosyon Kodu Yönetimi", de: "Promo-Code Verwaltung", es: "Gestión de Códigos Promo" },
+  "admin.createCode": { en: "Create Code", tr: "Kod Oluştur", de: "Code erstellen", es: "Crear Código" },
+  "admin.cancel": { en: "Cancel", tr: "İptal", de: "Abbrechen", es: "Cancelar" },
 };

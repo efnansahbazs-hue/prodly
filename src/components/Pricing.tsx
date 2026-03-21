@@ -186,6 +186,13 @@ export const Pricing = () => {
           </ScrollReveal>
         </div>
 
+        {/* Promo Code */}
+        <ScrollReveal delay={300}>
+          <div className="flex justify-center mt-10">
+            <PromoCodeInput />
+          </div>
+        </ScrollReveal>
+
         {/* Invite section */}
         <InviteSection />
       </div>

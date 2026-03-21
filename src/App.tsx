@@ -19,6 +19,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/admin/promo-codes" element={<AdminPromoCodes />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
