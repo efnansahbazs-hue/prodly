@@ -75,22 +75,30 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* 3-column layout */}
-      <div className="relative z-10 flex gap-4 px-4 pb-8 min-h-[calc(100vh-120px)] max-w-[1440px] mx-auto">
+      {/* 3-column layout — CSS Grid */}
+      <div className="dashboard-grid relative z-10 pb-8 max-w-[1440px] mx-auto px-4">
         {/* Left — Chat */}
-        <div className="hidden lg:block flex-shrink-0 sticky top-24" style={{ height: "calc(100vh - 120px)" }}>
+        <div className="dashboard-chat-col sticky top-24" style={{ height: "calc(100vh - 120px)" }}>
           <DashboardChat onTopicChange={setTopic} />
         </div>
 
         {/* Center — Tab content */}
-        <div className="flex-1 min-w-0" style={{ animation: "fadeTabIn 0.2s ease both" }}>
+        <div className="min-w-0" style={{ animation: "fadeTabIn 0.2s ease both" }}>
           {renderCenter()}
         </div>
 
         {/* Right — Context Panel */}
-        <div className="hidden lg:block flex-shrink-0 sticky top-24" style={{ height: "calc(100vh - 120px)" }}>
+        <div
+          className="dashboard-right-col sticky top-24"
+          style={{
+            height: "calc(100vh - 120px)",
+            overflowY: "auto",
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(124,58,237,0.4) transparent",
+          }}
+        >
           {isFree ? (
-            <div className="h-full" style={{ width: 280 }}>
+            <div className="h-full" style={{ width: "100%" }}>
               <LockedOverlay label={tr ? "Bağlamsal araçlar — Premium'da açılır" : "Context tools — Premium feature"} plan="premium">
                 <ContextPanel topic={null} />
               </LockedOverlay>
@@ -102,7 +110,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Mobile bottom chat */}
-      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
+      <div className="dashboard-mobile-chat fixed bottom-4 left-4 right-4 z-40">
         <button
           className="w-full flex items-center justify-center gap-2 rounded-2xl py-3 text-[13px] font-semibold text-white active:scale-[0.97] transition-transform"
           style={{ background: "rgba(15,15,25,0.9)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(20px)", boxShadow: "0 8px 30px rgba(0,0,0,0.5)" }}
