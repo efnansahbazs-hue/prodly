@@ -11,7 +11,7 @@ import type { Category, DAW } from "@/lib/techniquesData";
 
 const TechniquesPage = () => {
   const { userType } = useFreeUses();
-  const isStudio = userType === "premium"; // mock: treat premium as studio for demo
+  const isStudio = userType === "premium"; // mock: premium acts as studio for demo
   const [category, setCategory] = useState<Category>("mixing");
   const [daw, setDaw] = useState<DAW>("ableton");
   const [selectedId, setSelectedId] = useState<string | null>(null);
