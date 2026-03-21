@@ -67,7 +67,7 @@ export const DailyTechnique = () => {
             </h3>
 
             <p className="text-sm leading-relaxed mb-4" style={{ color: "#8B8FA8" }}>
-              {technique.description}
+              {getLang(technique.description)}
             </p>
 
             {/* When to use */}
