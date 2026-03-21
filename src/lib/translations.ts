@@ -15,6 +15,18 @@ export const translations: Record<string, Record<Lang, string>> = {
     de: "Musik-Produktions-Mentor.",
     es: "Mentor de producción musical.",
   },
+  "hero.titleLine1": {
+    en: "Music production",
+    tr: "Müzik prodüksiyon",
+    de: "Musik-Produktions-",
+    es: "Mentor de producción",
+  },
+  "hero.titleLine2": {
+    en: "mentor.",
+    tr: "mentoru.",
+    de: "Mentor.",
+    es: "musical.",
+  },
   "hero.desc": {
     en: "Ask anything. Get sourced, accurate answers. Built for every DAW, every genre, every level.",
     tr: "Her şeyi sor. Kaynaklı, doğru cevaplar al. Her DAW, her tür, her seviye için.",
