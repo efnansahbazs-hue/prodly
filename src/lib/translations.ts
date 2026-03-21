@@ -204,4 +204,17 @@ export const translations: Record<string, Record<Lang, string>> = {
   "tk.grooveBuilderDesc": { en: "Generate drum patterns and rhythmic variations.", tr: "Davul pattern'leri ve ritmik varyasyonlar oluştur.", de: "Drum-Patterns und rhythmische Variationen generieren.", es: "Genera patrones de batería y variaciones rítmicas." },
   "tk.sampleDev": { en: "Sample Developer", tr: "Sample Geliştirici", de: "Sample-Entwickler", es: "Desarrollador de Samples" },
   "tk.sampleDevDesc": { en: "Sound design recipes for creating your own samples.", tr: "Kendi sample'larını yaratmak için ses tasarımı reçeteleri.", de: "Sound-Design-Rezepte zum Erstellen eigener Samples.", es: "Recetas de diseño sonoro para crear tus propios samples." },
+
+  // Blank Page section
+  "bp.label": { en: "FROM ZERO TO FIRST BEAT", tr: "SIFIRDAN İLK BEAT'E", de: "VON NULL ZUM ERSTEN BEAT", es: "DE CERO AL PRIMER BEAT" },
+  "bp.title": { en: "From blank page to first beat.", tr: "Boş sayfadan ilk beat'e.", de: "Von der leeren Seite zum ersten Beat.", es: "De la página en blanco al primer beat." },
+  "bp.desc": { en: "Pick a direction, get a blueprint, start creating — all guided by Prodly.", tr: "Bir yön seç, taslak al, üretmeye başla — hepsi Prodly rehberliğinde.", de: "Wähle eine Richtung, erhalte einen Bauplan, fang an — geleitet von Prodly.", es: "Elige una dirección, obtén un plano, empieza a crear — guiado por Prodly." },
+  "bp.stage1Title": { en: "What do you want to create today?", tr: "Bugün ne oluşturmak istiyorsun?", de: "Was willst du heute erstellen?", es: "¿Qué quieres crear hoy?" },
+  "bp.choice1": { en: "Start a track", tr: "Parça başlat", de: "Track starten", es: "Empezar una pista" },
+  "bp.choice2": { en: "Remix an idea", tr: "Fikri remixle", de: "Idee remixen", es: "Remixar una idea" },
+  "bp.choice3": { en: "Just explore", tr: "Keşfet", de: "Einfach erkunden", es: "Solo explorar" },
+  "bp.stage2Title": { en: "Your project DNA", tr: "Projenin DNA'sı", de: "Dein Projekt-DNA", es: "El ADN de tu proyecto" },
+  "bp.generateBlueprint": { en: "Generate Blueprint →", tr: "Taslak Oluştur →", de: "Blueprint generieren →", es: "Generar Plano →" },
+  "bp.chordTitle": { en: "Chord Starter", tr: "Akor Başlatıcı", de: "Akkord-Starter", es: "Iniciador de Acordes" },
+  "bp.grooveTitle": { en: "Groove Builder", tr: "Groove Oluşturucu", de: "Groove-Builder", es: "Constructor de Groove" },
 };
