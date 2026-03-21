@@ -6,6 +6,9 @@ import { SocialProof } from "@/components/SocialProof";
 import { Features } from "@/components/Features";
 import { Toolkit } from "@/components/Toolkit";
 import { BlankPageSection } from "@/components/BlankPageSection";
+import { ProblemSolver } from "@/components/ProblemSolver";
+import { DailyTechnique } from "@/components/DailyTechnique";
+import { StreakShowcase } from "@/components/StreakShowcase";
 import { GenreShowcase } from "@/components/GenreShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
@@ -25,6 +28,9 @@ const Index = () => (
     <Features />
     <Toolkit />
     <BlankPageSection />
+    <ProblemSolver />
+    <DailyTechnique />
+    <StreakShowcase />
     <GenreShowcase />
     <HowItWorks />
     <Testimonials />
