@@ -18,12 +18,10 @@ export const Hero = () => {
         </ScrollReveal>
         <ScrollReveal delay={80}>
           <h1
-            className="text-4xl md:text-[58px] font-extrabold leading-[1.05] tracking-tight mb-5"
+            className="text-4xl md:text-[58px] font-extrabold leading-[1.05] tracking-tight mb-5 text-gradient-conic"
             style={{ fontFamily: "'Space Grotesk'" }}
           >
-            <span className="text-white">{t("hero.title1")}</span>
-            <br />
-            <span className="text-gradient-conic">{t("hero.title2")}</span>
+            {t("hero.title")}
           </h1>
         </ScrollReveal>
         <ScrollReveal delay={160}>
