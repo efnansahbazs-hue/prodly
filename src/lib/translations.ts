@@ -40,55 +40,31 @@ export const translations: Record<string, Record<Lang, string>> = {
   "demo.signupCta": { en: "Want deeper answers? Sign up free →", tr: "Daha detaylı cevaplar mı? Ücretsiz kaydol →", de: "Tiefere Antworten? Kostenlos anmelden →", es: "¿Respuestas más profundas? Regístrate gratis →" },
 
   // Social Proof
-  "social.producers": { en: "Active Producers", tr: "Aktif Prodüktör", de: "Aktive Produzenten", es: "Productores Activos" },
-  "social.tracks": { en: "Tracks Created", tr: "Oluşturulan Parça", de: "Erstellte Tracks", es: "Pistas Creadas" },
-  "social.uptime": { en: "Uptime SLA", tr: "Çalışma Süresi", de: "Verfügbarkeit", es: "Disponibilidad" },
-  "social.latency": { en: "Avg Latency", tr: "Ort. Gecikme", de: "Ø Latenz", es: "Latencia Prom." },
+  "social.join": { en: "Join 500+ producers already using Prodly", tr: "Prodly kullanan 500+ prodüktöre katılın", de: "Schließe dich 500+ Produzenten an", es: "Únete a 500+ productores usando Prodly" },
 
   // Features
   "features.label": { en: "Features", tr: "Özellikler", de: "Funktionen", es: "Características" },
   "features.title": { en: "Everything you need to produce", tr: "Üretmek için her şey", de: "Alles was du brauchst", es: "Todo lo que necesitas" },
-  "feat.ai.title": { en: "AI Composition", tr: "AI Kompozisyon", de: "KI-Komposition", es: "Composición IA" },
-  "feat.ai.desc": {
-    en: "Generate melodies, harmonies, and arrangements with neural networks trained on millions of tracks.",
-    tr: "Milyonlarca parça üzerinde eğitilmiş sinir ağlarıyla melodi, armoni ve düzenlemeler oluşturun.",
-    de: "Generiere Melodien, Harmonien und Arrangements mit neuronalen Netzen.",
-    es: "Genera melodías, armonías y arreglos con redes neuronales."
+  "feat.ask.title": { en: "Ask anything, get sourced answers", tr: "Her şeyi sor, kaynaklı cevap al", de: "Frag alles, erhalte belegte Antworten", es: "Pregunta lo que sea, obtén respuestas verificadas" },
+  "feat.ask.desc": {
+    en: "Every answer includes a verified source — articles, manuals, and tutorials you can trust.",
+    tr: "Her cevap doğrulanmış kaynak içerir — güvenebileceğiniz makaleler, kılavuzlar ve öğreticiler.",
+    de: "Jede Antwort enthält eine verifizierte Quelle — Artikel, Handbücher und Tutorials.",
+    es: "Cada respuesta incluye una fuente verificada — artículos, manuales y tutoriales."
   },
-  "feat.mix.title": { en: "Smart Mixing", tr: "Akıllı Miksleme", de: "Smart Mixing", es: "Mezcla Inteligente" },
-  "feat.mix.desc": {
-    en: "Auto-balance frequencies, stereo width, and dynamics. Studio-quality results in seconds.",
-    tr: "Frekansları, stereo genişliği ve dinamikleri otomatik dengeleyin.",
-    de: "Automatische Balance von Frequenzen, Stereobreite und Dynamik.",
-    es: "Equilibra frecuencias, amplitud estéreo y dinámica automáticamente."
+  "feat.daw.title": { en: "DAW-specific guidance", tr: "DAW'a özel rehberlik", de: "DAW-spezifische Anleitung", es: "Guía específica por DAW" },
+  "feat.daw.desc": {
+    en: "Get step-by-step instructions tailored to your DAW — Ableton, FL Studio, Logic Pro, and more.",
+    tr: "DAW'ınıza özel adım adım talimatlar alın — Ableton, FL Studio, Logic Pro ve daha fazlası.",
+    de: "Schritt-für-Schritt-Anleitungen für deine DAW — Ableton, FL Studio, Logic Pro und mehr.",
+    es: "Instrucciones paso a paso para tu DAW — Ableton, FL Studio, Logic Pro y más."
   },
-  "feat.collab.title": { en: "Live Collaboration", tr: "Canlı İşbirliği", de: "Live-Zusammenarbeit", es: "Colaboración en Vivo" },
-  "feat.collab.desc": {
-    en: "Work with producers worldwide in real-time. Shared timelines, stems, and instant feedback.",
-    tr: "Dünya genelinde prodüktörlerle gerçek zamanlı çalışın.",
-    de: "Arbeite in Echtzeit mit Produzenten weltweit zusammen.",
-    es: "Trabaja en tiempo real con productores de todo el mundo."
-  },
-  "feat.vocal.title": { en: "Vocal Processing", tr: "Vokal İşleme", de: "Vokalbearbeitung", es: "Procesamiento Vocal" },
-  "feat.vocal.desc": {
-    en: "Pitch correction, harmonization, and de-essing with one click. Crystal-clear vocals every time.",
-    tr: "Tek tıkla pitch düzeltme, harmonizasyon ve de-essing.",
-    de: "Pitch-Korrektur, Harmonisierung und De-Essing mit einem Klick.",
-    es: "Corrección de tono, armonización y de-essing con un clic."
-  },
-  "feat.master.title": { en: "AI Mastering", tr: "AI Mastering", de: "KI-Mastering", es: "Masterización IA" },
-  "feat.master.desc": {
-    en: "Broadcast-ready masters with LUFS targeting, multiband compression, and genre-aware EQ.",
-    tr: "LUFS hedefleme, çok bantlı sıkıştırma ve türe duyarlı EQ ile yayına hazır master.",
-    de: "Sendefähige Masters mit LUFS-Ziel, Multiband-Kompression und Genre-EQ.",
-    es: "Masters listos con LUFS, compresión multibanda y EQ por género."
-  },
-  "feat.sample.title": { en: "Sample Library", tr: "Örnek Kütüphanesi", de: "Sample-Bibliothek", es: "Biblioteca de Samples" },
-  "feat.sample.desc": {
-    en: "Over 2 million royalty-free samples, loops, and one-shots across every genre.",
-    tr: "Her türden 2 milyondan fazla telif hakkı ücretsiz sample, loop ve one-shot.",
-    de: "Über 2 Millionen lizenzfreie Samples, Loops und One-Shots.",
-    es: "Más de 2 millones de samples, loops y one-shots libres de regalías."
+  "feat.archive.title": { en: "Your personal archive", tr: "Kişisel arşivin", de: "Dein persönliches Archiv", es: "Tu archivo personal" },
+  "feat.archive.desc": {
+    en: "Every answer saved automatically. Search, revisit, and build your own production knowledge base.",
+    tr: "Her cevap otomatik kaydedilir. Arayın, tekrar ziyaret edin ve kendi bilgi tabanınızı oluşturun.",
+    de: "Jede Antwort wird automatisch gespeichert. Suche, besuche erneut und baue deine Wissensbasis auf.",
+    es: "Cada respuesta se guarda automáticamente. Busca, revisita y construye tu base de conocimiento."
   },
 
   // Genre Showcase
