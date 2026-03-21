@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { DailyUsageBar } from "@/components/DailyUsageBar";
 import { ReturningGreeting } from "@/components/ReturningGreeting";
+import { ProdlySpin } from "@/components/ProdlySpin";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useExp } from "@/hooks/useExp";
 import { ScrollReveal } from "@/components/ScrollReveal";
