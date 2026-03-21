@@ -5,9 +5,18 @@ import type { Difficulty } from "@/lib/techniquesData";
 const technique = {
   title: "Parallel Compression",
   difficulty: "intermediate" as Difficulty,
-  description: "Blend a heavily compressed copy of your signal with the dry original to add punch and sustain without destroying dynamics.",
-  whenToUse: "Drums feel lifeless, vocals need presence, bus processing for glue.",
-  quickTip: "Add subtle saturation before the compressor on the parallel bus for smoother blending.",
+  description: {
+    en: "Blend a heavily compressed copy of your signal with the dry original to add punch and sustain without destroying dynamics.",
+    tr: "Sinyalinizin yoğun şekilde sıkıştırılmış bir kopyasını orijinal kuru sinyal ile harmanlayarak dinamikleri bozmadan punch ve sustain ekleyin.",
+  },
+  whenToUse: {
+    en: "Drums feel lifeless, vocals need presence, bus processing for glue.",
+    tr: "Davullar cansız hissettirdiğinde, vokallerin varlık ihtiyacı olduğunda, yapıştırma için bus processing.",
+  },
+  quickTip: {
+    en: "Add subtle saturation before the compressor on the parallel bus for smoother blending.",
+    tr: "Daha yumuşak harmanlama için paralel bus'taki compressor'dan önce hafif saturation ekleyin.",
+  },
   source: "Sound On Sound",
 };
 
