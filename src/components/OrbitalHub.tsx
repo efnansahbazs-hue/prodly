@@ -1,44 +1,37 @@
-/** Orbital hub — spinning conic rings with Prodly face center */
+/** Orbital hub — simple dark circle with glow blobs behind */
 export const OrbitalHub = () => (
-  <div className="relative w-[220px] h-[220px] md:w-[260px] md:h-[260px] mx-auto">
-    {/* Outer slow ring */}
+  <div className="relative w-[220px] h-[220px] mx-auto">
+    {/* Glow blob 1 — purple pulse */}
     <div
-      className="absolute rounded-full animate-spin-ring-slow"
+      className="absolute rounded-full animate-[pulse_6s_ease-in-out_infinite]"
       style={{
-        inset: -22,
-        border: "1px solid transparent",
-        background:
-          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 90deg, rgba(124,58,237,0.15), rgba(52,211,153,0.15), rgba(124,58,237,0.15)) border-box",
-        filter: "blur(2px)",
+        width: 400,
+        height: 400,
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        background: "radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%)",
+        filter: "blur(60px)",
       }}
     />
-    {/* Main gradient ring */}
+    {/* Glow blob 2 — mint pulse */}
     <div
-      className="absolute rounded-full animate-spin-ring"
+      className="absolute rounded-full animate-[pulse_8s_ease-in-out_infinite_1s]"
       style={{
-        inset: -10,
-        border: "2px solid transparent",
-        background:
-          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 0deg, #7C3AED, #9333EA, #34D399, #10B981, #7C3AED) border-box",
+        width: 300,
+        height: 300,
+        top: "50%",
+        left: "60%",
+        transform: "translate(-50%, -50%)",
+        background: "radial-gradient(circle, rgba(52,211,153,0.08), transparent 70%)",
+        filter: "blur(50px)",
       }}
     />
-    {/* Glow behind ring */}
-    <div
-      className="absolute rounded-full animate-spin-ring"
-      style={{
-        inset: -4,
-        border: "6px solid transparent",
-        background:
-          "linear-gradient(#0A0A0F, #0A0A0F) padding-box, conic-gradient(from 180deg, #7C3AED, #34D399, #7C3AED) border-box",
-        filter: "blur(8px)",
-        animationDirection: "reverse",
-      }}
-    />
-    {/* Prodly face */}
+    {/* Dark circle */}
     <div
       className="absolute inset-0 rounded-full flex flex-col items-center justify-center gap-1.5"
       style={{
-        background: "#0A0A0F",
+        background: "rgba(255,255,255,0.03)",
         border: "1px solid rgba(255,255,255,0.06)",
       }}
     >
