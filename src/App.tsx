@@ -25,6 +25,7 @@ const App = () => (
             <Route path="/admin/promo-codes" element={<AdminPromoCodes />} />
             <Route path="/techniques" element={<TechniquesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
