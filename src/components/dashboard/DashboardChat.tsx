@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ArrowLeftRight, Send } from "lucide-react";
+import { detectTopic, type ChatTopic } from "@/components/dashboard/ContextPanel";
 
 interface Message {
   id: number;
@@ -10,13 +11,13 @@ interface Message {
 
 const INITIAL_MESSAGES: Message[] = [
   { id: 1, from: "prodly", text: "Stüdyo açık. Ne üzerinde çalışıyorsun?", time: "23:41" },
-  { id: 2, from: "user", text: "Kick'im mix'te kayboluyor, yardım eder misin?", time: "23:42" },
-  { id: 3, from: "prodly", text: "Klasik sorun. Kick'in temel frekansı nerede oturuyor — 50-60Hz civarı mı? Eğer bass ile çakışıyorsa, sidechain ya da EQ carving ile ayırman lazım. Hangi DAW'dasın?", time: "23:42" },
-  { id: 4, from: "user", text: "Ableton kullanıyorum", time: "23:43" },
-  { id: 5, from: "prodly", text: "Ableton'da Glue Compressor'ı sidechain input olarak ayarla. Kick'i trigger yap, bass'a uygula. Attack 0.1ms, release 50-100ms arası. Mix'te hemen netleşir.", time: "23:43" },
 ];
 
-export const DashboardChat = () => {
+interface Props {
+  onTopicChange?: (topic: ChatTopic) => void;
+}
+
+export const DashboardChat = ({ onTopicChange }: Props) => {
   const [expanded, setExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState("");
@@ -30,8 +31,15 @@ export const DashboardChat = () => {
     if (!input.trim()) return;
     const now = new Date();
     const time = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
-    setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: input, time }]);
+    const userMsg = input.trim();
+    setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: userMsg, time }]);
     setInput("");
+
+    // Detect topic and notify parent
+    const topic = detectTopic(userMsg);
+    onTopicChange?.(topic);
+
+    // Simulated response
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -57,18 +65,12 @@ export const DashboardChat = () => {
         <div className="flex items-center gap-2.5">
           <div
             className="flex items-center justify-center rounded-full text-white text-[11px] font-bold flex-shrink-0"
-            style={{
-              width: 28, height: 28,
-              background: "linear-gradient(135deg, #7C3AED, #34D399)",
-            }}
+            style={{ width: 28, height: 28, background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
           >
             P
           </div>
           <span className="text-[13px] font-semibold text-white" style={{ fontFamily: "'Space Grotesk'" }}>Prodly</span>
-          <span
-            className="rounded-full animate-pulse-dot flex-shrink-0"
-            style={{ width: 6, height: 6, background: "#34D399" }}
-          />
+          <span className="rounded-full animate-pulse-dot flex-shrink-0" style={{ width: 6, height: 6, background: "#34D399" }} />
         </div>
         <button
           onClick={() => setExpanded(!expanded)}
@@ -99,9 +101,7 @@ export const DashboardChat = () => {
               }}
             >
               <p className="break-words">{msg.text}</p>
-              {expanded && (
-                <span className="block text-[10px] mt-1.5 opacity-40">{msg.time}</span>
-              )}
+              {expanded && <span className="block text-[10px] mt-1.5 opacity-40">{msg.time}</span>}
             </div>
           </div>
         ))}
