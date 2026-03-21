@@ -27,7 +27,7 @@ const Index = () => (
     <Navbar />
     <Hero />
     <DemoWidget />
-    <SocialProof />
+    
     <Features />
     <Toolkit />
     <BlankPageSection />

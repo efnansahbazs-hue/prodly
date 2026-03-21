@@ -90,7 +90,7 @@ export const GrooveBuilder = () => {
       </div>
 
       {/* Beat markers */}
-      <div className="flex items-center gap-1.5 mt-2 ml-[38px]">
+      <div className="flex items-center gap-[3px] mt-2 ml-[38px] pl-[6px]">
         {Array.from({ length: COLS }).map((_, i) => (
           <span key={i} className="w-4 text-center text-[7px]" style={{ color: i % 4 === 0 ? "#6B7280" : "transparent" }}>
             {i % 4 === 0 ? i / 4 + 1 : "·"}
