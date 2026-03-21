@@ -19,9 +19,9 @@ const LogoDot = () => (
   <span
     className="inline-block rounded-full animate-pulse-glow flex-shrink-0"
     style={{
-      width: 9, height: 9,
+      width: 8, height: 8,
       background: "linear-gradient(135deg, #7C3AED, #34D399)",
-      boxShadow: "0 0 14px rgba(124,58,237,0.9)",
+      boxShadow: "0 0 10px rgba(124,58,237,0.8)",
     }}
   />
 );
