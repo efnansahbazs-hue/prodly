@@ -78,8 +78,8 @@ export const DailyTechnique = () => {
 
             {/* Pro tip */}
             <div className="rounded-xl px-3 py-2.5 mb-4" style={{ background: "rgba(52,211,153,0.04)", borderLeft: "3px solid #34D399" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>Pro tip</p>
-              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{technique.quickTip}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>{lang === "tr" ? "Pro ipucu" : "Pro tip"}</p>
+              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.quickTip)}</p>
             </div>
 
             {/* Source */}
