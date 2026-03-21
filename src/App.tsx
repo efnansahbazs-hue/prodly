@@ -52,8 +52,8 @@ const App = () => (
             <Route path="/community/collab" element={<CommunityPage />} />
             <Route path="/suggestions" element={<SuggestionsPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/tools/effects" element={<TechniquesPage />} />
-            <Route path="/tools/plugins" element={<TechniquesPage />} />
+            <Route path="/tools/effects" element={<EffectsPage />} />
+            <Route path="/tools/plugins" element={<PluginsPage />} />
 
             {/* Admin */}
             <Route path="/admin" element={<AdminLayout />}>
