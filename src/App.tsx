@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import TechniquesPage from "./pages/TechniquesPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
+import SuggestionsPage from "./pages/SuggestionsPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/techniques" element={<TechniquesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/suggestions" element={<SuggestionsPage />} />
 
             {/* Admin */}
             <Route path="/admin" element={<AdminLayout />}>
