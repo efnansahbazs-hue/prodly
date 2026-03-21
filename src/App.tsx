@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminPromoCodes from "./pages/AdminPromoCodes.tsx";
 import TechniquesPage from "./pages/TechniquesPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 const queryClient = new QueryClient();
 
