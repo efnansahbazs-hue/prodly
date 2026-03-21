@@ -38,19 +38,25 @@ export const Features = () => {
   return (
     <section id="features" className="relative py-24 md:py-32 px-5">
       <div className="max-w-5xl mx-auto">
+        {/* Ghost background text */}
+        <div className="absolute inset-x-0 top-20 flex justify-center pointer-events-none select-none overflow-hidden" aria-hidden>
+          <span className="ghost-text">FEATURES</span>
+        </div>
+
         <ScrollReveal>
           <p className="section-label mb-3 text-center">{t("features.label")}</p>
           <h2
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-14 text-center text-white"
-            style={{ fontFamily: "'Space Grotesk'", textWrap: "balance" }}
+            className="text-4xl md:text-[52px] font-extrabold tracking-tight mb-14 text-center text-white"
+            style={{ fontFamily: "'Space Grotesk'", textWrap: "balance", lineHeight: 1.05 }}
           >
             {t("features.title")}
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        {/* Bento grid */}
+        <div className="grid md:grid-cols-2 gap-5">
           {cards.map((c, i) => (
-            <ScrollReveal key={c.num} delay={i * 90}>
+            <ScrollReveal key={c.num} delay={i * 90} className={i === 0 ? "md:col-span-2" : ""}>
               <div
                 className="relative overflow-hidden rounded-[20px] p-6 h-full transition-all duration-300 group hover:-translate-y-0.5"
                 style={{
