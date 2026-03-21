@@ -1,7 +1,7 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { OrbitalHub } from "@/components/OrbitalHub";
-import { FloatingWidgets } from "@/components/FloatingWidgets";
+import { FloatingWidgets, HeroGlowBlobs } from "@/components/FloatingWidgets";
 import { HeroChatBar } from "@/components/HeroChatBar";
 
 export const Hero = () => {
