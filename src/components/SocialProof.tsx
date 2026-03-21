@@ -1,11 +1,12 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-const stats = [
-  { value: "12.4K", key: "social.producers" },
-  { value: "847K", key: "social.tracks" },
-  { value: "98.7%", key: "social.uptime" },
-  { value: "23ms", key: "social.latency" },
+const avatarColors = [
+  "linear-gradient(135deg, #7C3AED, #9333EA)",
+  "linear-gradient(135deg, #9333EA, #A78BFA)",
+  "linear-gradient(135deg, #34D399, #10B981)",
+  "linear-gradient(135deg, #7C3AED, #34D399)",
+  "linear-gradient(135deg, #A78BFA, #7C3AED)",
 ];
 
 export const SocialProof = () => {
@@ -13,22 +14,25 @@ export const SocialProof = () => {
 
   return (
     <section className="relative py-16 px-5">
-      <div className="container mx-auto max-w-5xl">
-        <ScrollReveal>
-          <div className="glass-card-static p-8 md:p-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((s, i) => (
-              <div key={s.key} className="text-center">
-                <p className="text-2xl md:text-4xl font-bold text-gradient-mixed tabular-nums" style={{ fontFamily: "'Space Grotesk'" }}>
-                  {s.value}
-                </p>
-                <p className="text-xs md:text-sm mt-2" style={{ color: "var(--text-muted)" }}>
-                  {t(s.key)}
-                </p>
-              </div>
+      <ScrollReveal>
+        <div className="flex flex-col items-center gap-4">
+          {/* Overlapping avatars */}
+          <div className="flex -space-x-2.5">
+            {avatarColors.map((bg, i) => (
+              <div
+                key={i}
+                className="w-9 h-9 rounded-full border-2"
+                style={{ background: bg, borderColor: "#0A0A0F", zIndex: 5 - i }}
+              />
             ))}
           </div>
-        </ScrollReveal>
-      </div>
+          <p className="text-sm text-white font-medium">{t("social.join")}</p>
+          {/* 5 stars */}
+          <div className="flex gap-0.5 text-lg" style={{ color: "#34D399" }}>
+            {"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}
+          </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 };
