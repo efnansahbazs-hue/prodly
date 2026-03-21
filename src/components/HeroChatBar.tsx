@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
 import { UpgradeModal } from "@/components/UpgradeModal";
-
-const genres = ["Techno", "House", "Trap", "Hip-Hop", "Drum & Bass", "Electronic", "Dubstep", "Ambient", "Trance", "Pop", "R&B", "Jazz", "Indie", "World", "Garage", "Future Bass"];
+import { GenreShowcase } from "@/components/GenreShowcase";
 
 export const HeroChatBar = () => {
   const { t } = useTranslation();
@@ -11,7 +10,7 @@ export const HeroChatBar = () => {
   const [input, setInput] = useState("");
   const [showLimit, setShowLimit] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -130,26 +129,7 @@ export const HeroChatBar = () => {
         ))}
       </div>
 
-      {/* Genre pills */}
-      <div className="mt-3">
-        <p className="text-[11px] mb-2" style={{ color: "#555" }}>{t("hero.exploreGenre")}</p>
-        <div className="flex flex-wrap justify-center gap-2">
-          {genres.map((g) => (
-            <button
-              key={g}
-              onClick={() => setSelectedGenre(selectedGenre === g ? null : g)}
-              className="rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 active:scale-95"
-              style={{
-                background: selectedGenre === g ? "rgba(124,58,237,0.18)" : "rgba(255,255,255,0.05)",
-                border: `1px solid ${selectedGenre === g ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.1)"}`,
-                color: selectedGenre === g ? "#A78BFA" : "#8B8FA8",
-              }}
-            >
-              {g}
-            </button>
-          ))}
-        </div>
-      </div>
+      <GenreShowcase />
 
       {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
     </div>
