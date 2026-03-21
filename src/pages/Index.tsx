@@ -15,6 +15,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
+import { FloatingReportButton } from "@/components/FloatingReportButton";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
@@ -37,6 +38,7 @@ const Index = () => (
     <Pricing />
     <FinalCTA />
     <Footer />
+    <FloatingReportButton />
   </div>
 );
 
