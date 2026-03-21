@@ -64,7 +64,7 @@ export const Navbar = () => {
           {/* Center nav pills — desktop */}
           <div className="hidden md:flex items-center gap-2">
             {navKeys.map((key) => {
-              const href = key === "community" ? "/community" : `#${key}`;
+              const href = key === "community" ? "/community" : key === "roadmap" ? "/roadmap" : `#${key}`;
               return (
                 <a
                   key={key}

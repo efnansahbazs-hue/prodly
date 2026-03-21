@@ -19,6 +19,7 @@ export const Footer = () => {
             <h4 className="text-sm font-semibold text-white mb-3">{t("footer.product")}</h4>
             <ul className="space-y-2 text-sm" style={{ color: "var(--text-secondary)" }}>
               <li><a href="#features" className="hover:text-white transition-colors">{t("nav.features")}</a></li>
+              <li><a href="/roadmap" className="hover:text-white transition-colors">{t("nav.roadmap")}</a></li>
             </ul>
           </div>
           <div>
