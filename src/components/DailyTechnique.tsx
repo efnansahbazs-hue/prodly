@@ -72,8 +72,8 @@ export const DailyTechnique = () => {
 
             {/* When to use */}
             <div className="rounded-xl px-3 py-2.5 mb-3" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>When to use</p>
-              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{technique.whenToUse}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>{lang === "tr" ? "Ne zaman kullanılır" : "When to use"}</p>
+              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.whenToUse)}</p>
             </div>
 
             {/* Pro tip */}
