@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { DailyUsageBar } from "@/components/DailyUsageBar";
 import { ReturningGreeting } from "@/components/ReturningGreeting";
+import { ProdlySpin } from "@/components/ProdlySpin";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useExp } from "@/hooks/useExp";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -51,6 +52,13 @@ export default function DashboardPage() {
               <span className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "#8B8FA8" }}>Streak</span>
               <p className="text-2xl font-bold text-white mt-1 tabular-nums">5 🔥</p>
             </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Prodly Spin sidebar widget */}
+        <div className="mt-8">
+          <ScrollReveal delay={500}>
+            <ProdlySpin />
           </ScrollReveal>
         </div>
       </div>
