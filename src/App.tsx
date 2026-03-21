@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import AdminPromoCodes from "./pages/AdminPromoCodes.tsx";
 import TechniquesPage from "./pages/TechniquesPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
+import CommunityPage from "./pages/CommunityPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/admin/promo-codes" element={<AdminPromoCodes />} />
             <Route path="/techniques" element={<TechniquesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

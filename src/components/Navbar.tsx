@@ -63,19 +63,22 @@ export const Navbar = () => {
 
           {/* Center nav pills — desktop */}
           <div className="hidden md:flex items-center gap-2">
-            {navKeys.map((key) => (
-              <a
-                key={key}
-                href={`#${key}`}
-                className="px-2.5 py-1 rounded-full text-xs transition-colors duration-200 hover:text-white"
-                style={{
-                  color: "#8B8FA8",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
-                {t(`nav.${key}`)}
-              </a>
-            ))}
+            {navKeys.map((key) => {
+              const href = key === "community" ? "/community" : `#${key}`;
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  className="px-2.5 py-1 rounded-full text-xs transition-colors duration-200 hover:text-white"
+                  style={{
+                    color: "#8B8FA8",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                  }}
+                >
+                  {t(`nav.${key}`)}
+                </a>
+              );
+            })}
           </div>
 
           {/* Right side — desktop */}
