@@ -2,6 +2,7 @@ export type Lang = "en" | "tr" | "de" | "es";
 
 export const translations: Record<string, Record<Lang, string>> = {
   // Navbar
+  "nav.dashboard": { en: "Dashboard", tr: "Dashboard", de: "Dashboard", es: "Dashboard" },
   "nav.features": { en: "Features", tr: "Özellikler", de: "Funktionen", es: "Características" },
   "nav.community": { en: "Community", tr: "Topluluk", de: "Community", es: "Comunidad" },
   "nav.roadmap": { en: "Roadmap", tr: "Yol Haritası", de: "Roadmap", es: "Hoja de Ruta" },
