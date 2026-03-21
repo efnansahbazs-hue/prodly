@@ -1,69 +1,83 @@
-import { useState } from "react";
-import { Send, Bot, User } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useDemoWidget } from "@/hooks/useDemoWidget";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { DemoQuickChips } from "@/components/DemoQuickChips";
+import { DemoResponse } from "@/components/DemoResponse";
 
 export const DemoWidget = () => {
   const { t } = useTranslation();
-  const [sent, setSent] = useState(false);
-  const [input, setInput] = useState("");
-
-  const handleSend = () => {
-    if (!sent) setSent(true);
-  };
+  const { selectedDaw, setSelectedDaw, input, setInput, response, handleAsk, DAWS } = useDemoWidget();
 
   return (
-    <section className="relative py-20 px-5">
-      <div className="container mx-auto max-w-2xl">
+    <section className="relative py-20 px-5" id="demo">
+      <div className="max-w-[680px] mx-auto">
         <ScrollReveal>
-          <div className="glass-card p-6 md:p-8">
-            <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk'" }}>
-              <Bot className="w-5 h-5 text-[var(--purple)]" />
-              {t("demo.title")}
-            </h3>
+          <p className="text-[11px] font-semibold tracking-[0.1em] uppercase text-center mb-3" style={{ color: "#34D399" }}>
+            {t("demo.label")}
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-8" style={{ fontFamily: "'Space Grotesk'" }}>
+            {t("demo.title")}
+          </h2>
+        </ScrollReveal>
 
-            {/* Chat area */}
-            <div className="space-y-4 mb-5 min-h-[120px]">
-              {sent && (
-                <>
-                  <div className="flex gap-3 items-start">
-                    <div className="w-7 h-7 rounded-full bg-[var(--purple-light)] flex items-center justify-center flex-shrink-0">
-                      <User className="w-3.5 h-3.5 text-[var(--purple)]" />
-                    </div>
-                    <p className="text-sm leading-relaxed pt-1" style={{ color: "var(--text-secondary)" }}>
-                      {input || "How do I make lo-fi beats?"}
-                    </p>
-                  </div>
-                  <div className="flex gap-3 items-start animate-fade-in-up">
-                    <div className="w-7 h-7 rounded-full bg-[var(--mint-light)] flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-3.5 h-3.5 text-[var(--mint)]" />
-                    </div>
-                    <p className="text-sm leading-relaxed pt-1" style={{ color: "var(--text-secondary)" }}>
-                      {t("demo.response")}
-                    </p>
-                  </div>
-                </>
-              )}
+        <ScrollReveal delay={100}>
+          <div className="glass-card p-5 md:p-7">
+            {/* DAW pills */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {DAWS.map((d) => (
+                <button
+                  key={d.id}
+                  onClick={() => setSelectedDaw(d.id)}
+                  className="px-3.5 py-1.5 rounded-full text-[12px] font-medium transition-all duration-200 active:scale-95"
+                  style={{
+                    background: selectedDaw === d.id ? "rgba(124,58,237,0.2)" : "transparent",
+                    border: `1px solid ${selectedDaw === d.id ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.08)"}`,
+                    color: selectedDaw === d.id ? "#A78BFA" : "#8B8FA8",
+                  }}
+                >
+                  {d.label}
+                </button>
+              ))}
             </div>
 
             {/* Input */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                onKeyDown={(e) => e.key === "Enter" && handleAsk()}
                 placeholder={t("demo.placeholder")}
-                className="flex-1 rounded-full px-5 py-3 text-sm bg-white/[0.04] border border-[var(--border-default)] text-white placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--border-accent)] transition-colors"
+                className="flex-1 rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[#6B7280] focus:outline-none transition-all"
+                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(124,58,237,0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(124,58,237,0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               />
-              <button
-                onClick={handleSend}
-                className="w-11 h-11 rounded-full flex items-center justify-center text-white transition-transform active:scale-95"
-                style={{ background: "var(--purple)" }}
+              <div
+                className="rounded-xl p-[2px] animate-move-border flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
               >
-                <Send className="w-4 h-4" />
-              </button>
+                <button
+                  onClick={handleAsk}
+                  className="rounded-[10px] px-5 py-3.5 text-xs font-semibold text-white whitespace-nowrap transition-transform active:scale-[0.96]"
+                  style={{ background: "#7C3AED" }}
+                >
+                  {t("hero.askProdly")}
+                </button>
+              </div>
             </div>
+
+            {/* Quick chips */}
+            <DemoQuickChips onSelect={(q) => { setInput(q); }} />
+
+            {/* Response */}
+            {response && <DemoResponse response={response} signupCta={t("demo.signupCta")} />}
           </div>
         </ScrollReveal>
       </div>

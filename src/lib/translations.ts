@@ -34,15 +34,10 @@ export const translations: Record<string, Record<Lang, string>> = {
   "hero.demo": { en: "Watch Demo", tr: "Demoyu İzle", de: "Demo ansehen", es: "Ver Demo" },
 
   // Demo Widget
-  "demo.title": { en: "Try the AI Mentor", tr: "AI Mentoru Dene", de: "KI-Mentor testen", es: "Prueba el Mentor IA" },
-  "demo.placeholder": { en: "Ask about chord progressions, mixing tips…", tr: "Akor ilerlemeleri, miks ipuçları sorun…", de: "Frag nach Akkordfolgen, Mixing-Tipps…", es: "Pregunta sobre progresiones, mezcla…" },
-  "demo.send": { en: "Send", tr: "Gönder", de: "Senden", es: "Enviar" },
-  "demo.response": {
-    en: "For a dreamy lo-fi feel, try Fmaj7 → Dm7 → Am7 → G7. Layer a vinyl crackle at -18dB and sidechain your kick to the bass for that signature pump.",
-    tr: "Rüya gibi lo-fi hissi için Fmaj7 → Dm7 → Am7 → G7 deneyin. -18dB'de vinil çıtırtısı ekleyin ve bas'ı kick'e sidechain yapın.",
-    de: "Für einen verträumten Lo-Fi-Sound: Fmaj7 → Dm7 → Am7 → G7. Vinyl-Knistern bei -18dB und Sidechain den Kick zum Bass.",
-    es: "Para un sonido lo-fi soñador: Fmaj7 → Dm7 → Am7 → G7. Añade crujido de vinilo a -18dB y sidechain el kick al bajo."
-  },
+  "demo.label": { en: "INTERACTIVE DEMO", tr: "İNTERAKTİF DEMO", de: "INTERAKTIVE DEMO", es: "DEMO INTERACTIVA" },
+  "demo.title": { en: "Try it yourself", tr: "Kendin dene", de: "Probier es selbst", es: "Pruébalo tú mismo" },
+  "demo.placeholder": { en: "Ask anything... e.g. Why does my kick sound muddy?", tr: "Herhangi bir şey sorun... ör. Kick'im neden bulanık?", de: "Frag etwas... z.B. Warum klingt mein Kick matschig?", es: "Pregunta algo... ej. ¿Por qué mi kick suena turbio?" },
+  "demo.signupCta": { en: "Want deeper answers? Sign up free →", tr: "Daha detaylı cevaplar mı? Ücretsiz kaydol →", de: "Tiefere Antworten? Kostenlos anmelden →", es: "¿Respuestas más profundas? Regístrate gratis →" },
 
   // Social Proof
   "social.producers": { en: "Active Producers", tr: "Aktif Prodüktör", de: "Aktive Produzenten", es: "Productores Activos" },
