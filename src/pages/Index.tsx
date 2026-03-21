@@ -2,7 +2,7 @@ import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { DemoWidget } from "@/components/DemoWidget";
-import { SocialProof } from "@/components/SocialProof";
+
 import { Features } from "@/components/Features";
 import { Toolkit } from "@/components/Toolkit";
 import { BlankPageSection } from "@/components/BlankPageSection";
@@ -27,7 +27,7 @@ const Index = () => (
     <Navbar />
     <Hero />
     <DemoWidget />
-    <SocialProof />
+    
     <Features />
     <Toolkit />
     <BlankPageSection />

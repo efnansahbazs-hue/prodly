@@ -7,7 +7,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 type UserType = "guest" | "free" | "premium";
 
-const getLimit = (user: UserType) => (user === "guest" ? 3 : user === "free" ? 5 : 999);
+const getLimit = (user: UserType) => (user === "guest" ? 5 : user === "free" ? 5 : 999);
 
 const getStoredCount = (): number => {
   const ts = localStorage.getItem(TIMESTAMP_KEY);

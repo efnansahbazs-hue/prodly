@@ -197,6 +197,13 @@
 .animate-spin-ring-slow { animation: spinRing 6s linear infinite; }
 .animate-float-widget { animation: floatWidget 6s ease-in-out infinite; }
 .animate-pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* Ghost fade animations for hero widgets */
+@keyframes ghostFade1 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.65; } }
+@keyframes ghostFade2 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.55; } }
+@keyframes ghostFade3 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.6; } }
+@keyframes ghostFade4 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.5; } }
+@keyframes ghostFade5 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.55; } }
 @keyframes dashMove { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -28; } }
 .animate-dash { animation: dashMove 1.5s linear infinite; }
 

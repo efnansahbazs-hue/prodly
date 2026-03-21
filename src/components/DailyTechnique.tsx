@@ -1,13 +1,23 @@
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLang } from "@/hooks/useLang";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import type { Difficulty } from "@/lib/techniquesData";
 
 const technique = {
   title: "Parallel Compression",
   difficulty: "intermediate" as Difficulty,
-  description: "Blend a heavily compressed copy of your signal with the dry original to add punch and sustain without destroying dynamics.",
-  whenToUse: "Drums feel lifeless, vocals need presence, bus processing for glue.",
-  quickTip: "Add subtle saturation before the compressor on the parallel bus for smoother blending.",
+  description: {
+    en: "Blend a heavily compressed copy of your signal with the dry original to add punch and sustain without destroying dynamics.",
+    tr: "Sinyalinizin yoğun şekilde sıkıştırılmış bir kopyasını orijinal kuru sinyal ile harmanlayarak dinamikleri bozmadan punch ve sustain ekleyin.",
+  },
+  whenToUse: {
+    en: "Drums feel lifeless, vocals need presence, bus processing for glue.",
+    tr: "Davullar cansız hissettirdiğinde, vokallerin varlık ihtiyacı olduğunda, yapıştırma için bus processing.",
+  },
+  quickTip: {
+    en: "Add subtle saturation before the compressor on the parallel bus for smoother blending.",
+    tr: "Daha yumuşak harmanlama için paralel bus'taki compressor'dan önce hafif saturation ekleyin.",
+  },
   source: "Sound On Sound",
 };
 
@@ -19,7 +29,9 @@ const diffStyles: Record<Difficulty, { bg: string; color: string; label: string 
 
 export const DailyTechnique = () => {
   const { t } = useTranslation();
+  const { lang } = useLang();
   const diff = diffStyles[technique.difficulty];
+  const getLang = (obj: Record<string, string>) => obj[lang] || obj.en;
 
   return (
     <section className="relative py-16 px-5">
@@ -53,19 +65,19 @@ export const DailyTechnique = () => {
             </h3>
 
             <p className="text-sm leading-relaxed mb-4" style={{ color: "#8B8FA8" }}>
-              {technique.description}
+              {getLang(technique.description)}
             </p>
 
             {/* When to use */}
             <div className="rounded-xl px-3 py-2.5 mb-3" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>When to use</p>
-              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{technique.whenToUse}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>{lang === "tr" ? "Ne zaman kullanılır" : "When to use"}</p>
+              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.whenToUse)}</p>
             </div>
 
             {/* Pro tip */}
             <div className="rounded-xl px-3 py-2.5 mb-4" style={{ background: "rgba(52,211,153,0.04)", borderLeft: "3px solid #34D399" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>Pro tip</p>
-              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{technique.quickTip}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>{lang === "tr" ? "Pro ipucu" : "Pro tip"}</p>
+              <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.quickTip)}</p>
             </div>
 
             {/* Source */}

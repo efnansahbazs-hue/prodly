@@ -105,11 +105,6 @@ export default function RoadmapPage() {
 
         {/* ── Timeline ── */}
         <div className="relative">
-          {/* Connecting line — desktop only */}
-          <div
-            className="hidden md:block absolute top-8 left-0 right-0 h-[2px] z-0"
-            style={{ background: "linear-gradient(90deg, #34D399, #7C3AED, #60A5FA, rgba(255,255,255,0.1))" }}
-          />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-5 relative z-10">
             {PHASES.map((phase, pi) => {
