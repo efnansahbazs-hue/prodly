@@ -18,7 +18,7 @@ const langs: { code: Lang; label: string }[] = [
 const WaveformLogo = () => {
   const heights = [6, 12, 18, 12, 6];
   const durations = [0.8, 0.6, 1, 0.7, 0.9];
-  const colors = ["#7C3AED", "#6D3AE8", "#5038DD", "#3CB8A0", "#34D399"];
+  const colors = ["#7C3AED", "#8B5CF6", "#A78BFA", "#6EE7B7", "#34D399"];
   return (
     <svg width="23" height="20" viewBox="0 0 23 20" fill="none" className="flex-shrink-0">
       {heights.map((h, i) => (
