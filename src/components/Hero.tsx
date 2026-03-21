@@ -1,6 +1,5 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { HeroCenterHub } from "@/components/HeroCenterHub";
 import { HeroWidgets } from "@/components/HeroWidgets";
 import { HeroChatBar } from "@/components/HeroChatBar";
 
