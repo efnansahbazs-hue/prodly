@@ -26,7 +26,7 @@ export const HeroChatBar = () => {
       style={{
         background: "rgba(15,15,25,0.8)",
         border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.1), 0 20px 80px rgba(0,0,0,0.6), 0 0 40px rgba(124,58,237,0.15)",
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
       }}
