@@ -130,8 +130,28 @@ export const HeroChatBar = () => {
         </div>
       </div>
 
+      {/* Quick suggestion chips */}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {[t("hero.chip1"), t("hero.chip2"), t("hero.chip3")].map((chip) => (
+          <button
+            key={chip}
+            onClick={() => { setInput(chip); }}
+            className="px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all duration-200 active:scale-95"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "#8B8FA8",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(52,211,153,0.4)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; }}
+          >
+            {chip}
+          </button>
+        ))}
+      </div>
+
       {/* Genre pills */}
-      <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+      <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
         <span className="text-[11px] flex-shrink-0" style={{ color: "#6B7280" }}>{t("hero.exploreGenre")}</span>
         {genres.map((g) => (
           <button
