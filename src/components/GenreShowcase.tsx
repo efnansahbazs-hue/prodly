@@ -27,7 +27,7 @@ export const GenreShowcase = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <div className="mt-3 max-h-[80px] overflow-hidden">
+    <div className="mt-3">
       <p className="text-[11px] mb-1.5" style={{ color: "#555" }}>{t("hero.exploreGenre")}</p>
 
       {/* Main genres — horizontal scroll */}

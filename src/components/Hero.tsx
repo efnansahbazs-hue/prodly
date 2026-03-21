@@ -57,10 +57,10 @@ export const Hero = () => {
             className="text-center mb-4"
             style={{
               fontFamily: "'Space Grotesk'",
-              fontSize: "clamp(36px, 5.5vw, 64px)",
+              fontSize: "clamp(40px, 6vw, 72px)",
               fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
+              lineHeight: 1.0,
+              letterSpacing: "-0.03em",
             }}
           >
             <span className="text-white">{t("hero.titleLine1")} </span>
