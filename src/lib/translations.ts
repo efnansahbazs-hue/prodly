@@ -236,4 +236,22 @@ export const translations: Record<string, Record<Lang, string>> = {
   "streak.days": { en: "days in a row", tr: "gün üst üste", de: "Tage in Folge", es: "días seguidos" },
   "streak.freeze": { en: "freeze left", tr: "dondurma hakkı", de: "Freeze übrig", es: "congelación" },
   "streak.milestones": { en: "Milestones", tr: "Kilometre Taşları", de: "Meilensteine", es: "Hitos" },
+
+  // Profile
+  "profile.back": { en: "Back", tr: "Geri", de: "Zurück", es: "Volver" },
+  "profile.questions": { en: "Questions", tr: "Sorular", de: "Fragen", es: "Preguntas" },
+  "profile.streak": { en: "Streak", tr: "Seri", de: "Streak", es: "Racha" },
+  "profile.techniques": { en: "Techniques", tr: "Teknikler", de: "Techniken", es: "Técnicas" },
+  "profile.badges": { en: "Badges", tr: "Rozetler", de: "Abzeichen", es: "Insignias" },
+  "profile.badgesTitle": { en: "Your Badges", tr: "Rozetlerin", de: "Deine Abzeichen", es: "Tus Insignias" },
+  "profile.tab.archive": { en: "Archive", tr: "Arşiv", de: "Archiv", es: "Archivo" },
+  "profile.tab.notes": { en: "Notes", tr: "Notlar", de: "Notizen", es: "Notas" },
+  "profile.tab.invite": { en: "Invite", tr: "Davet", de: "Einladen", es: "Invitar" },
+  "profile.tab.settings": { en: "Settings", tr: "Ayarlar", de: "Einstellungen", es: "Ajustes" },
+  "profile.inviteTitle": { en: "Invite a producer friend", tr: "Bir prodüktör arkadaşını davet et", de: "Lade einen Produzenten-Freund ein", es: "Invita a un productor amigo" },
+  "profile.inviteDesc": { en: "+5 bonus questions/day for 30 days — both of you.", tr: "30 gün boyunca günde +5 bonus soru — ikiniz için.", de: "+5 Bonus-Fragen/Tag für 30 Tage — für euch beide.", es: "+5 preguntas bonus/día por 30 días — para ambos." },
+  "profile.copy": { en: "Copy", tr: "Kopyala", de: "Kopieren", es: "Copiar" },
+  "profile.email": { en: "Email", tr: "E-posta", de: "E-Mail", es: "Correo" },
+  "profile.password": { en: "Password", tr: "Şifre", de: "Passwort", es: "Contraseña" },
+  "profile.save": { en: "Save Changes", tr: "Değişiklikleri Kaydet", de: "Änderungen speichern", es: "Guardar Cambios" },
 };

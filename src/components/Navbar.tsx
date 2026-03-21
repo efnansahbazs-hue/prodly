@@ -112,6 +112,9 @@ export const Navbar = () => {
               )}
             </div>
 
+            {/* Logged-in: avatar + EXP bar */}
+            <NavbarLoggedIn />
+
             {/* Moving border CTA */}
             <div
               className="rounded-full p-[2px] animate-move-border"
