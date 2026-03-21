@@ -22,7 +22,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Index = () => (
   <div className="relative min-h-screen overflow-x-hidden">
-    <NoiseOverlay />
+    <AuroraMesh />
+    <GrainOverlay />
     <DotGrid />
     <Orbs />
     <Navbar />
