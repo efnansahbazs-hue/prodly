@@ -54,6 +54,13 @@ export default function DashboardPage() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* Prodly Spin sidebar widget */}
+        <div className="mt-8">
+          <ScrollReveal delay={500}>
+            <ProdlySpin />
+          </ScrollReveal>
+        </div>
       </div>
       <Footer />
     </div>
