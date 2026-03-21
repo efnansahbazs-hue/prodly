@@ -73,13 +73,13 @@ export const translations: Record<string, Record<Lang, string>> = {
 
   // How it Works
   "how.label": { en: "How It Works", tr: "Nasıl Çalışır", de: "So funktioniert's", es: "Cómo Funciona" },
-  "how.title": { en: "Three Steps to Your Track", tr: "Parçanıza Üç Adım", de: "Drei Schritte zu deinem Track", es: "Tres Pasos a Tu Pista" },
-  "how.step1.title": { en: "Describe Your Vision", tr: "Vizyonunu Anlat", de: "Beschreibe deine Vision", es: "Describe tu Visión" },
-  "how.step1.desc": { en: "Tell the AI what mood, genre, and energy you want.", tr: "AI'ya istediğin ruh halini, türü ve enerjiyi anlat.", de: "Sage der KI, welche Stimmung und welches Genre du willst.", es: "Dile a la IA qué estado de ánimo y género quieres." },
-  "how.step2.title": { en: "AI Generates & Guides", tr: "AI Üretir & Yönlendirir", de: "KI generiert & führt", es: "La IA Genera y Guía" },
-  "how.step2.desc": { en: "Get stems, arrangements, and pro-level mixing advice.", tr: "Stemler, düzenlemeler ve profesyonel miks tavsiyeleri alın.", de: "Erhalte Stems, Arrangements und Profi-Mixing-Tipps.", es: "Obtén stems, arreglos y consejos de mezcla profesional." },
-  "how.step3.title": { en: "Export & Release", tr: "Dışa Aktar & Yayınla", de: "Exportieren & Veröffentlichen", es: "Exporta y Publica" },
-  "how.step3.desc": { en: "Download in WAV/MP3, or publish directly to streaming platforms.", tr: "WAV/MP3 indirin veya streaming platformlarına doğrudan yayınlayın.", de: "Lade als WAV/MP3 herunter oder veröffentliche direkt.", es: "Descarga en WAV/MP3 o publica en plataformas de streaming." },
+  "how.title": { en: "Three Steps to Your Answer", tr: "Cevabınıza Üç Adım", de: "Drei Schritte zu deiner Antwort", es: "Tres Pasos a Tu Respuesta" },
+  "how.step1.title": { en: "Choose your setup", tr: "Kurulumunu seç", de: "Wähle dein Setup", es: "Elige tu configuración" },
+  "how.step1.desc": { en: "Pick your DAW and genre so answers are tailored to your workflow.", tr: "DAW ve türünü seç, cevaplar iş akışına göre uyarlansın.", de: "Wähle DAW und Genre für maßgeschneiderte Antworten.", es: "Elige tu DAW y género para respuestas personalizadas." },
+  "how.step2.title": { en: "Ask your question", tr: "Sorunuzu sorun", de: "Stelle deine Frage", es: "Haz tu pregunta" },
+  "how.step2.desc": { en: "Type anything — mixing, sound design, arrangement, mastering.", tr: "Her şeyi yazın — miksleme, ses tasarımı, düzenleme, mastering.", de: "Schreibe alles — Mixing, Sound Design, Arrangement, Mastering.", es: "Escribe lo que sea — mezcla, diseño sonoro, arreglos, mastering." },
+  "how.step3.title": { en: "Get sourced answers", tr: "Kaynaklı cevaplar alın", de: "Erhalte belegte Antworten", es: "Obtén respuestas con fuentes" },
+  "how.step3.desc": { en: "Every response includes verified sources you can trust and revisit.", tr: "Her cevap güvenebileceğiniz doğrulanmış kaynaklar içerir.", de: "Jede Antwort enthält verifizierte Quellen zum Nachschlagen.", es: "Cada respuesta incluye fuentes verificadas que puedes consultar." },
 
   // Testimonials
   "test.label": { en: "Testimonials", tr: "Yorumlar", de: "Bewertungen", es: "Testimonios" },
