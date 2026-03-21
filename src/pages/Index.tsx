@@ -1,8 +1,8 @@
 import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { WhatProdlyDoes } from "@/components/WhatProdlyDoes";
 import { DemoWidget } from "@/components/DemoWidget";
-
 import { Features } from "@/components/Features";
 import { Toolkit } from "@/components/Toolkit";
 import { BlankPageSection } from "@/components/BlankPageSection";
@@ -26,8 +26,8 @@ const Index = () => (
     <Orbs />
     <Navbar />
     <Hero />
+    <WhatProdlyDoes />
     <DemoWidget />
-    
     <Features />
     <Toolkit />
     <BlankPageSection />
