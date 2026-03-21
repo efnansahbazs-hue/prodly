@@ -29,8 +29,8 @@ const TechniquesPage = () => {
     });
   };
 
-  // Non-studio: blurred overlay
-  if (!isStudio && userType !== "premium") {
+  // Non-studio: blurred overlay (guest/free users)
+  if (!isStudio) {
     return (
       <div className="relative min-h-screen" style={{ background: "#0A0A0F" }}>
         <NoiseOverlay /><DotGrid /><Orbs /><Navbar />
