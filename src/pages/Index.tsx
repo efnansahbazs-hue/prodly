@@ -18,6 +18,7 @@ const Index = () => (
     <Orbs />
     <Navbar />
     <Hero />
+    <DemoWidget />
     <SocialProof />
     <Features />
     <GenreShowcase />
