@@ -12,16 +12,24 @@ export const translations: Record<string, Record<Lang, string>> = {
   "nav.launchApp": { en: "Launch App", tr: "Uygulamayı Başlat", de: "App starten", es: "Abrir App" },
 
   // Hero
-  "hero.badge": { en: "AI-Powered Music Mentor", tr: "Yapay Zeka Müzik Mentoru", de: "KI-gestützter Musikmentor", es: "Mentor Musical con IA" },
-  "hero.title1": { en: "Create", tr: "Yarat", de: "Erstelle", es: "Crea" },
-  "hero.title2": { en: "Music", tr: "Müzik", de: "Musik", es: "Música" },
-  "hero.title3": { en: "Without Limits", tr: "Sınırsız", de: "Ohne Grenzen", es: "Sin Límites" },
+  "hero.label": { en: "AI MUSIC PRODUCTION", tr: "YAPAY ZEKA MÜZİK ÜRETİMİ", de: "KI-MUSIKPRODUKTION", es: "PRODUCCIÓN MUSICAL IA" },
+  "hero.title1": { en: "Your studio", tr: "Stüdyo", de: "Dein Studio-", es: "Tu mentor de" },
+  "hero.title2": { en: "mentor.", tr: "mentorun.", de: "mentor.", es: "estudio." },
   "hero.desc": {
-    en: "Professional-grade music production tools powered by AI. Compose, mix, and master your tracks in a single workspace.",
-    tr: "Yapay zeka destekli profesyonel müzik üretim araçları. Tek bir çalışma alanında besteleyin, miksleyin ve masterleyin.",
-    de: "Professionelle Musikproduktionstools mit KI. Komponiere, mische und mastere deine Tracks in einem Workspace.",
-    es: "Herramientas de producción musical profesional con IA. Compón, mezcla y masteriza tus pistas en un solo espacio."
+    en: "Ask anything. Get sourced, accurate answers. Built for every DAW, every genre, every level.",
+    tr: "Her şeyi sor. Kaynaklı, doğru cevaplar al. Her DAW, her tür, her seviye için.",
+    de: "Frag alles. Erhalte fundierte, präzise Antworten. Für jede DAW, jedes Genre, jedes Level.",
+    es: "Pregunta lo que sea. Obtén respuestas precisas. Para cada DAW, cada género, cada nivel."
   },
+  "hero.chatPlaceholder": { en: "Ask anything about music production...", tr: "Müzik prodüksiyonu hakkında bir şey sorun...", de: "Frag etwas über Musikproduktion...", es: "Pregunta sobre producción musical..." },
+  "hero.askProdly": { en: "Ask Prodly →", tr: "Prodly'ye Sor →", de: "Frag Prodly →", es: "Pregunta a Prodly →" },
+  "hero.freeUses": { en: "3 free questions — no signup", tr: "3 ücretsiz soru — kayıt gerekmez", de: "3 kostenlose Fragen — ohne Anmeldung", es: "3 preguntas gratis — sin registro" },
+  "hero.freeDesc": { en: "Ask Prodly before creating account", tr: "Hesap oluşturmadan Prodly'ye sorun", de: "Frag Prodly vor der Registrierung", es: "Pregunta a Prodly antes de registrarte" },
+  "hero.usedAll": { en: "You've used all 3 free questions.", tr: "3 ücretsiz sorunuzu kullandınız.", de: "Du hast alle 3 kostenlosen Fragen verbraucht.", es: "Has usado las 3 preguntas gratuitas." },
+  "hero.signupCta": { en: "Sign up free for 5/day →", tr: "Günde 5 soru için ücretsiz kaydol →", de: "Kostenlos anmelden für 5/Tag →", es: "Regístrate gratis para 5/día →" },
+  "hero.upgradeCta": { en: "Upgrade to Premium for 20/day →", tr: "Günde 20 için Premium'a yükselt →", de: "Auf Premium upgraden für 20/Tag →", es: "Actualiza a Premium por 20/día →" },
+  "hero.exploreGenre": { en: "Explore by genre:", tr: "Türe göre keşfet:", de: "Nach Genre entdecken:", es: "Explorar por género:" },
+  "hero.badge": { en: "AI-Powered Music Mentor", tr: "Yapay Zeka Müzik Mentoru", de: "KI-gestützter Musikmentor", es: "Mentor Musical con IA" },
   "hero.cta": { en: "Start Creating", tr: "Yaratmaya Başla", de: "Jetzt starten", es: "Empezar a Crear" },
   "hero.demo": { en: "Watch Demo", tr: "Demoyu İzle", de: "Demo ansehen", es: "Ver Demo" },
 

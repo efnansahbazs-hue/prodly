@@ -171,9 +171,32 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes floatWidget {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(52,211,153,0.6); }
+  50% { opacity: 0.6; box-shadow: 0 0 8px rgba(52,211,153,0.9); }
+}
 
 .animate-float-orb { animation: floatOrb 6s ease-in-out infinite; }
 .animate-float-orb-reverse { animation: floatOrbReverse 8s ease-in-out infinite; }
 .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-move-border { animation: moveBorder 3s linear infinite; }
 .animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-spin-ring { animation: spinRing 4s linear infinite; }
+.animate-spin-ring-slow { animation: spinRing 6s linear infinite; }
+.animate-float-widget { animation: floatWidget 6s ease-in-out infinite; }
+.animate-pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+.text-gradient-conic {
+  background: conic-gradient(from 180deg, #7C3AED, #34D399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
