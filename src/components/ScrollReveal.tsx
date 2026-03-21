@@ -22,7 +22,7 @@ export const ScrollReveal = ({
           obs.unobserve(el);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     obs.observe(el);
     return () => obs.disconnect();
