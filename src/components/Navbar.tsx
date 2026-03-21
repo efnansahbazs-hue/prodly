@@ -71,6 +71,7 @@ export const Navbar = () => {
 
   const navLinks = isLoggedIn
     ? [
+        { key: "dashboard", href: "/dashboard" },
         { key: "features", href: "/#features" },
         { key: "community", href: "/community" },
         { key: "roadmap", href: "/roadmap" },
