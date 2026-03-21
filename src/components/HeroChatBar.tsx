@@ -1,23 +1,36 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
+import { useAuth } from "@/hooks/useAuth";
 import { UpgradeModal } from "@/components/UpgradeModal";
 import { GenreShowcase } from "@/components/GenreShowcase";
 
 export const HeroChatBar = () => {
   const { t } = useTranslation();
   const { remaining, exhausted, increment, userType, setUserType, max } = useFreeUses();
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [showLimit, setShowLimit] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
-  
 
   const handleSend = () => {
     if (!input.trim()) return;
     if (exhausted) { setShowLimit(true); return; }
+
+    // Save question and redirect
+    if (!isLoggedIn) {
+      localStorage.setItem("pending_question", input.trim());
+      navigate("/auth/register");
+      return;
+    }
+
+    // Logged in → go to dashboard with question
+    localStorage.setItem("pending_question", input.trim());
     increment();
     setInput("");
-    if (remaining <= 1) setShowLimit(true);
+    navigate("/dashboard");
   };
 
   return (

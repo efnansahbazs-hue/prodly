@@ -6,7 +6,7 @@ const STORAGE_KEY = "prodly-exp";
 export const useExp = () => {
   const [exp, setExpState] = useState<number>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? parseInt(stored, 10) : 1240;
+    return stored ? parseInt(stored, 10) : 0;
   });
 
   const addExp = useCallback((action: keyof typeof EXP_RULES) => {
