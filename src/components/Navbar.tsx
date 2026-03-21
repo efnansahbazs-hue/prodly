@@ -1,8 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLang } from "@/hooks/useLang";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useNavbar } from "@/hooks/useNavbar";
+import { NavbarLoggedIn } from "@/components/NavbarLoggedIn";
 import type { Lang } from "@/lib/translations";
 
 const langs: { code: Lang; label: string }[] = [
