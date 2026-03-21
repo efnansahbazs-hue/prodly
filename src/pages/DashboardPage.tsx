@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { DailyUsageBar } from "@/components/DailyUsageBar";
+import { ReturningGreeting } from "@/components/ReturningGreeting";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useExp } from "@/hooks/useExp";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -13,6 +14,7 @@ export default function DashboardPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <NoiseOverlay /><DotGrid /><Orbs /><Navbar />
+      <ReturningGreeting streakDays={5} />
       <div className="container mx-auto px-5 pt-24 pb-20 max-w-4xl">
         <ScrollReveal>
           <h1
