@@ -15,16 +15,43 @@ const langs: { code: Lang; label: string }[] = [
   { code: "es", label: "ES" },
 ];
 
-const LogoDot = () => (
-  <span
-    className="inline-block rounded-full animate-pulse-glow flex-shrink-0"
-    style={{
-      width: 8, height: 8,
-      background: "linear-gradient(135deg, #7C3AED, #34D399)",
-      boxShadow: "0 0 10px rgba(124,58,237,0.8)",
-    }}
-  />
-);
+const WaveformLogo = () => {
+  const heights = [6, 12, 18, 12, 6];
+  const durations = [0.8, 0.6, 1, 0.7, 0.9];
+  const colors = ["#7C3AED", "#6D3AE8", "#5038DD", "#3CB8A0", "#34D399"];
+  return (
+    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" className="flex-shrink-0">
+      {heights.map((h, i) => (
+        <rect
+          key={i}
+          x={i * 5}
+          y={10 - h / 2}
+          width={3}
+          height={h}
+          rx={1.5}
+          fill={colors[i]}
+        >
+          <animate
+            attributeName="height"
+            values={`${h};${h * 1.6};${h}`}
+            dur={`${durations[i]}s`}
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.6 1;0.4 0 0.6 1"
+          />
+          <animate
+            attributeName="y"
+            values={`${10 - h / 2};${10 - (h * 1.6) / 2};${10 - h / 2}`}
+            dur={`${durations[i]}s`}
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.6 1;0.4 0 0.6 1"
+          />
+        </rect>
+      ))}
+    </svg>
+  );
+};
 
 export const Navbar = () => {
   const { t } = useTranslation();
@@ -67,10 +94,10 @@ export const Navbar = () => {
         }}
       >
         <div className="container mx-auto flex items-center justify-between px-5 py-3">
-          <Link to="/" className="flex items-center gap-2 group">
-            <LogoDot />
-            <span className="text-[18px] font-bold text-white" style={{ fontFamily: "'Space Grotesk'", letterSpacing: "-0.3px" }}>
-              Prodly
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <WaveformLogo />
+            <span className="text-[15px] font-bold text-white uppercase" style={{ fontFamily: "'Space Grotesk'", letterSpacing: "0.08em" }}>
+              PRODLY
             </span>
           </Link>
 
