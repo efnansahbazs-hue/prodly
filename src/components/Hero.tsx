@@ -36,6 +36,7 @@ export const Hero = () => {
       {/* Middle — orbital hub + floating widgets */}
       <ScrollReveal delay={240}>
         <div className="relative mx-auto" style={{ width: "fit-content" }}>
+          <HeroGlowBlobs />
           <FloatingWidgets />
           <OrbitalHub />
         </div>
