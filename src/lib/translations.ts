@@ -3,9 +3,12 @@ export type Lang = "en" | "tr" | "de" | "es";
 export const translations: Record<string, Record<Lang, string>> = {
   // Navbar
   "nav.features": { en: "Features", tr: "Özellikler", de: "Funktionen", es: "Características" },
+  "nav.community": { en: "Community", tr: "Topluluk", de: "Community", es: "Comunidad" },
+  "nav.roadmap": { en: "Roadmap", tr: "Yol Haritası", de: "Roadmap", es: "Hoja de Ruta" },
   "nav.howItWorks": { en: "How It Works", tr: "Nasıl Çalışır", de: "So funktioniert's", es: "Cómo Funciona" },
   "nav.pricing": { en: "Pricing", tr: "Fiyatlar", de: "Preise", es: "Precios" },
   "nav.testimonials": { en: "Testimonials", tr: "Yorumlar", de: "Bewertungen", es: "Testimonios" },
+  "nav.startFree": { en: "Start free", tr: "Ücretsiz başla", de: "Kostenlos starten", es: "Empezar gratis" },
   "nav.launchApp": { en: "Launch App", tr: "Uygulamayı Başlat", de: "App starten", es: "Abrir App" },
 
   // Hero
