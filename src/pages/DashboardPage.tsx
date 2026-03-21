@@ -75,20 +75,38 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* 3-column layout */}
-      <div className="relative z-10 flex gap-4 px-4 pb-8 min-h-[calc(100vh-120px)] max-w-[1440px] mx-auto">
+      {/* 3-column layout — CSS Grid */}
+      <div
+        className="relative z-10 pb-8 max-w-[1440px] mx-auto px-4"
+        style={{
+          display: "grid",
+          gap: 16,
+          minHeight: "calc(100vh - 120px)",
+          gridTemplateColumns: "minmax(320px, 400px) 1fr 280px",
+          gridTemplateAreas: '"chat center right"',
+        }}
+      >
         {/* Left — Chat */}
-        <div className="hidden lg:block flex-shrink-0 sticky top-24" style={{ height: "calc(100vh - 120px)" }}>
+        <div className="sticky top-24 hidden dash-chat-col:block" style={{ gridArea: "chat", height: "calc(100vh - 120px)" }}>
           <DashboardChat onTopicChange={setTopic} />
         </div>
 
         {/* Center — Tab content */}
-        <div className="flex-1 min-w-0" style={{ animation: "fadeTabIn 0.2s ease both" }}>
+        <div className="min-w-0" style={{ gridArea: "center", animation: "fadeTabIn 0.2s ease both" }}>
           {renderCenter()}
         </div>
 
         {/* Right — Context Panel */}
-        <div className="hidden lg:block flex-shrink-0 sticky top-24" style={{ height: "calc(100vh - 120px)" }}>
+        <div
+          className="hidden dash-right-col:block sticky top-24"
+          style={{
+            gridArea: "right",
+            height: "calc(100vh - 120px)",
+            overflowY: "auto",
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(124,58,237,0.4) transparent",
+          }}
+        >
           {isFree ? (
             <div className="h-full" style={{ width: 280 }}>
               <LockedOverlay label={tr ? "Bağlamsal araçlar — Premium'da açılır" : "Context tools — Premium feature"} plan="premium">
