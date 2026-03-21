@@ -65,7 +65,7 @@ export const HowItWorks = () => {
               <div className="flex flex-row md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1 relative z-10">
                 {/* Circle */}
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse-glow"
+                  className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
                     background: "linear-gradient(135deg, #7C3AED, #34D399)",
                     boxShadow: "0 0 20px rgba(124,58,237,0.3)",

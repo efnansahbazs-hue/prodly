@@ -27,7 +27,7 @@
     --ring: 263 70% 55%;
     --radius: 0.75rem;
 
-    --bg-base: #0A0A0F;
+    --bg-base: #050508;
     --bg-card: rgba(255,255,255,0.04);
     --bg-card-hover: rgba(255,255,255,0.07);
     --purple: #7C3AED;
@@ -53,7 +53,7 @@
     @apply border-border;
   }
   body {
-    background: var(--bg-base);
+    background: #050508;
     color: var(--text-primary);
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -146,33 +146,10 @@
 }
 
 /* ============ Keyframes ============ */
-@keyframes auroraOrb1 {
-  from { transform: translate(-10%, -10%); }
-  to { transform: translate(5%, 20%); }
-}
-@keyframes auroraOrb2 {
-  from { transform: translate(10%, 10%); }
-  to { transform: translate(-5%, -15%); }
-}
-@keyframes auroraOrb3 {
-  from { transform: translate(15%, -5%); }
-  to { transform: translate(-10%, 10%); }
-}
-@keyframes auroraOrb4 {
-  from { transform: translate(-15%, 15%); }
-  to { transform: translate(10%, -5%); }
-}
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-2%, -3%); }
-  20% { transform: translate(3%, 1%); }
-  30% { transform: translate(-1%, 4%); }
-  40% { transform: translate(4%, -2%); }
-  50% { transform: translate(-3%, 2%); }
-  60% { transform: translate(1%, -4%); }
-  70% { transform: translate(-4%, 1%); }
-  80% { transform: translate(2%, 3%); }
-  90% { transform: translate(-1%, -2%); }
+@keyframes holoShimmer {
+  0% { background-position: 0% 0%; opacity: 0.6; }
+  50% { background-position: 100% 100%; opacity: 1; }
+  100% { background-position: 0% 0%; opacity: 0.6; }
 }
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -187,61 +164,26 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-@keyframes floatOrb {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-@keyframes floatOrbReverse {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(20px); }
-}
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 10px rgba(124,58,237,0.6); }
-  50% { box-shadow: 0 0 20px rgba(52,211,153,0.8); }
 }
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
-@keyframes spinRing {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 @keyframes floatDrift {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
-@keyframes floatWidget {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
 @keyframes pulseDot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(52,211,153,0.6); }
-  50% { opacity: 0.6; box-shadow: 0 0 8px rgba(52,211,153,0.9); }
+  0%, 100% { box-shadow: 0 0 4px rgba(52,211,153,0.4); }
+  50% { box-shadow: 0 0 8px rgba(52,211,153,0.6); }
 }
 
-.animate-float-orb { animation: floatOrb 6s ease-in-out infinite; }
-.animate-float-orb-reverse { animation: floatOrbReverse 8s ease-in-out infinite; }
 .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-move-border { animation: moveBorder 3s linear infinite; }
-.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
-.animate-spin-ring { animation: spinRing 4s linear infinite; }
-.animate-spin-ring-slow { animation: spinRing 6s linear infinite; }
-.animate-float-widget { animation: floatWidget 6s ease-in-out infinite; }
 .animate-pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
-
-/* Ghost fade animations for hero widgets */
-@keyframes ghostFade1 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.65; } }
-@keyframes ghostFade2 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.55; } }
-@keyframes ghostFade3 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.6; } }
-@keyframes ghostFade4 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.5; } }
-@keyframes ghostFade5 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.55; } }
-@keyframes dashMove { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -28; } }
-.animate-dash { animation: dashMove 1.5s linear infinite; }
 
 .text-gradient-conic {
   background: conic-gradient(from 180deg, #7C3AED, #34D399);
