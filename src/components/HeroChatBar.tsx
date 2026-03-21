@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { UpgradeModal } from "@/components/UpgradeModal";
 
 const genres = ["Lo-Fi", "Hip-Hop", "EDM", "R&B", "Pop", "Trap", "Jazz", "Ambient", "Drill"];
@@ -24,19 +23,26 @@ export const HeroChatBar = () => {
 
   return (
     <div
-      className="w-full max-w-[600px] mx-auto mt-4 md:mt-6 px-4 rounded-2xl p-5"
+      className="w-full max-w-[580px] mx-auto rounded-[20px] p-5"
       style={{
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.12)",
-        boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
+        background: "rgba(15,15,25,0.8)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
       }}
     >
-      {/* Free user daily banner */}
+      {/* Free uses indicator */}
+      {userType === "guest" && !exhausted && (
+        <p className="text-center text-[12px] font-medium mb-4" style={{ color: "#34D399" }}>
+          {t("hero.freeUses")}
+        </p>
+      )}
+
+      {/* Free user daily limit */}
       {userType === "free" && exhausted && (
         <div
-          className="flex items-center justify-between rounded-[10px] px-4 py-3 mb-4 animate-fade-in"
+          className="flex items-center justify-between rounded-[12px] px-4 py-3 mb-4 animate-fade-in"
           style={{ background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
         >
           <p className="text-xs" style={{ color: "#A78BFA" }}>{t("upgrade.dailyLimit")}</p>
@@ -48,30 +54,6 @@ export const HeroChatBar = () => {
             {t("upgrade.seePremium")}
           </button>
         </div>
-      )}
-
-      {/* Free uses banner (guest) */}
-      {userType === "guest" && !exhausted && (
-        <ScrollReveal delay={400}>
-          <div
-            className="flex items-center justify-between rounded-[10px] px-4 py-3 mb-4"
-            style={{ background: "rgba(52,211,153,0.07)", border: "1px solid rgba(52,211,153,0.15)" }}
-          >
-            <div>
-              <p className="text-xs font-bold" style={{ color: "#34D399" }}>{t("hero.freeUses")}</p>
-              <p className="text-[10px]" style={{ color: "#6B7280" }}>{t("hero.freeDesc")}</p>
-            </div>
-            <div className="flex gap-1.5">
-              {Array.from({ length: max }).map((_, i) => (
-                <span
-                  key={i}
-                  className="w-3 h-3 rounded-full"
-                  style={{ background: i < remaining ? "#34D399" : "rgba(255,255,255,0.08)", transition: "background 0.3s" }}
-                />
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
       )}
 
       {/* Guest exhausted */}
@@ -104,30 +86,28 @@ export const HeroChatBar = () => {
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
           placeholder={t("hero.chatPlaceholder")}
           disabled={exhausted}
-          className="flex-1 rounded-xl px-5 py-3 text-sm text-white placeholder:text-[#6B7280] focus:outline-none transition-all disabled:opacity-50"
-          style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+          className="flex-1 rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[#555] focus:outline-none transition-all disabled:opacity-50"
+          style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "rgba(124,58,237,0.6)";
-            e.currentTarget.style.boxShadow = "0 0 20px rgba(124,58,237,0.15)";
+            e.currentTarget.style.borderColor = "rgba(124,58,237,0.5)";
+            e.currentTarget.style.boxShadow = "0 0 20px rgba(124,58,237,0.1)";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
             e.currentTarget.style.boxShadow = "none";
           }}
         />
-        <div
-          className="rounded-xl p-[2px] animate-move-border flex-shrink-0"
-          style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
+        <button
+          onClick={handleSend}
+          disabled={exhausted}
+          className="rounded-xl px-5 py-3.5 text-xs font-semibold text-white whitespace-nowrap transition-all active:scale-[0.96] disabled:opacity-50"
+          style={{
+            background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+            boxShadow: "0 4px 16px rgba(124,58,237,0.3)",
+          }}
         >
-          <button
-            onClick={handleSend}
-            disabled={exhausted}
-            className="rounded-[10px] px-5 py-3 text-xs font-semibold text-white whitespace-nowrap transition-transform active:scale-[0.96] disabled:opacity-50"
-            style={{ background: "#7C3AED" }}
-          >
-            {t("hero.askProdly")}
-          </button>
-        </div>
+          {t("hero.askProdly")}
+        </button>
       </div>
 
       {/* Quick suggestion chips */}
@@ -135,15 +115,15 @@ export const HeroChatBar = () => {
         {[t("hero.chip1"), t("hero.chip2"), t("hero.chip3")].map((chip) => (
           <button
             key={chip}
-            onClick={() => { setInput(chip); }}
-            className="px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all duration-200 active:scale-95"
+            onClick={() => setInput(chip)}
+            className="px-3 py-1.5 rounded-full text-[11px] font-medium transition-all duration-200 active:scale-95"
             style={{
-              background: "rgba(255,255,255,0.04)",
+              background: "rgba(255,255,255,0.03)",
               border: "1px solid rgba(255,255,255,0.1)",
-              color: "#8B8FA8",
+              color: "#6B7280",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(52,211,153,0.4)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(52,211,153,0.4)"; e.currentTarget.style.color = "#8B8FA8"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "#6B7280"; }}
           >
             {chip}
           </button>
@@ -152,16 +132,16 @@ export const HeroChatBar = () => {
 
       {/* Genre pills */}
       <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-        <span className="text-[11px] flex-shrink-0" style={{ color: "#6B7280" }}>{t("hero.exploreGenre")}</span>
+        <span className="text-[11px] flex-shrink-0" style={{ color: "#555" }}>{t("hero.exploreGenre")}</span>
         {genres.map((g) => (
           <button
             key={g}
             onClick={() => setSelectedGenre(selectedGenre === g ? null : g)}
             className="flex-shrink-0 px-3 py-1 rounded-full text-[11px] font-medium transition-all duration-200 active:scale-95"
             style={{
-              background: selectedGenre === g ? "#7C3AED" : "rgba(255,255,255,0.04)",
-              border: `1px solid ${selectedGenre === g ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.08)"}`,
-              color: selectedGenre === g ? "#fff" : "#8B8FA8",
+              background: selectedGenre === g ? "#7C3AED" : "rgba(255,255,255,0.03)",
+              border: `1px solid ${selectedGenre === g ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
+              color: selectedGenre === g ? "#fff" : "#555",
             }}
           >
             {g}
