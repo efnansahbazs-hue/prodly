@@ -10,7 +10,7 @@ export const HeroChatBar = () => {
   const [input, setInput] = useState("");
   const [showLimit, setShowLimit] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  
 
   const handleSend = () => {
     if (!input.trim()) return;
