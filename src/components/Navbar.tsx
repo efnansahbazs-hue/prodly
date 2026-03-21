@@ -94,10 +94,10 @@ export const Navbar = () => {
         }}
       >
         <div className="container mx-auto flex items-center justify-between px-5 py-3">
-          <Link to="/" className="flex items-center gap-2 group">
-            <LogoDot />
-            <span className="text-[18px] font-bold text-white" style={{ fontFamily: "'Space Grotesk'", letterSpacing: "-0.3px" }}>
-              Prodly
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <WaveformLogo />
+            <span className="text-[15px] font-bold text-white uppercase" style={{ fontFamily: "'Space Grotesk'", letterSpacing: "0.08em" }}>
+              PRODLY
             </span>
           </Link>
 
