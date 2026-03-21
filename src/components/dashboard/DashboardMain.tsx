@@ -146,7 +146,7 @@ export const DashboardMain = ({ plan }: { plan: "free" | "premium" | "studio" })
             <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-2" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
               Intermediate
             </span>
-            <p className="text-[13px] mt-3" style={{ color: "#8B8FA8", lineHeight: 1.6 }}>
+            <p className="text-[13px] mt-3 line-clamp-3 overflow-hidden" style={{ color: "#8B8FA8", lineHeight: 1.6, maxHeight: "4.8em" }}>
               {lang === "tr" ? TECHNIQUE.desc.tr : TECHNIQUE.desc.en}
             </p>
           </div>

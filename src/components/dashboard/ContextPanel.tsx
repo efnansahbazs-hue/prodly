@@ -252,8 +252,9 @@ export const ContextPanel = ({ topic }: Props) => {
     <div
       className="h-full flex flex-col rounded-2xl overflow-hidden"
       style={{
-        width: collapsed ? 0 : 280,
-        minWidth: collapsed ? 0 : 280,
+        width: collapsed ? 0 : "100%",
+        maxWidth: collapsed ? 0 : 280,
+        minWidth: collapsed ? 0 : 0,
         opacity: collapsed ? 0 : 1,
         background: collapsed ? "transparent" : "rgba(255,255,255,0.03)",
         border: collapsed ? "none" : "1px solid rgba(255,255,255,0.08)",
