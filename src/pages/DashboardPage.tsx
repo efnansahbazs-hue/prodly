@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { HolographicMesh, HoloDotGrid, StaticGrain } from "@/components/HolographicBg";
 import { Navbar } from "@/components/Navbar";
 import { useAuth } from "@/hooks/useAuth";
 import { useLang } from "@/hooks/useLang";
 import { DashboardChat } from "@/components/dashboard/DashboardChat";
 import { DashboardMain } from "@/components/dashboard/DashboardMain";
-import { DashboardTools } from "@/components/dashboard/DashboardTools";
+import { ContextPanel, type ChatTopic } from "@/components/dashboard/ContextPanel";
 import { LockedOverlay } from "@/components/dashboard/LockedOverlay";
 
 export default function DashboardPage() {
@@ -12,6 +13,7 @@ export default function DashboardPage() {
   const { lang } = useLang();
   const plan = user?.plan || "free";
   const isFree = plan === "free";
+  const [topic, setTopic] = useState<ChatTopic>(null);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -21,25 +23,29 @@ export default function DashboardPage() {
       <Navbar />
 
       <div className="relative z-10 flex gap-4 px-4 pt-20 pb-8 min-h-screen max-w-[1440px] mx-auto">
+        {/* Left — Chat */}
         <div className="hidden lg:block flex-shrink-0 sticky top-20" style={{ height: "calc(100vh - 96px)" }}>
-          <DashboardChat />
+          <DashboardChat onTopicChange={setTopic} />
         </div>
 
+        {/* Center — Main */}
         <DashboardMain plan={plan} />
 
+        {/* Right — Context Panel */}
         <div className="hidden lg:block flex-shrink-0 sticky top-20" style={{ height: "calc(100vh - 96px)" }}>
           {isFree ? (
-            <div className="h-full" style={{ width: 220 }}>
-              <LockedOverlay label={lang === "tr" ? "Quick tools — Premium'da açılır" : "Quick tools — Premium feature"} plan="premium">
-                <DashboardTools />
+            <div className="h-full" style={{ width: 280 }}>
+              <LockedOverlay label={lang === "tr" ? "Bağlamsal araçlar — Premium'da açılır" : "Context tools — Premium feature"} plan="premium">
+                <ContextPanel topic={null} />
               </LockedOverlay>
             </div>
           ) : (
-            <DashboardTools />
+            <ContextPanel topic={topic} />
           )}
         </div>
       </div>
 
+      {/* Mobile bottom chat */}
       <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
         <button
           className="w-full flex items-center justify-center gap-2 rounded-2xl py-3 text-[13px] font-semibold text-white active:scale-[0.97] transition-transform"
