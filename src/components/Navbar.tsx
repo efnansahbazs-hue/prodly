@@ -19,9 +19,9 @@ const LogoDot = () => (
   <span
     className="inline-block rounded-full animate-pulse-glow flex-shrink-0"
     style={{
-      width: 9, height: 9,
+      width: 8, height: 8,
       background: "linear-gradient(135deg, #7C3AED, #34D399)",
-      boxShadow: "0 0 14px rgba(124,58,237,0.9)",
+      boxShadow: "0 0 10px rgba(124,58,237,0.8)",
     }}
   />
 );
@@ -67,9 +67,9 @@ export const Navbar = () => {
         }}
       >
         <div className="container mx-auto flex items-center justify-between px-5 py-3">
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <LogoDot />
-            <span className="text-[17px] font-bold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
+            <span className="text-[18px] font-bold text-white" style={{ fontFamily: "'Space Grotesk'", letterSpacing: "-0.3px" }}>
               Prodly
             </span>
           </Link>

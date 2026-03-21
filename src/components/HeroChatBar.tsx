@@ -3,7 +3,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
 import { UpgradeModal } from "@/components/UpgradeModal";
 
-const genres = ["Lo-Fi", "Hip-Hop", "EDM", "R&B", "Pop", "Trap", "Jazz", "Ambient", "Drill"];
+const genres = ["Techno", "House", "Trap", "Hip-Hop", "Drum & Bass", "Electronic", "Dubstep", "Ambient", "Trance", "Pop", "R&B", "Jazz", "Indie", "World", "Garage", "Future Bass"];
 
 export const HeroChatBar = () => {
   const { t } = useTranslation();
@@ -131,22 +131,24 @@ export const HeroChatBar = () => {
       </div>
 
       {/* Genre pills */}
-      <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-        <span className="text-[11px] flex-shrink-0" style={{ color: "#555" }}>{t("hero.exploreGenre")}</span>
-        {genres.map((g) => (
-          <button
-            key={g}
-            onClick={() => setSelectedGenre(selectedGenre === g ? null : g)}
-            className="flex-shrink-0 px-3 py-1 rounded-full text-[11px] font-medium transition-all duration-200 active:scale-95"
-            style={{
-              background: selectedGenre === g ? "#7C3AED" : "rgba(255,255,255,0.03)",
-              border: `1px solid ${selectedGenre === g ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
-              color: selectedGenre === g ? "#fff" : "#555",
-            }}
-          >
-            {g}
-          </button>
-        ))}
+      <div className="mt-3">
+        <p className="text-[11px] mb-2" style={{ color: "#555" }}>{t("hero.exploreGenre")}</p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {genres.map((g) => (
+            <button
+              key={g}
+              onClick={() => setSelectedGenre(selectedGenre === g ? null : g)}
+              className="rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 active:scale-95"
+              style={{
+                background: selectedGenre === g ? "rgba(124,58,237,0.18)" : "rgba(255,255,255,0.05)",
+                border: `1px solid ${selectedGenre === g ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.1)"}`,
+                color: selectedGenre === g ? "#A78BFA" : "#8B8FA8",
+              }}
+            >
+              {g}
+            </button>
+          ))}
+        </div>
       </div>
 
       {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
