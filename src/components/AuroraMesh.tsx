@@ -7,7 +7,7 @@ export const AuroraMesh = () => (
         height: 700,
         top: "-5%",
         left: "-5%",
-        background: "rgba(124,58,237,0.35)",
+        background: "rgba(124,58,237,0.25)",
         filter: "blur(120px)",
         mixBlendMode: "screen",
         animation: "auroraOrb1 16s ease-in-out infinite alternate",
@@ -20,7 +20,7 @@ export const AuroraMesh = () => (
         height: 800,
         bottom: "-10%",
         right: "-10%",
-        background: "rgba(52,211,153,0.20)",
+        background: "rgba(52,211,153,0.08)",
         filter: "blur(120px)",
         mixBlendMode: "screen",
         animation: "auroraOrb2 20s ease-in-out infinite alternate",
@@ -46,7 +46,7 @@ export const AuroraMesh = () => (
         height: 600,
         bottom: "5%",
         left: "-5%",
-        background: "rgba(16,185,129,0.12)",
+        background: "rgba(16,185,129,0.05)",
         filter: "blur(120px)",
         mixBlendMode: "screen",
         animation: "auroraOrb4 18s ease-in-out infinite alternate",
@@ -58,7 +58,7 @@ export const AuroraMesh = () => (
 export const GrainOverlay = () => (
   <div
     className="fixed inset-0 pointer-events-none"
-    style={{ zIndex: 51, opacity: 0.06, animation: "grain 0.5s steps(1) infinite" }}
+    style={{ zIndex: 51, opacity: 0.03, animation: "grain 0.5s steps(1) infinite" }}
     aria-hidden="true"
   >
     <svg width="100%" height="100%" style={{ display: "block" }}>

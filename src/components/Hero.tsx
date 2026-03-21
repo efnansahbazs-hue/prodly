@@ -46,8 +46,12 @@ export const Hero = () => {
             {t("hero.titleLine1")}{" "}
           </span>
           <span
-            className="inline-block text-gradient-mixed opacity-0"
+            className="inline-block opacity-0"
             style={{
+              background: "linear-gradient(135deg, #7C3AED, #A78BFA)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
               animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards",
             }}
           >
