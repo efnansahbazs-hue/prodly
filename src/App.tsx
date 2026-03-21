@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import TechniquesPage from "./pages/TechniquesPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
+import SuggestionsPage from "./pages/SuggestionsPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
