@@ -36,7 +36,7 @@ export const translations: Record<string, Record<Lang, string>> = {
   },
   "hero.chatPlaceholder": { en: "What's the problem? Kick, mix, reverb...", tr: "Ne sorun var? Kick mi, mix mi, reverb mu...", de: "Was ist das Problem? Kick, Mix, Reverb...", es: "¿Cuál es el problema? Kick, mix, reverb..." },
   "hero.askProdly": { en: "Ask Prodly →", tr: "Prodly'ye Sor →", de: "Frag Prodly →", es: "Pregunta a Prodly →" },
-  "hero.freeUses": { en: "5 free questions — no signup", tr: "5 ücretsiz soru — kayıt gerekmez", de: "5 kostenlose Fragen — keine Anmeldung", es: "5 preguntas gratis — sin registro" },
+  "hero.freeUses": { en: "5 free questions", tr: "5 ücretsiz soru", de: "5 kostenlose Fragen", es: "5 preguntas gratis" },
   "hero.freeDesc": { en: "Try Prodly right now", tr: "Prodly'yi hemen deneyin", de: "Probiere Prodly jetzt aus", es: "Prueba Prodly ahora mismo" },
   "hero.usedAll": { en: "You've used all 5 free questions.", tr: "5 ücretsiz sorunuzu kullandınız.", de: "Du hast alle 5 kostenlosen Fragen verbraucht.", es: "Has usado las 5 preguntas gratuitas." },
   "hero.signupCta": { en: "Sign up free for 5/day →", tr: "Günde 5 soru için ücretsiz kaydol →", de: "Kostenlos anmelden für 5/Tag →", es: "Regístrate gratis para 5/día →" },
