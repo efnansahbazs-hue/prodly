@@ -68,7 +68,7 @@ export const DemoWidget = () => {
                   className="rounded-[10px] px-5 py-3.5 text-xs font-semibold text-white whitespace-nowrap transition-transform active:scale-[0.96]"
                   style={{ background: "#7C3AED" }}
                 >
-                  {t("hero.askProdly")}
+                  {t("demo.askProdly")}
                 </button>
               </div>
             </div>

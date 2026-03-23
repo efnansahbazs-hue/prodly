@@ -47,10 +47,15 @@ export const translations: Record<string, Record<Lang, string>> = {
   "hero.chip3": { en: "How to make 808 punch?", tr: "808 nasıl punch yapar?", de: "Wie bekommt die 808 Punch?", es: "¿Cómo hacer que el 808 pegue?" },
 
   // Demo Widget
-  "demo.label": { en: "INTERACTIVE DEMO", tr: "İNTERAKTİF DEMO", de: "INTERAKTIVE DEMO", es: "DEMO INTERACTIVA" },
-  "demo.title": { en: "Try it yourself", tr: "Kendin dene", de: "Probier es selbst", es: "Pruébalo tú mismo" },
-  "demo.placeholder": { en: "Ask anything... e.g. Why does my kick sound muddy?", tr: "Bir şey sorun... ör. Kick'im neden bulanık duyuluyor?", de: "Frag etwas... z.B. Warum klingt mein Kick matschig?", es: "Pregunta algo... ej. ¿Por qué mi kick suena turbio?" },
-  "demo.signupCta": { en: "Want deeper answers? Sign up free →", tr: "Daha detaylı cevaplar mı istiyorsun? Ücretsiz kaydol →", de: "Tiefere Antworten? Kostenlos anmelden →", es: "¿Respuestas más profundas? Regístrate gratis →" },
+  "demo.label": { en: "TRY IT YOURSELF", tr: "KENDİN DENE", de: "SELBST AUSPROBIEREN", es: "PRUÉBALO TÚ MISMO" },
+  "demo.title": { en: "Try it yourself", tr: "Kendin dene", de: "Selbst ausprobieren", es: "Pruébalo tú mismo" },
+  "demo.placeholder": { en: "Ask anything... e.g. Why does my kick sound muddy?", tr: "Herhangi bir şey sor... örn. Kick neden muddy çıkıyor?", de: "Frag etwas... z.B. Warum klingt meine Kick dumpf?", es: "Pregunta lo que quieras... ej. ¿Por qué suena mi kick opaco?" },
+  "demo.askProdly": { en: "Ask Prodly →", tr: "Prodly'ye Sor →", de: "Prodly Fragen →", es: "Preguntar a Prodly →" },
+  "demo.signupCta": { en: "Want deeper answers? Sign up free →", tr: "Daha derin cevaplar mı istiyorsun? Ücretsiz kaydol →", de: "Tiefere Antworten? Kostenlos registrieren →", es: "¿Quieres respuestas más profundas? Regístrate gratis →" },
+  "demo.chip1": { en: "Why is my kick muddy?", tr: "Kick neden muddy?", de: "Warum klingt meine Kick dumpf?", es: "¿Por qué mi kick suena opaco?" },
+  "demo.chip2": { en: "How to set up sidechain?", tr: "Sidechain nasıl kurulur?", de: "Wie richtet man Sidechain ein?", es: "¿Cómo configurar el sidechain?" },
+  "demo.chip3": { en: "How to make 808 punch?", tr: "808 nasıl punch yapar?", de: "Wie macht man den 808 punchy?", es: "¿Cómo hacer que el 808 pegue?" },
+  "demo.dawOther": { en: "Other", tr: "Diğer", de: "Andere", es: "Otro" },
 
   // Social Proof
   "social.join": { en: "Join 500+ producers already using Prodly", tr: "Prodly kullanan 500+ prodüktöre katılın", de: "Schließe dich 500+ Produzenten an", es: "Únete a 500+ productores usando Prodly" },
