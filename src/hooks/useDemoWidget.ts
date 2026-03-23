@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type DawId = "ableton" | "flstudio" | "logic" | "other";
 
@@ -9,16 +10,9 @@ interface MockResponse {
   sourceEmoji: string;
 }
 
-const DAWS: { id: DawId; label: string }[] = [
-  { id: "ableton", label: "Ableton" },
-  { id: "flstudio", label: "FL Studio" },
-  { id: "logic", label: "Logic Pro" },
-  { id: "other", label: "Other" },
-];
-
 function getResponse(input: string): MockResponse {
   const q = input.toLowerCase();
-  if (q.includes("kick") || q.includes("muddy"))
+  if (q.includes("kick") || q.includes("muddy") || q.includes("dumpf") || q.includes("opaco"))
     return {
       text: "Classic. High-pass at 60Hz, cut 300Hz by 3dB. Check your bass isn't masking the fundamental — solo both and sweep a narrow EQ to find the clash.",
       source: "Sound On Sound",
@@ -39,7 +33,7 @@ function getResponse(input: string): MockResponse {
       sourceColor: "#FBBF24",
       sourceEmoji: "🟡",
     };
-  if (q.includes("808"))
+  if (q.includes("808") || q.includes("punch") || q.includes("punchy"))
     return {
       text: "Tune your 808 to the key of the track. Add light saturation for harmonics on smaller speakers. Sidechain to the kick with a fast release.",
       source: "Verified",
@@ -55,9 +49,17 @@ function getResponse(input: string): MockResponse {
 }
 
 export function useDemoWidget() {
+  const { t } = useTranslation();
   const [selectedDaw, setSelectedDaw] = useState<DawId>("ableton");
   const [input, setInput] = useState("");
   const [response, setResponse] = useState<MockResponse | null>(null);
+
+  const DAWS: { id: DawId; label: string }[] = [
+    { id: "ableton", label: "Ableton" },
+    { id: "flstudio", label: "FL Studio" },
+    { id: "logic", label: "Logic Pro" },
+    { id: "other", label: t("demo.dawOther") },
+  ];
 
   const handleAsk = () => {
     if (!input.trim()) return;
