@@ -202,7 +202,7 @@ export const translations: Record<string, Record<Lang, string>> = {
   "tk.mistakes": { en: "Common Mistakes", tr: "Sık Yapılan Hatalar", de: "Häufige Fehler", es: "Errores Comunes" },
   "tk.mistakesDesc": { en: "Learn what to avoid in your production workflow.", tr: "Prodüksiyon sürecinde nelerden kaçınman gerektiğini öğren.", de: "Lerne, was du in deinem Workflow vermeiden solltest.", es: "Aprende qué evitar en tu flujo de producción." },
   "tk.dawAnalyzer": { en: "DAW Screen Analyzer", tr: "DAW Ekran Analizcisi", de: "DAW Screen Analyzer", es: "Analizador de Pantalla DAW" },
-  "tk.dawAnalyzerDesc": { en: "Upload a screenshot, get AI feedback on your session.", tr: "Ekran görüntüsü yükle, oturumun hakkında AI geri bildirimi al.", de: "Lade einen Screenshot hoch, erhalte KI-Feedback.", es: "Sube una captura, obtén feedback de IA sobre tu sesión." },
+  "tk.dawAnalyzerDesc": { en: "Upload a screenshot, get feedback on your session.", tr: "Ekran görüntüsü yükle, oturumun hakkında geri bildirimi al.", de: "Lade einen Screenshot hoch, erhalte Feedback.", es: "Sube una captura, obtén feedback sobre tu sesión." },
 
   "tk.genreDna": { en: "Genre DNA", tr: "Genre DNA", de: "Genre DNA", es: "ADN del Género" },
   "tk.genreDnaDesc": { en: "BPM, key, structure, and sound design maps per genre.", tr: "Türe göre BPM, key, yapı ve ses tasarımı haritaları.", de: "BPM, Key, Struktur und Sound-Design-Maps pro Genre.", es: "BPM, tonalidad, estructura y mapas de diseño sonoro por género." },
