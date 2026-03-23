@@ -105,7 +105,7 @@ export const translations: Record<string, Record<Lang, string>> = {
 
   // Pricing
   "price.label": { en: "Pricing", tr: "Fiyatlar", de: "Preise", es: "Precios" },
-  "price.title": { en: "Simple, Transparent Pricing", tr: "Basit, Şeffaf Fiyatlandırma", de: "Einfache, transparente Preise", es: "Precios Simples y Transparentes" },
+  "price.title": { en: "Pricing", tr: "Fiyatlandırma", de: "Preise", es: "Precios" },
   "price.free": { en: "Free", tr: "Ücretsiz", de: "Kostenlos", es: "Gratis" },
   "price.studio": { en: "Studio", tr: "Stüdyo", de: "Studio", es: "Estudio" },
   "price.mo": { en: "/mo", tr: "/ay", de: "/Mo", es: "/mes" },
