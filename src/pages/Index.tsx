@@ -34,7 +34,7 @@ const Index = () => (
     <ProblemSolver />
     <DailyTechnique />
     <StreakShowcase />
-    <GenreShowcase />
+    
     <HowItWorks />
     
     <Pricing />
