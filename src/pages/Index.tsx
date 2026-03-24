@@ -36,7 +36,7 @@ const Index = () => (
     <StreakShowcase />
     <GenreShowcase />
     <HowItWorks />
-    <Testimonials />
+    
     <Pricing />
 
     <section className="py-20 px-5">
