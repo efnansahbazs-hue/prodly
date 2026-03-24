@@ -9,7 +9,7 @@ import { BlankPageSection } from "@/components/BlankPageSection";
 import { ProblemSolver } from "@/components/ProblemSolver";
 import { DailyTechnique } from "@/components/DailyTechnique";
 import { StreakShowcase } from "@/components/StreakShowcase";
-import { GenreShowcase } from "@/components/GenreShowcase";
+
 import { HowItWorks } from "@/components/HowItWorks";
 
 import { Pricing } from "@/components/Pricing";
@@ -34,7 +34,7 @@ const Index = () => (
     <ProblemSolver />
     <DailyTechnique />
     <StreakShowcase />
-    <GenreShowcase />
+    
     <HowItWorks />
     
     <Pricing />
