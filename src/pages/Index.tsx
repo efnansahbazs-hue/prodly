@@ -11,7 +11,7 @@ import { DailyTechnique } from "@/components/DailyTechnique";
 import { StreakShowcase } from "@/components/StreakShowcase";
 import { GenreShowcase } from "@/components/GenreShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Testimonials } from "@/components/Testimonials";
+
 import { Pricing } from "@/components/Pricing";
 import { ProdlySpin } from "@/components/ProdlySpin";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -36,7 +36,7 @@ const Index = () => (
     <StreakShowcase />
     <GenreShowcase />
     <HowItWorks />
-    <Testimonials />
+    
     <Pricing />
 
     <section className="py-20 px-5">
