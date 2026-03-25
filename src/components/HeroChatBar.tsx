@@ -102,16 +102,18 @@ export const HeroChatBar = () => {
 
       {/* DAW selector */}
       <div className="flex items-center gap-2 mb-3">
-        <button
-          onClick={() => setShowDawPicker(!showDawPicker)}
-          className="w-7 h-7 rounded-lg flex items-center justify-center transition-all active:scale-90"
-          style={{
-            background: showDawPicker ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.05)",
-            border: `1px solid ${showDawPicker ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.1)"}`,
-          }}
-        >
-          <Plus className="w-3.5 h-3.5" style={{ color: showDawPicker ? "#A78BFA" : "#6B7280" }} />
-        </button>
+        {!showDawPicker && !selectedDaw && (
+          <button
+            onClick={() => setShowDawPicker(true)}
+            className="w-7 h-7 rounded-lg flex items-center justify-center transition-all active:scale-90"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          >
+            <Plus className="w-3.5 h-3.5" style={{ color: "#6B7280" }} />
+          </button>
+        )}
         {showDawPicker && (
           <div className="flex gap-1.5 animate-fade-in">
             {DAWS.map((d) => {
