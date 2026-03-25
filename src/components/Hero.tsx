@@ -22,7 +22,7 @@ export const Hero = () => {
             className="inline-block text-white opacity-0"
             style={{
               textShadow: "0 0 40px rgba(124,58,237,0.3)",
-              animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards",
+              animation: "heroFadeUp 0.4s ease forwards",
             }}
           >
             {t("hero.titleLine1")}{" "}
@@ -34,7 +34,7 @@ export const Hero = () => {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
-              animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards",
+              animation: "heroFadeUp 0.4s ease 0.06s forwards",
             }}
           >
             {t("hero.titleLine2")}

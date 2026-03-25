@@ -1,19 +1,10 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import type { ToolItem } from "@/components/Toolkit";
 
-const planBadge = (plan: ToolItem["plan"], limit?: string) => {
-  const base = "text-[10px] font-semibold px-2 py-0.5 rounded-full";
-  const styles: Record<string, React.CSSProperties> = {
-    free: { background: "rgba(52,211,153,0.15)", color: "#34D399" },
-    premium: { background: "rgba(124,58,237,0.2)", color: "#A78BFA" },
-    studio: { background: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
-  };
-  const label = plan.charAt(0).toUpperCase() + plan.slice(1);
-  return (
-    <span className={base} style={styles[plan]}>
-      {label}{limit ? ` · ${limit}` : ""}
-    </span>
-  );
+const planLabelKeys: Record<string, string> = {
+  free: "price.free",
+  premium: "price.cta.pro",
+  studio: "price.studio",
 };
 
 interface Props {
@@ -22,6 +13,21 @@ interface Props {
 
 export const ToolkitCards = ({ items }: Props) => {
   const { t } = useTranslation();
+
+  const planBadge = (plan: ToolItem["plan"], limit?: string) => {
+    const base = "text-[10px] font-semibold px-2 py-0.5 rounded-full";
+    const styles: Record<string, React.CSSProperties> = {
+      free: { background: "rgba(52,211,153,0.15)", color: "#34D399" },
+      premium: { background: "rgba(124,58,237,0.2)", color: "#A78BFA" },
+      studio: { background: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+    };
+    const label = plan === "free" ? t("price.free") : plan === "studio" ? t("price.studio") : "Premium";
+    return (
+      <span className={base} style={styles[plan]}>
+        {label}{limit ? ` · ${limit}` : ""}
+      </span>
+    );
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
