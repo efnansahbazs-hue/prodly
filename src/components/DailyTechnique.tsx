@@ -9,29 +9,37 @@ const technique = {
   description: {
     en: "Blend a heavily compressed copy of your signal with the dry original to add punch and sustain without destroying dynamics.",
     tr: "Sinyalinizin yoğun şekilde sıkıştırılmış bir kopyasını orijinal kuru sinyal ile harmanlayarak dinamikleri bozmadan punch ve sustain ekleyin.",
+    de: "Mische eine stark komprimierte Kopie deines Signals mit dem trockenen Original, um Punch und Sustain hinzuzufügen, ohne die Dynamik zu zerstören.",
+    es: "Mezcla una copia muy comprimida de tu señal con el original seco para añadir punch y sustain sin destruir la dinámica.",
   },
   whenToUse: {
     en: "Drums feel lifeless, vocals need presence, bus processing for glue.",
     tr: "Davullar cansız hissettirdiğinde, vokallerin varlık ihtiyacı olduğunda, yapıştırma için bus processing.",
+    de: "Drums klingen leblos, Vocals brauchen Präsenz, Bus-Processing für Zusammenhalt.",
+    es: "Los drums suenan sin vida, las voces necesitan presencia, bus processing para cohesión.",
   },
   quickTip: {
     en: "Add subtle saturation before the compressor on the parallel bus for smoother blending.",
     tr: "Daha yumuşak harmanlama için paralel bus'taki compressor'dan önce hafif saturation ekleyin.",
+    de: "Füge vor dem Kompressor auf dem Parallel-Bus subtile Sättigung hinzu für glatteres Blending.",
+    es: "Añade saturación sutil antes del compresor en el bus paralelo para una mezcla más suave.",
   },
   source: "Sound On Sound",
-};
-
-const diffStyles: Record<Difficulty, { bg: string; color: string; label: string }> = {
-  beginner: { bg: "rgba(52,211,153,0.15)", color: "#34D399", label: "Beginner" },
-  intermediate: { bg: "rgba(124,58,237,0.2)", color: "#A78BFA", label: "Intermediate" },
-  advanced: { bg: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF", label: "Advanced" },
 };
 
 export const DailyTechnique = () => {
   const { t } = useTranslation();
   const { lang } = useLang();
-  const diff = diffStyles[technique.difficulty];
   const getLang = (obj: Record<string, string>) => obj[lang] || obj.en;
+
+  const diffKey = `dt.diff.${technique.difficulty}`;
+
+  const diffStyles: Record<Difficulty, { bg: string; color: string }> = {
+    beginner: { bg: "rgba(52,211,153,0.15)", color: "#34D399" },
+    intermediate: { bg: "rgba(124,58,237,0.2)", color: "#A78BFA" },
+    advanced: { bg: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+  };
+  const diff = diffStyles[technique.difficulty];
 
   return (
     <section className="relative py-16 px-5">
@@ -56,7 +64,7 @@ export const DailyTechnique = () => {
                 className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full"
                 style={{ background: diff.bg, color: diff.color }}
               >
-                {diff.label}
+                {t(diffKey)}
               </span>
             </div>
 
@@ -70,13 +78,13 @@ export const DailyTechnique = () => {
 
             {/* When to use */}
             <div className="rounded-xl px-3 py-2.5 mb-3" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>{lang === "tr" ? "Ne zaman kullanılır" : "When to use"}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>{t("dt.whenToUse")}</p>
               <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.whenToUse)}</p>
             </div>
 
             {/* Pro tip */}
             <div className="rounded-xl px-3 py-2.5 mb-4" style={{ background: "rgba(52,211,153,0.04)", borderLeft: "3px solid #34D399" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>{lang === "tr" ? "Pro ipucu" : "Pro tip"}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: "#34D399" }}>{t("dt.proTip")}</p>
               <p className="text-[12px]" style={{ color: "#8B8FA8" }}>{getLang(technique.quickTip)}</p>
             </div>
 

@@ -3,31 +3,31 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const categories = [
-  { icon: "🎚️", label: "Mixing Issues", key: "ps.catMix" },
-  { icon: "🎛️", label: "Sound Design", key: "ps.catSound" },
-  { icon: "🔊", label: "Loudness & Mastering", key: "ps.catLoud" },
-  { icon: "🎵", label: "Arrangement", key: "ps.catArr" },
-  { icon: "⚡", label: "Performance & CPU", key: "ps.catPerf" },
+  { icon: "🎚️", key: "ps.catMix" },
+  { icon: "🎛️", key: "ps.catSound" },
+  { icon: "🔊", key: "ps.catLoud" },
+  { icon: "🎵", key: "ps.catArr" },
+  { icon: "⚡", key: "ps.catPerf" },
 ];
 
 interface Message {
   role: "user" | "prodly";
-  text: string;
+  textKey: string;
   source?: { color: string; label: string };
 }
 
 const conversations: Record<string, Message[]> = {
   "ps.catMix": [
-    { role: "user", text: "My mix sounds muddy, especially in the low-mids around 200-400Hz." },
-    { role: "prodly", text: "Classic low-mid buildup. Here's a 3-step diagnosis:", source: { color: "🟢", label: "Sound On Sound" } },
-    { role: "prodly", text: "1. Check for bass masking — HPF non-bass tracks at 80-120Hz\n2. Cut 250Hz on kick by 3dB — this is the mud frequency\n3. Use mid-side EQ: cut 300Hz in mid channel only" },
-    { role: "prodly", text: "Root cause: Too many elements competing in 200-400Hz range. Each instrument needs its own frequency pocket.", source: { color: "🟡", label: "In The Mix" } },
+    { role: "user", textKey: "ps.conv.mix.q1" },
+    { role: "prodly", textKey: "ps.conv.mix.a1", source: { color: "🟢", label: "Sound On Sound" } },
+    { role: "prodly", textKey: "ps.conv.mix.a2" },
+    { role: "prodly", textKey: "ps.conv.mix.a3", source: { color: "🟡", label: "In The Mix" } },
   ],
   "ps.catSound": [
-    { role: "user", text: "My synth lead sounds thin and boring. How do I make it wider?" },
-    { role: "prodly", text: "Width comes from 3 techniques combined:", source: { color: "🔵", label: "Ableton Manual" } },
-    { role: "prodly", text: "1. Unison voices: 4 voices, detune 10-15 cents\n2. Stereo chorus: rate 0.3Hz, depth 40%, mix 25%\n3. Haas effect: duplicate, pan L/R, delay one side 10-30ms" },
-    { role: "prodly", text: "Pro tip: Always check mono compatibility after widening. If it disappears in mono, reduce the Haas delay." },
+    { role: "user", textKey: "ps.conv.sound.q1" },
+    { role: "prodly", textKey: "ps.conv.sound.a1", source: { color: "🔵", label: "Ableton Manual" } },
+    { role: "prodly", textKey: "ps.conv.sound.a2" },
+    { role: "prodly", textKey: "ps.conv.sound.a3" },
   ],
 };
 
@@ -104,7 +104,7 @@ export const ProblemSolver = () => {
               >
                 {msg.role === "user" ? (
                   <div className="rounded-[14px] px-4 py-3 text-sm ml-8" style={{ background: "rgba(124,58,237,0.12)", color: "#A78BFA" }}>
-                    {msg.text}
+                    {t(msg.textKey)}
                   </div>
                 ) : (
                   <div
@@ -115,7 +115,7 @@ export const ProblemSolver = () => {
                       color: "#8B8FA8",
                     }}
                   >
-                    {msg.text}
+                    {t(msg.textKey)}
                     {msg.source && (
                       <span className="inline-flex items-center gap-1 mt-2 text-[10px] font-medium" style={{ color: "#34D399", display: "block" }}>
                         {msg.source.color} {msg.source.label}
