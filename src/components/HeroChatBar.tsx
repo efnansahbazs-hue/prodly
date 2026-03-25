@@ -4,7 +4,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useFreeUses } from "@/hooks/useFreeUses";
 import { useAuth } from "@/hooks/useAuth";
 import { UpgradeModal } from "@/components/UpgradeModal";
-import { GenreShowcase } from "@/components/GenreShowcase";
+
 
 export const HeroChatBar = () => {
   const { t } = useTranslation();
@@ -142,7 +142,7 @@ export const HeroChatBar = () => {
         ))}
       </div>
 
-      <GenreShowcase />
+      
 
       {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
     </div>
