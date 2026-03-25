@@ -183,7 +183,7 @@ export const translations: Record<string, Record<Lang, string>> = {
 
   // Toolkit
   "tk.label": { en: "YOUR TOOLKIT", tr: "ARAÇ SETİN", de: "DEIN TOOLKIT", es: "TU TOOLKIT" },
-  "tk.title": { en: "Everything a producer needs — in one place.", tr: "Bir prodüktörün ihtiyacı olan her şey — tek yerde.", de: "Alles was ein Produzent braucht — an einem Ort.", es: "Todo lo que un productor necesita — en un solo lugar." },
+  "tk.title": { en: "Everything a producer needs in one place.", tr: "Bir prodüktörün ihtiyacı olan her şey tek yerde.", de: "Alles was ein Produzent braucht an einem Ort.", es: "Todo lo que un productor necesita en un solo lugar." },
   "tk.cta": { en: "Start free — access 8 tools with no credit card →", tr: "Ücretsiz başla — kredi kartı olmadan 8 araca eriş →", de: "Kostenlos starten — 8 Tools ohne Kreditkarte →", es: "Empieza gratis — accede a 8 herramientas sin tarjeta →" },
 
   "tk.conceptDict": { en: "Concept Dictionary", tr: "Kavram Sözlüğü", de: "Konzept-Wörterbuch", es: "Diccionario de Conceptos" },
