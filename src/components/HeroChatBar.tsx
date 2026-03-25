@@ -101,49 +101,24 @@ export const HeroChatBar = () => {
       )}
 
       {/* DAW selector */}
-      <div className="flex items-center gap-2 mb-3">
-        {!showDawPicker && !selectedDaw && (
-          <button
-            onClick={() => setShowDawPicker(true)}
-            className="w-7 h-7 rounded-lg flex items-center justify-center transition-all active:scale-90"
-            style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            <Plus className="w-3.5 h-3.5" style={{ color: "#6B7280" }} />
-          </button>
-        )}
-        {showDawPicker && (
-          <div className="flex-1 flex justify-center gap-3 animate-fade-in">
-            {DAWS.map((d) => {
-              const isSelected = selectedDaw === d.id;
-              return (
-                <button
-                  key={d.id}
-                  onClick={() => { setSelectedDaw(isSelected ? null : d.id); setShowDawPicker(false); }}
-                  className="px-4 py-1.5 rounded-full text-[12px] font-medium transition-all active:scale-95"
-                  style={{
-                    background: isSelected ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.03)",
-                    border: `1px solid ${isSelected ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
-                    color: isSelected ? "#A78BFA" : "rgba(139,143,168,0.7)",
-                  }}
-                >
-                  {d.labelKey ? t(d.labelKey) : d.label}
-                </button>
-              );
-            })}
-          </div>
-        )}
-        {!showDawPicker && selectedDaw && (
-          <span
-            className="px-3 py-1 rounded-full text-[11px] font-medium animate-fade-in cursor-pointer"
-            onClick={() => setShowDawPicker(true)}
-            style={{ background: "rgba(124,58,237,0.2)", border: "1px solid rgba(124,58,237,0.5)", color: "#A78BFA" }}
-          >
-            {DAWS.find(d => d.id === selectedDaw)?.label || t("demo.dawOther")}
-          </span>
-        )}
+      <div className="flex justify-center gap-3 mb-3">
+        {DAWS.map((d) => {
+          const isSelected = selectedDaw === d.id;
+          return (
+            <button
+              key={d.id}
+              onClick={() => setSelectedDaw(isSelected ? null : d.id)}
+              className="px-4 py-1.5 rounded-full text-[12px] font-medium transition-all active:scale-95"
+              style={{
+                background: isSelected ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${isSelected ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
+                color: isSelected ? "#A78BFA" : "rgba(139,143,168,0.7)",
+              }}
+            >
+              {d.labelKey ? t(d.labelKey) : d.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Chat input */}
