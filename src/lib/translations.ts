@@ -447,4 +447,44 @@ export const translations: Record<string, Record<Lang, string>> = {
 
   // Footer extras
   "footer.techniques": { en: "Techniques", tr: "Teknikler", de: "Techniken", es: "Técnicas" },
+
+  // Features badges/pills
+  "feat.badge.verified": { en: "Verified", tr: "Doğrulanmış", de: "Verifiziert", es: "Verificado" },
+  "feat.badge.neverLose": { en: "Never lose a solution", tr: "Hiçbir çözümü kaybetme", de: "Keine Lösung verlieren", es: "Nunca pierdas una solución" },
+
+  // Problem Solver conversations
+  "ps.conv.mix.q1": { en: "My mix sounds muddy, especially in the low-mids around 200-400Hz.", tr: "Mix'im bulanık çıkıyor, özellikle 200-400Hz civarındaki low-mid'lerde.", de: "Mein Mix klingt matschig, besonders in den Low-Mids um 200-400Hz.", es: "Mi mezcla suena turbia, especialmente en los low-mids alrededor de 200-400Hz." },
+  "ps.conv.mix.a1": { en: "Classic low-mid buildup. Here's a 3-step diagnosis:", tr: "Klasik low-mid birikimi. İşte 3 adımlı teşhis:", de: "Klassischer Low-Mid-Aufbau. Hier ist eine 3-Schritte-Diagnose:", es: "Acumulación clásica de low-mids. Aquí tienes un diagnóstico en 3 pasos:" },
+  "ps.conv.mix.a2": { en: "1. Check for bass masking — HPF non-bass tracks at 80-120Hz\n2. Cut 250Hz on kick by 3dB — this is the mud frequency\n3. Use mid-side EQ: cut 300Hz in mid channel only", tr: "1. Bass maskeleme kontrolü — bass olmayan track'lere 80-120Hz HPF uygula\n2. Kick'te 250Hz'i 3dB kes — bu mud frekansıdır\n3. Mid-side EQ kullan: sadece mid kanalda 300Hz kes", de: "1. Bass-Maskierung prüfen — HPF auf Nicht-Bass-Spuren bei 80-120Hz\n2. 250Hz am Kick um 3dB senken — das ist die Matsch-Frequenz\n3. Mid-Side EQ: 300Hz nur im Mid-Kanal senken", es: "1. Verificar enmascaramiento de bajos — HPF en pistas sin bajo a 80-120Hz\n2. Cortar 250Hz en el kick por 3dB — esta es la frecuencia turbia\n3. Usar EQ mid-side: cortar 300Hz solo en el canal mid" },
+  "ps.conv.mix.a3": { en: "Root cause: Too many elements competing in 200-400Hz range. Each instrument needs its own frequency pocket.", tr: "Temel neden: 200-400Hz aralığında çok fazla element yarışıyor. Her enstrümanın kendi frekans cebine ihtiyacı var.", de: "Ursache: Zu viele Elemente konkurrieren im 200-400Hz-Bereich. Jedes Instrument braucht seine eigene Frequenznische.", es: "Causa raíz: Demasiados elementos compitiendo en el rango 200-400Hz. Cada instrumento necesita su propio espacio de frecuencia." },
+  "ps.conv.sound.q1": { en: "My synth lead sounds thin and boring. How do I make it wider?", tr: "Synth lead'im ince ve sıkıcı çıkıyor. Nasıl genişletirim?", de: "Mein Synth-Lead klingt dünn und langweilig. Wie mache ich ihn breiter?", es: "Mi lead de sintetizador suena delgado y aburrido. ¿Cómo lo hago más ancho?" },
+  "ps.conv.sound.a1": { en: "Width comes from 3 techniques combined:", tr: "Genişlik 3 tekniğin birleşiminden gelir:", de: "Breite entsteht durch 3 kombinierte Techniken:", es: "La amplitud viene de combinar 3 técnicas:" },
+  "ps.conv.sound.a2": { en: "1. Unison voices: 4 voices, detune 10-15 cents\n2. Stereo chorus: rate 0.3Hz, depth 40%, mix 25%\n3. Haas effect: duplicate, pan L/R, delay one side 10-30ms", tr: "1. Unison voice'lar: 4 voice, detune 10-15 cent\n2. Stereo chorus: rate 0.3Hz, depth %40, mix %25\n3. Haas efekti: çoğalt, L/R pan yap, bir tarafı 10-30ms geciktir", de: "1. Unison-Voices: 4 Voices, Detune 10-15 Cents\n2. Stereo Chorus: Rate 0.3Hz, Depth 40%, Mix 25%\n3. Haas-Effekt: Duplizieren, L/R pannen, eine Seite 10-30ms verzögern", es: "1. Voces unísono: 4 voces, detune 10-15 cents\n2. Chorus estéreo: rate 0.3Hz, depth 40%, mix 25%\n3. Efecto Haas: duplicar, panear L/R, retrasar un lado 10-30ms" },
+  "ps.conv.sound.a3": { en: "Pro tip: Always check mono compatibility after widening. If it disappears in mono, reduce the Haas delay.", tr: "Pro ipucu: Genişlettikten sonra her zaman mono uyumluluğunu kontrol et. Mono'da kayboluyorsa, Haas delay'ini azalt.", de: "Pro-Tipp: Immer Mono-Kompatibilität nach dem Verbreitern prüfen. Wenn es in Mono verschwindet, Haas-Delay reduzieren.", es: "Pro tip: Siempre verifica la compatibilidad mono después de ensanchar. Si desaparece en mono, reduce el delay Haas." },
+
+  // DailyTechnique labels
+  "dt.whenToUse": { en: "When to use", tr: "Ne zaman kullanılır", de: "Wann verwenden", es: "Cuándo usar" },
+  "dt.proTip": { en: "Pro tip", tr: "Pro ipucu", de: "Profi-Tipp", es: "Consejo pro" },
+  "dt.diff.beginner": { en: "Beginner", tr: "Başlangıç", de: "Anfänger", es: "Principiante" },
+  "dt.diff.intermediate": { en: "Intermediate", tr: "Orta", de: "Fortgeschritten", es: "Intermedio" },
+  "dt.diff.advanced": { en: "Advanced", tr: "İleri", de: "Profi", es: "Avanzado" },
+
+  // Streak day labels
+  "streak.mon": { en: "M", tr: "Pt", de: "Mo", es: "L" },
+  "streak.tue": { en: "T", tr: "Sa", de: "Di", es: "M" },
+  "streak.wed": { en: "W", tr: "Ça", de: "Mi", es: "X" },
+  "streak.thu": { en: "T", tr: "Pe", de: "Do", es: "J" },
+  "streak.fri": { en: "F", tr: "Cu", de: "Fr", es: "V" },
+  "streak.sat": { en: "S", tr: "Ct", de: "Sa", es: "S" },
+  "streak.sun": { en: "S", tr: "Pa", de: "So", es: "D" },
+  "streak.m3": { en: "3-day", tr: "3 gün", de: "3 Tage", es: "3 días" },
+  "streak.m7": { en: "7-day", tr: "7 gün", de: "7 Tage", es: "7 días" },
+  "streak.m30": { en: "30-day", tr: "30 gün", de: "30 Tage", es: "30 días" },
+  "streak.m100": { en: "100-day", tr: "100 gün", de: "100 Tage", es: "100 días" },
+
+  // Toolkit tab labels
+  "tk.tab.learn": { en: "Learn", tr: "Öğren", de: "Lernen", es: "Aprender" },
+  "tk.tab.solve": { en: "Solve", tr: "Çöz", de: "Lösen", es: "Resolver" },
+  "tk.tab.reference": { en: "Reference", tr: "Referans", de: "Referenz", es: "Referencia" },
+  "tk.tab.create": { en: "Create", tr: "Oluştur", de: "Erstellen", es: "Crear" },
 };

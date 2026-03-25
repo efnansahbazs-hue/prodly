@@ -10,7 +10,9 @@ const cards = [
     iconColor: "#A78BFA",
     titleKey: "feat.ask.title",
     descKey: "feat.ask.desc",
-    badge: { emoji: "🟢", text: "Verified", color: "#34D399" },
+    badgeKey: "feat.badge.verified",
+    badgeEmoji: "🟢",
+    badgeColor: "#34D399",
   },
   {
     num: "02",
@@ -28,9 +30,11 @@ const cards = [
     iconColor: "#A78BFA",
     titleKey: "feat.archive.title",
     descKey: "feat.archive.desc",
-    badge: { emoji: "🔒", text: "Never lose a solution", color: "#8B8FA8" },
+    badgeKey: "feat.badge.neverLose",
+    badgeEmoji: "🔒",
+    badgeColor: "#8B8FA8",
   },
-] as const;
+];
 
 export const Features = () => {
   const { t } = useTranslation();
@@ -103,9 +107,9 @@ export const Features = () => {
                 </p>
 
                 {/* Badge or pills */}
-                {"badge" in c && c.badge && (
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-medium" style={{ color: c.badge.color }}>
-                    {c.badge.emoji} {c.badge.text}
+                {"badgeKey" in c && c.badgeKey && (
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-medium" style={{ color: c.badgeColor }}>
+                    {c.badgeEmoji} {t(c.badgeKey)}
                   </span>
                 )}
                 {"pills" in c && c.pills && (
