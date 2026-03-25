@@ -55,7 +55,7 @@ export const Toolkit = () => {
           <p className="text-[12px] font-semibold tracking-[0.1em] uppercase text-center mb-3" style={{ color: "#34D399" }}>
             {t("tk.label")}
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-center text-white mb-10 whitespace-nowrap" style={{ fontFamily: "'Space Grotesk'" }}>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-center text-white mb-10 whitespace-nowrap" style={{ fontFamily: "'Space Grotesk'", fontSize: "clamp(24px, 3.5vw, 48px)" }}>
             {t("tk.title")}
           </h2>
         </ScrollReveal>

@@ -2,7 +2,6 @@ import { HolographicMesh, HoloDotGrid, StaticGrain } from "@/components/Holograp
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { WhatProdlyDoes } from "@/components/WhatProdlyDoes";
-import { DemoWidget } from "@/components/DemoWidget";
 import { Features } from "@/components/Features";
 import { Toolkit } from "@/components/Toolkit";
 import { BlankPageSection } from "@/components/BlankPageSection";
@@ -27,7 +26,6 @@ const Index = () => (
     <Navbar />
     <Hero />
     <WhatProdlyDoes />
-    <DemoWidget />
     <Features />
     <Toolkit />
     <BlankPageSection />
