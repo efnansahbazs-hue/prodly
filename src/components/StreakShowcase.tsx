@@ -1,20 +1,18 @@
-import { useState } from "react";
 import { Snowflake, Trophy } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-const days = ["M", "T", "W", "T", "F", "S", "S"];
+const dayKeys = ["streak.mon", "streak.tue", "streak.wed", "streak.thu", "streak.fri", "streak.sat", "streak.sun"];
 
 const milestones = [
-  { days: 3, label: "3-day", unlocked: true },
-  { days: 7, label: "7-day", unlocked: true },
-  { days: 30, label: "30-day", unlocked: false },
-  { days: 100, label: "100-day", unlocked: false },
+  { days: 3, labelKey: "streak.m3", unlocked: true },
+  { days: 7, labelKey: "streak.m7", unlocked: true },
+  { days: 30, labelKey: "streak.m30", unlocked: false },
+  { days: 100, labelKey: "streak.m100", unlocked: false },
 ];
 
 export const StreakShowcase = () => {
   const { t } = useTranslation();
-  // Mock: 5 of 7 days completed, today is day 6
   const completedDays = [true, true, true, true, true, false, false];
   const todayIdx = 5;
   const streakCount = 23;
@@ -45,7 +43,6 @@ export const StreakShowcase = () => {
                   <span className="text-sm" style={{ color: "#8B8FA8" }}>{t("streak.days")}</span>
                 </div>
               </div>
-              {/* Streak freeze */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                 <Snowflake className="w-3.5 h-3.5" style={{ color: "#34D399" }} />
                 <span className="text-[11px] font-semibold" style={{ color: "#34D399" }}>{freezesLeft}</span>
@@ -55,12 +52,12 @@ export const StreakShowcase = () => {
 
             {/* 7-day calendar */}
             <div className="flex justify-between gap-2 mb-6">
-              {days.map((day, i) => {
+              {dayKeys.map((dayKey, i) => {
                 const isDone = completedDays[i];
                 const isToday = i === todayIdx;
                 return (
                   <div key={i} className="flex flex-col items-center gap-1.5">
-                    <span className="text-[10px] font-semibold" style={{ color: "#6B7280" }}>{day}</span>
+                    <span className="text-[10px] font-semibold" style={{ color: "#6B7280" }}>{t(dayKey)}</span>
                     <div
                       className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300"
                       style={{
@@ -109,7 +106,7 @@ export const StreakShowcase = () => {
                 >
                   <Trophy className="w-3 h-3" style={{ color: m.unlocked ? "#A78BFA" : "#6B7280" }} />
                   <span className="text-[11px] font-semibold" style={{ color: m.unlocked ? "#A78BFA" : "#6B7280" }}>
-                    {m.label}
+                    {t(m.labelKey)}
                   </span>
                 </div>
               ))}
