@@ -47,7 +47,7 @@ export const ProblemSolver = () => {
       i++;
       setVisibleMsgs(i);
       if (i >= total) clearInterval(timer);
-    }, 600);
+    }, 250);
     return () => clearInterval(timer);
   }, [activeCat, msgs.length]);
 
