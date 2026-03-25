@@ -115,18 +115,18 @@ export const HeroChatBar = () => {
           </button>
         )}
         {showDawPicker && (
-          <div className="flex gap-1.5 animate-fade-in">
+          <div className="flex-1 flex justify-center gap-3 animate-fade-in">
             {DAWS.map((d) => {
               const isSelected = selectedDaw === d.id;
               return (
                 <button
                   key={d.id}
                   onClick={() => { setSelectedDaw(isSelected ? null : d.id); setShowDawPicker(false); }}
-                  className="px-3 py-1 rounded-full text-[11px] font-medium transition-all active:scale-95"
+                  className="px-4 py-1.5 rounded-full text-[12px] font-medium transition-all active:scale-95"
                   style={{
-                    background: isSelected ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-                    border: `1px solid ${isSelected ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.08)"}`,
-                    color: isSelected ? "#A78BFA" : "#8B8FA8",
+                    background: isSelected ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.03)",
+                    border: `1px solid ${isSelected ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
+                    color: isSelected ? "#A78BFA" : "rgba(139,143,168,0.7)",
                   }}
                 >
                   {d.labelKey ? t(d.labelKey) : d.label}
