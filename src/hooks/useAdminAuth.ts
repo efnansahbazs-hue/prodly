@@ -7,9 +7,7 @@ export const useAdminAuth = () => {
 
   const authed = isLoggedIn && user?.email === ADMIN_EMAIL;
 
-  const logout = () => {
-    authLogout();
-  };
+  const logout = () => authLogout();
 
   return { authed, logout };
 };

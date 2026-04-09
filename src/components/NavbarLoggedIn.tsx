@@ -3,9 +3,17 @@ import { useExp } from "@/hooks/useExp";
 import { useLang } from "@/hooks/useLang";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useNavigate } from "react-router-dom";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useAuth } from "@/hooks/useAuth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { AvatarPickerModal } from "@/components/AvatarPickerModal";
 import { getAvatarById } from "@/components/AvatarPresets";
+import { User, Image, LogOut } from "lucide-react";
 
 const getLevelGradient = (level: number) => {
   if (level >= 10) return "linear-gradient(135deg, #F59E0B, #D97706)";
@@ -19,21 +27,24 @@ export const NavbarLoggedIn = () => {
   const { lang } = useLang();
   const { avatarId, photo, hasAvatar } = useAvatar();
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const avatarPreset = avatarId ? getAvatarById(avatarId) : null;
 
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
   return (
     <>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <button
-            onClick={() => setPickerOpen(true)}
-            onContextMenu={(e) => { e.preventDefault(); navigate("/profile"); }}
-            className="flex items-center gap-2.5 group cursor-pointer"
-          >
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className="flex items-center gap-2.5 group cursor-pointer outline-none">
             {/* Avatar circle */}
-            <div className="relative w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
+            <div
+              className="relative w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
               style={{
                 background: hasAvatar ? "transparent" : getLevelGradient(level.level),
                 border: "2px solid rgba(255,255,255,0.2)",
@@ -78,7 +89,7 @@ export const NavbarLoggedIn = () => {
               )}
             </div>
 
-            {/* EXP bar — show Lv text only when no avatar */}
+            {/* EXP bar */}
             <div className="hidden sm:flex flex-col gap-0.5">
               {!hasAvatar && (
                 <span className="text-[10px] font-medium" style={{ color: "#8B8FA8" }}>
@@ -97,21 +108,46 @@ export const NavbarLoggedIn = () => {
                   }}
                 />
               </div>
+              <span className="text-[9px]" style={{ color: "#8B8FA8" }}>
+                {exp.toLocaleString()} EXP
+              </span>
             </div>
           </button>
-        </TooltipTrigger>
-        <TooltipContent
-          side="bottom"
-          className="border-0 px-3 py-2 text-xs"
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          align="end"
+          className="w-44 border-0 rounded-xl py-1"
           style={{
             background: "#0A0A0F",
             border: "1px solid rgba(255,255,255,0.08)",
-            color: "#fff",
           }}
         >
-          Level {level.level} — {level.name[lang] || level.name.en} | {exp.toLocaleString()} / {level.maxExp.toLocaleString()} EXP
-        </TooltipContent>
-      </Tooltip>
+          <DropdownMenuItem
+            onClick={() => navigate("/profile")}
+            className="flex items-center gap-2 px-3 py-2 text-xs cursor-pointer text-[#8B8FA8] hover:text-white focus:text-white focus:bg-white/5"
+          >
+            <User size={13} />
+            Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => setPickerOpen(true)}
+            className="flex items-center gap-2 px-3 py-2 text-xs cursor-pointer text-[#8B8FA8] hover:text-white focus:text-white focus:bg-white/5"
+          >
+            <Image size={13} />
+            Change Avatar
+          </DropdownMenuItem>
+          <DropdownMenuSeparator style={{ background: "rgba(255,255,255,0.06)" }} />
+          <DropdownMenuItem
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-3 py-2 text-xs cursor-pointer focus:bg-white/5"
+            style={{ color: "#EF4444" }}
+          >
+            <LogOut size={13} />
+            Sign Out
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <AvatarPickerModal open={pickerOpen} onClose={() => setPickerOpen(false)} />
     </>

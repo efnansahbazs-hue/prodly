@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut } from "lucide-react";
 import { useLang } from "@/hooks/useLang";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useNavbar } from "@/hooks/useNavbar";
@@ -211,60 +211,80 @@ const MobileOverlay = ({
   t: (key: string) => string; onClose: () => void;
   isLoggedIn: boolean;
   navLinks: { key: string; href: string }[];
-}) => (
-  <div
-    className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 animate-fade-in-up"
-    style={{ background: "rgba(10,10,15,0.96)", backdropFilter: "blur(30px)" }}
-  >
-    {navLinks.map((link) => (
-      <Link
-        key={link.key}
-        to={link.href}
-        onClick={onClose}
-        className="text-2xl font-semibold text-white hover:text-gradient-mixed transition-colors"
-        style={{ fontFamily: "'Space Grotesk'" }}
-      >
-        {t(`nav.${link.key}`)}
-      </Link>
-    ))}
+}) => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
-    <div className="flex gap-3 mt-4">
-      {langs.map((l) => (
-        <button
-          key={l.code}
-          onClick={() => setLang(l.code)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-            lang === l.code ? "text-white border border-[var(--border-accent)]" : "text-[#8B8FA8] border border-transparent hover:text-white"
-          }`}
-          style={lang === l.code ? { background: "rgba(0,200,255,0.15)" } : {}}
+  const handleLogout = async () => {
+    onClose();
+    await logout();
+    navigate("/");
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 animate-fade-in-up"
+      style={{ background: "rgba(10,10,15,0.96)", backdropFilter: "blur(30px)" }}
+    >
+      {navLinks.map((link) => (
+        <Link
+          key={link.key}
+          to={link.href}
+          onClick={onClose}
+          className="text-2xl font-semibold text-white hover:text-gradient-mixed transition-colors"
+          style={{ fontFamily: "'Space Grotesk'" }}
         >
-          {l.label}
-        </button>
-      ))}
-    </div>
-
-    {!isLoggedIn && (
-      <div className="flex flex-col items-center gap-3 mt-2">
-        <Link to="/auth/login" onClick={onClose} className="text-sm font-medium" style={{ color: "#8B8FA8" }}>
-          {t("auth.login")}
+          {t(`nav.${link.key}`)}
         </Link>
-        <div
-          className="rounded-full p-[2px] animate-move-border"
-          style={{
-            background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
-            backgroundSize: "200% 200%",
-          }}
-        >
-          <Link
-            to="/auth/register"
-            onClick={onClose}
-            className="block rounded-full px-8 py-3 text-sm font-semibold text-white active:scale-[0.96] transition-transform"
-            style={{ background: "#00C8FF" }}
+      ))}
+
+      <div className="flex gap-3 mt-4">
+        {langs.map((l) => (
+          <button
+            key={l.code}
+            onClick={() => setLang(l.code)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              lang === l.code ? "text-white border border-[var(--border-accent)]" : "text-[#8B8FA8] border border-transparent hover:text-white"
+            }`}
+            style={lang === l.code ? { background: "rgba(0,200,255,0.15)" } : {}}
           >
-            {t("nav.startFree")}
-          </Link>
-        </div>
+            {l.label}
+          </button>
+        ))}
       </div>
-    )}
-  </div>
-);
+
+      {isLoggedIn ? (
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 mt-2 text-sm font-medium transition-colors hover:opacity-80"
+          style={{ color: "#EF4444" }}
+        >
+          <LogOut size={16} />
+          Sign Out
+        </button>
+      ) : (
+        <div className="flex flex-col items-center gap-3 mt-2">
+          <Link to="/auth/login" onClick={onClose} className="text-sm font-medium" style={{ color: "#8B8FA8" }}>
+            {t("auth.login")}
+          </Link>
+          <div
+            className="rounded-full p-[2px] animate-move-border"
+            style={{
+              background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
+              backgroundSize: "200% 200%",
+            }}
+          >
+            <Link
+              to="/auth/register"
+              onClick={onClose}
+              className="block rounded-full px-8 py-3 text-sm font-semibold text-white active:scale-[0.96] transition-transform"
+              style={{ background: "#00C8FF" }}
+            >
+              {t("nav.startFree")}
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};

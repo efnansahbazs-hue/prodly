@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { createContext, useContext } from "react";
 
 export type AuthUser = {
   username: string;
@@ -7,30 +7,18 @@ export type AuthUser = {
   avatar?: string;
 };
 
-const STORAGE_KEY = "prodly_auth_user";
+export type AuthContextType = {
+  user: AuthUser | null;
+  isLoggedIn: boolean;
+  login: (u: AuthUser) => void;
+  logout: () => Promise<void>;
+  register: (username: string, email: string, password: string) => AuthUser;
+};
 
-export const useAuth = () => {
-  const [user, setUserState] = useState<AuthUser | null>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : null;
-  });
+export const AuthContext = createContext<AuthContextType | null>(null);
 
-  const login = useCallback((u: AuthUser) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
-    setUserState(u);
-  }, []);
-
-  const logout = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY);
-    setUserState(null);
-  }, []);
-
-  const register = useCallback((username: string, email: string, password: string) => {
-    const u: AuthUser = { username, email, plan: "free" };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
-    setUserState(u);
-    return u;
-  }, []);
-
-  return { user, isLoggedIn: !!user, login, logout, register };
+export const useAuth = (): AuthContextType => {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
+  return ctx;
 };
