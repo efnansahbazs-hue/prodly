@@ -4,38 +4,50 @@ import { supabase } from "@/lib/supabase";
 
 const STORAGE_KEY = "prodly_auth_user";
 
+const fetchPlan = async (userId: string): Promise<"free" | "premium" | "studio"> => {
+  const { data } = await supabase
+    .from("profiles")
+    .select("plan")
+    .eq("id", userId)
+    .single();
+  return (data?.plan as "free" | "premium" | "studio") ?? "free";
+};
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<AuthUser | null>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : null;
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Sync with active Supabase session on mount
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session?.user) {
+        const plan = await fetchPlan(session.user.id);
         const u: AuthUser = {
+          id: session.user.id,
           username: session.user.user_metadata?.username ?? session.user.email?.split("@")[0] ?? "user",
           email: session.user.email ?? "",
-          plan: session.user.user_metadata?.plan ?? "free",
+          plan,
           avatar: session.user.user_metadata?.avatar,
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
         setUser(u);
       } else {
-        // No active Supabase session — clear any stale local auth
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
       }
+      setLoading(false);
     });
 
-    // Keep state in sync with Supabase auth events
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session?.user) {
+        const plan = await fetchPlan(session.user.id);
         const u: AuthUser = {
+          id: session.user.id,
           username: session.user.user_metadata?.username ?? session.user.email?.split("@")[0] ?? "user",
           email: session.user.email ?? "",
-          plan: session.user.user_metadata?.plan ?? "free",
+          plan,
           avatar: session.user.user_metadata?.avatar,
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
@@ -63,22 +75,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const register = useCallback(async (username: string, email: string, password: string): Promise<AuthUser> => {
-    console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
-    console.log("signUp called", { username, email });
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { username, plan: "free" } },
     });
-    console.log("signUp result", { data, error });
     if (error) throw error;
-    const u: AuthUser = { username, email, plan: "free" };
-    // onAuthStateChange will handle setUser; return immediately for navigation
+    const u: AuthUser = { id: data.user?.id ?? "", username, email, plan: "free" };
     return u;
   }, []);
 
+  const plan = user?.plan ?? "free";
+
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout, register }}>
+    <AuthContext.Provider value={{ user, plan, isLoggedIn: !!user, loading, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   );

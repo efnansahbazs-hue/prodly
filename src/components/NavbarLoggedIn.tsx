@@ -44,8 +44,14 @@ export const NavbarLoggedIn = () => {
             border: "1px solid #1a1a1a",
           }}
         >
-          <div className="px-3 py-2 text-xs" style={{ color: "#8B8FA8" }}>
-            {user?.email}
+          <div className="px-3 py-2">
+            <p className="text-xs" style={{ color: "#8B8FA8" }}>{user?.email}</p>
+            <span
+              className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 capitalize"
+              style={{ background: "rgba(0,200,255,0.15)", color: "#00C8FF" }}
+            >
+              {user?.plan ?? "free"}
+            </span>
           </div>
           <div style={{ height: 1, background: "#1a1a1a", margin: "4px 0" }} />
           <button

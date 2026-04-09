@@ -1,7 +1,7 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLang } from "@/hooks/useLang";
 import { useExp } from "@/hooks/useExp";
-import { useAuth } from "@/hooks/useAuth";
+import { useUsage } from "@/hooks/useUsage";
 import { DailyUsageBar } from "@/components/DailyUsageBar";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { LockedOverlay } from "@/components/dashboard/LockedOverlay";
@@ -105,10 +105,10 @@ const StatsContent = ({ lang }: { lang: string }) => (
 export const DashboardMain = ({ plan }: { plan: "free" | "premium" | "studio" }) => {
   const { lang } = useLang();
   const { level, exp, progress } = useExp();
+  const { used, limit } = useUsage();
   const greeting = getGreeting(lang);
   const weekdays = lang === "tr" ? WEEKDAYS_TR : WEEKDAYS_EN;
   const isFree = plan === "free";
-  const maxQuestions = plan === "studio" ? 35 : plan === "premium" ? 20 : 5;
 
   return (
     <div className="flex-1 min-w-0 space-y-5">
@@ -126,7 +126,7 @@ export const DashboardMain = ({ plan }: { plan: "free" | "premium" | "studio" })
             </div>
           </div>
           <div className="w-full md:w-64">
-            <DailyUsageBar used={2} max={maxQuestions} />
+            <DailyUsageBar used={used} max={limit} />
           </div>
         </div>
       </ScrollReveal>

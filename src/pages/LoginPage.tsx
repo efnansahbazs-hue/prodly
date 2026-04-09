@@ -30,6 +30,7 @@ export default function LoginPage() {
     // Explicitly sync auth context before navigating so Navbar renders correctly
     if (data.user) {
       login({
+        id: data.user.id,
         username: data.user.user_metadata?.username ?? data.user.email?.split("@")[0] ?? "user",
         email: data.user.email ?? "",
         plan: data.user.user_metadata?.plan ?? "free",
