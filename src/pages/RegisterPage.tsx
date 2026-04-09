@@ -35,12 +35,16 @@ export default function RegisterPage() {
 
   const strength = getStrength(password);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !email || !password) { setError(t("auth.required")); return; }
     if (password.length < 6) { setError(t("auth.weakPassword")); return; }
-    register(username, email, password);
-    navigate("/onboarding");
+    try {
+      await register(username, email, password);
+      navigate("/onboarding");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : t("auth.required"));
+    }
   };
 
   return (

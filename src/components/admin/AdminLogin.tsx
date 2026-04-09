@@ -41,7 +41,7 @@ export const AdminLogin = () => {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: "#8B8FA8" }}>Username</label>
+              <label className="block text-xs font-medium mb-1.5" style={{ color: "#8B8FA8" }}>Email</label>
               <input
                 value={user}
                 onChange={(e) => setUser(e.target.value)}

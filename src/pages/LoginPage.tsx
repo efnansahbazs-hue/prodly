@@ -14,11 +14,15 @@ export default function LoginPage() {
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) { setError(t("auth.required")); return; }
-    login({ username: email.split("@")[0], email, plan: "free" });
-    navigate("/");
+    try {
+      await login(email, password);
+      navigate("/");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : t("auth.required"));
+    }
   };
 
   return (

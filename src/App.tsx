@@ -18,6 +18,7 @@ import DashboardPage from "./pages/DashboardPage.tsx";
 import EffectsPage from "./pages/EffectsPage.tsx";
 import PluginsPage from "./pages/PluginsPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
+import { AdminAuthProvider } from "./contexts/AdminAuthContext.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
 import AdminReports from "./pages/admin/AdminReports.tsx";
@@ -56,7 +57,7 @@ const App = () => (
             <Route path="/tools/plugins" element={<PluginsPage />} />
 
             {/* Admin */}
-            <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/admin" element={<AdminAuthProvider><AdminLayout /></AdminAuthProvider>}>
               <Route index element={<AdminDashboard />} />
               <Route path="login" element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />
