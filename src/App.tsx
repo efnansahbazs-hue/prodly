@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LangProvider } from "@/hooks/useLang";
+import { AdminAuthProvider } from "./contexts/AdminAuthContext.tsx";
+import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import TechniquesPage from "./pages/TechniquesPage.tsx";
@@ -18,7 +20,6 @@ import DashboardPage from "./pages/DashboardPage.tsx";
 import EffectsPage from "./pages/EffectsPage.tsx";
 import PluginsPage from "./pages/PluginsPage.tsx";
 import AdminLayout from "./pages/AdminLayout.tsx";
-import { AdminAuthProvider } from "./contexts/AdminAuthContext.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
 import AdminReports from "./pages/admin/AdminReports.tsx";
@@ -40,24 +41,31 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth/login" element={<LoginPage />} />
             <Route path="/auth/register" element={<RegisterPage />} />
-            <Route path="/onboarding" element={<OnboardingPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/techniques" element={<TechniquesPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/profile/:username" element={<ProfilePage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/community/library" element={<CommunityPage />} />
-            <Route path="/community/challenges" element={<CommunityPage />} />
-            <Route path="/community/lounge" element={<CommunityPage />} />
-            <Route path="/community/trending" element={<CommunityPage />} />
-            <Route path="/community/collab" element={<CommunityPage />} />
-            <Route path="/suggestions" element={<SuggestionsPage />} />
-            <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/tools/effects" element={<EffectsPage />} />
-            <Route path="/tools/plugins" element={<PluginsPage />} />
 
-            {/* Admin */}
-            <Route path="/admin" element={<AdminAuthProvider><AdminLayout /></AdminAuthProvider>}>
+            {/* Protected routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/onboarding" element={<OnboardingPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/profile/:username" element={<ProfilePage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/community/library" element={<CommunityPage />} />
+              <Route path="/community/challenges" element={<CommunityPage />} />
+              <Route path="/community/lounge" element={<CommunityPage />} />
+              <Route path="/community/trending" element={<CommunityPage />} />
+              <Route path="/community/collab" element={<CommunityPage />} />
+              <Route path="/suggestions" element={<SuggestionsPage />} />
+              <Route path="/roadmap" element={<RoadmapPage />} />
+              <Route path="/tools/effects" element={<EffectsPage />} />
+              <Route path="/tools/plugins" element={<PluginsPage />} />
+              <Route path="/techniques" element={<TechniquesPage />} />
+            </Route>
+
+            {/* Admin — guarded by Supabase email check */}
+            <Route
+              path="/admin"
+              element={<AdminAuthProvider><AdminLayout /></AdminAuthProvider>}
+            >
               <Route index element={<AdminDashboard />} />
               <Route path="login" element={<AdminDashboard />} />
               <Route path="dashboard" element={<AdminDashboard />} />

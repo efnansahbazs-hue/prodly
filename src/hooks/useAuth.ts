@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
 
@@ -21,6 +22,7 @@ const toAuthUser = (user: User): AuthUser => ({
 export const useAuth = () => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -43,6 +45,7 @@ export const useAuth = () => {
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    navigate("/");
   };
 
   const register = async (username: string, email: string, password: string) => {

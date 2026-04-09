@@ -1,12 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
-import { AdminLogin } from "@/components/admin/AdminLogin";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 
 export default function AdminLayout() {
-  const { authed } = useAdminAuth();
+  const { isAdmin, loading } = useAdminAuth();
 
-  if (!authed) return <AdminLogin />;
+  if (loading) return null;
+  if (!isAdmin) return <Navigate to="/auth/login" replace />;
 
   return (
     <div className="flex min-h-screen" style={{ background: "#0A0A0F" }}>
