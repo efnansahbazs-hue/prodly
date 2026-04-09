@@ -218,7 +218,6 @@ const MobileOverlay = ({
   const handleLogout = async () => {
     onClose();
     await logout();
-    navigate("/");
   };
 
   return (

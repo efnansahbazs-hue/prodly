@@ -34,7 +34,6 @@ export const NavbarLoggedIn = () => {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/");
   };
 
   return (

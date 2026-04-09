@@ -16,13 +16,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const logout = useCallback(async () => {
-    try {
-      await supabase.auth.signOut();
-    } catch {
-      // Supabase not configured — skip
-    }
-    localStorage.removeItem(STORAGE_KEY);
+    await supabase.auth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
     setUser(null);
+    window.location.href = "/";
   }, []);
 
   const register = useCallback((username: string, email: string, _password: string): AuthUser => {
