@@ -64,7 +64,7 @@ export const AdminSidebar = () => {
 
       {/* Logout */}
       <button
-        onClick={() => { logout(); navigate("/admin"); }}
+        onClick={() => { logout(); navigate("/auth/login"); }}
         className="flex items-center gap-2 px-3 py-2 mt-4 text-xs font-medium transition-colors hover:text-white"
         style={{ color: "#8B8FA8" }}
       >
