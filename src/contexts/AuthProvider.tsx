@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // Sync with active Supabase session on mount
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user && !localStorage.getItem(STORAGE_KEY)) {
+      if (session?.user) {
         const u: AuthUser = {
           username: session.user.user_metadata?.username ?? session.user.email?.split("@")[0] ?? "user",
           email: session.user.email ?? "",
@@ -22,23 +22,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
         setUser(u);
+      } else {
+        // No active Supabase session — clear any stale local auth
+        localStorage.removeItem(STORAGE_KEY);
+        setUser(null);
       }
     });
 
     // Keep state in sync with Supabase auth events
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (!stored) {
-          const u: AuthUser = {
-            username: session.user.user_metadata?.username ?? session.user.email?.split("@")[0] ?? "user",
-            email: session.user.email ?? "",
-            plan: session.user.user_metadata?.plan ?? "free",
-            avatar: session.user.user_metadata?.avatar,
-          };
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
-          setUser(u);
-        }
+        const u: AuthUser = {
+          username: session.user.user_metadata?.username ?? session.user.email?.split("@")[0] ?? "user",
+          email: session.user.email ?? "",
+          plan: session.user.user_metadata?.plan ?? "free",
+          avatar: session.user.user_metadata?.avatar,
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+        setUser(u);
       } else {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
