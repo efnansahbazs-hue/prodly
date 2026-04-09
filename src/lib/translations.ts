@@ -415,6 +415,9 @@ export const translations: Record<string, Record<Lang, string>> = {
   "auth.registerLink": { en: "Sign up free", tr: "Ücretsiz kaydol", de: "Kostenlos registrieren", es: "Regístrate gratis" },
   "auth.hasAccount": { en: "Already have an account?", tr: "Zaten hesabın var mı?", de: "Bereits ein Konto?", es: "¿Ya tienes cuenta?" },
   "auth.loginLink": { en: "Log in", tr: "Giriş yap", de: "Anmelden", es: "Iniciar sesión" },
+  "auth.logout": { en: "Sign Out", tr: "Çıkış Yap", de: "Abmelden", es: "Cerrar sesión" },
+  "nav.profile": { en: "Profile", tr: "Profil", de: "Profil", es: "Perfil" },
+  "nav.changeAvatar": { en: "Change Avatar", tr: "Avatarı Değiştir", de: "Avatar ändern", es: "Cambiar avatar" },
 
   // Onboarding
   "onboard.dawTitle": { en: "What's your DAW?", tr: "DAW'ın hangisi?", de: "Welche DAW nutzt du?", es: "¿Cuál es tu DAW?" },

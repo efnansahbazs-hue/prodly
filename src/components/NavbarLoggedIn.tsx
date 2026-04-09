@@ -4,6 +4,7 @@ import { useLang } from "@/hooks/useLang";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useTranslation } from "@/hooks/useTranslation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +26,7 @@ const getLevelGradient = (level: number) => {
 export const NavbarLoggedIn = () => {
   const { exp, level, progress } = useExp();
   const { lang } = useLang();
+  const { t } = useTranslation();
   const { avatarId, photo, hasAvatar } = useAvatar();
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -127,14 +129,14 @@ export const NavbarLoggedIn = () => {
             className="flex items-center gap-2 px-3 py-2 text-xs cursor-pointer text-[#8B8FA8] hover:text-white focus:text-white focus:bg-white/5"
           >
             <User size={13} />
-            Profile
+            {t("nav.profile")}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setPickerOpen(true)}
             className="flex items-center gap-2 px-3 py-2 text-xs cursor-pointer text-[#8B8FA8] hover:text-white focus:text-white focus:bg-white/5"
           >
             <Image size={13} />
-            Change Avatar
+            {t("nav.changeAvatar")}
           </DropdownMenuItem>
           <DropdownMenuSeparator style={{ background: "rgba(255,255,255,0.06)" }} />
           <DropdownMenuItem
@@ -143,7 +145,7 @@ export const NavbarLoggedIn = () => {
             style={{ color: "#EF4444" }}
           >
             <LogOut size={13} />
-            Sign Out
+            {t("auth.logout")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
