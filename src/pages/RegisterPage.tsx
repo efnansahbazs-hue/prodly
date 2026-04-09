@@ -32,15 +32,24 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const strength = getStrength(password);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !email || !password) { setError(t("auth.required")); return; }
     if (password.length < 6) { setError(t("auth.weakPassword")); return; }
-    register(username, email, password);
-    navigate("/onboarding");
+    setLoading(true);
+    setError("");
+    try {
+      await register(username, email, password);
+      navigate("/onboarding");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : t("auth.required"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -124,10 +133,11 @@ export default function RegisterPage() {
           >
             <button
               type="submit"
-              className="w-full rounded-full py-2.5 text-sm font-semibold text-white active:scale-[0.97] transition-transform"
+              disabled={loading}
+              className="w-full rounded-full py-2.5 text-sm font-semibold text-white active:scale-[0.97] transition-transform disabled:opacity-60"
               style={{ background: "#00C8FF" }}
             >
-              {t("auth.register")}
+              {loading ? "..." : t("auth.register")}
             </button>
           </div>
         </form>

@@ -62,10 +62,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     window.location.href = "/";
   }, []);
 
-  const register = useCallback((username: string, email: string, _password: string): AuthUser => {
+  const register = useCallback(async (username: string, email: string, password: string): Promise<AuthUser> => {
+    console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
+    console.log("signUp called", { username, email });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { username, plan: "free" } },
+    });
+    console.log("signUp result", { data, error });
+    if (error) throw error;
     const u: AuthUser = { username, email, plan: "free" };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
-    setUser(u);
+    // onAuthStateChange will handle setUser; return immediately for navigation
     return u;
   }, []);
 

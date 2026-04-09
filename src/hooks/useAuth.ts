@@ -12,7 +12,7 @@ export type AuthContextType = {
   isLoggedIn: boolean;
   login: (u: AuthUser) => void;
   logout: () => Promise<void>;
-  register: (username: string, email: string, password: string) => AuthUser;
+  register: (username: string, email: string, password: string) => Promise<AuthUser>;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
