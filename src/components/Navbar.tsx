@@ -18,7 +18,7 @@ const langs: { code: Lang; label: string }[] = [
 const WaveformLogo = () => {
   const heights = [6, 12, 18, 12, 6];
   const durations = [0.8, 0.6, 1, 0.7, 0.9];
-  const colors = ["#7C3AED", "#8B5CF6", "#A78BFA", "#6EE7B7", "#34D399"];
+  const colors = ["#00C8FF", "#00C8FF", "#00C8FF", "#6EE7B7", "#34D399"];
   return (
     <svg width="23" height="20" viewBox="0 0 23 20" fill="none" className="flex-shrink-0">
       {heights.map((h, i) => (
@@ -134,14 +134,14 @@ export const Navbar = () => {
                 <div
                   className="rounded-full p-[2px] animate-move-border"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+                    background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
                     backgroundSize: "200% 200%",
                   }}
                 >
                   <button
                     onClick={() => navigate("/auth/register")}
                     className="rounded-full px-5 py-1.5 text-xs font-semibold text-white transition-transform duration-200 active:scale-[0.96]"
-                    style={{ background: "#7C3AED" }}
+                    style={{ background: "#00C8FF" }}
                   >
                     {t("nav.startFree")}
                   </button>
@@ -236,7 +236,7 @@ const MobileOverlay = ({
           className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
             lang === l.code ? "text-white border border-[var(--border-accent)]" : "text-[#8B8FA8] border border-transparent hover:text-white"
           }`}
-          style={lang === l.code ? { background: "rgba(124,58,237,0.15)" } : {}}
+          style={lang === l.code ? { background: "rgba(0,200,255,0.15)" } : {}}
         >
           {l.label}
         </button>
@@ -251,7 +251,7 @@ const MobileOverlay = ({
         <div
           className="rounded-full p-[2px] animate-move-border"
           style={{
-            background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+            background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
             backgroundSize: "200% 200%",
           }}
         >
@@ -259,7 +259,7 @@ const MobileOverlay = ({
             to="/auth/register"
             onClick={onClose}
             className="block rounded-full px-8 py-3 text-sm font-semibold text-white active:scale-[0.96] transition-transform"
-            style={{ background: "#7C3AED" }}
+            style={{ background: "#00C8FF" }}
           >
             {t("nav.startFree")}
           </Link>

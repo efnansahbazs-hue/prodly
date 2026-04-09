@@ -5,7 +5,7 @@ interface Props {
 }
 
 const tags = [
-  { label: "Dark Techno", color: "#A78BFA" },
+  { label: "Dark Techno", color: "#00C8FF" },
   { label: "Industrial", color: "#8B8FA8" },
   { label: "Melancholy", color: "#8B8FA8" },
 ];
@@ -42,7 +42,7 @@ export const BlankPageStage2 = ({ onContinue }: Props) => {
           <span
             key={tag.label}
             className="text-[11px] font-semibold px-3 py-1 rounded-full"
-            style={{ background: "rgba(124,58,237,0.12)", color: tag.color, border: "1px solid rgba(124,58,237,0.2)" }}
+            style={{ background: "rgba(0,200,255,0.12)", color: tag.color, border: "1px solid rgba(0,200,255,0.2)" }}
           >
             {tag.label}
           </span>
@@ -74,7 +74,7 @@ export const BlankPageStage2 = ({ onContinue }: Props) => {
       <button
         onClick={onContinue}
         className="px-5 py-2 rounded-xl text-sm font-semibold text-white transition-all active:scale-[0.97]"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #9333EA)" }}
+        style={{ background: "linear-gradient(135deg, #00C8FF, #00C8FF)" }}
       >
         {t("bp.generateBlueprint")}
       </button>

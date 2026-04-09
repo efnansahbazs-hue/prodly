@@ -36,7 +36,7 @@ export const FloatingReportButton = () => {
         <div
           className="absolute inset-0 rounded-full p-[2px] -z-10 animate-move-border"
           style={{
-            background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+            background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
             backgroundSize: "200% 200%",
             borderRadius: "inherit",
             mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -88,9 +88,9 @@ export const FloatingReportButton = () => {
                       onClick={() => setType(t.value)}
                       className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
                       style={{
-                        background: type === t.value ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.04)",
-                        border: `1px solid ${type === t.value ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.08)"}`,
-                        color: type === t.value ? "#A78BFA" : "#8B8FA8",
+                        background: type === t.value ? "rgba(0,200,255,0.15)" : "rgba(255,255,255,0.04)",
+                        border: `1px solid ${type === t.value ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.08)"}`,
+                        color: type === t.value ? "#00C8FF" : "#8B8FA8",
                       }}
                     >
                       {t.label}

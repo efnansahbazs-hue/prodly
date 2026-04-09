@@ -43,7 +43,7 @@ function getResponse(input: string): MockResponse {
   return {
     text: "Try a specific question about your production — like mixing, sound design, arrangement, or a particular technique.",
     source: "Prodly AI",
-    sourceColor: "#A78BFA",
+    sourceColor: "#00C8FF",
     sourceEmoji: "🟣",
   };
 }

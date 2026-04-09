@@ -29,10 +29,10 @@ export const BlankPageStage3 = () => {
                 onClick={() => setActiveIdx(activeIdx === i ? null : i)}
                 className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-200 active:scale-[0.9] z-10"
                 style={{
-                  background: activeIdx === i ? "linear-gradient(135deg, #7C3AED, #34D399)" : "rgba(255,255,255,0.06)",
+                  background: activeIdx === i ? "linear-gradient(135deg, #00C8FF, #34D399)" : "rgba(255,255,255,0.06)",
                   border: `2px solid ${activeIdx === i ? "#34D399" : "rgba(255,255,255,0.12)"}`,
                   color: activeIdx === i ? "#FFFFFF" : "#8B8FA8",
-                  boxShadow: activeIdx === i ? "0 0 16px rgba(124,58,237,0.3)" : "none",
+                  boxShadow: activeIdx === i ? "0 0 16px rgba(0,200,255,0.3)" : "none",
                 }}
               >
                 {i + 1}
@@ -44,7 +44,7 @@ export const BlankPageStage3 = () => {
               {activeIdx === i && (
                 <div
                   className="absolute top-14 left-1/2 -translate-x-1/2 w-52 rounded-[14px] p-3 z-20 animate-in fade-in scale-in duration-200"
-                  style={{ background: "rgba(15,15,24,0.95)", border: "1px solid rgba(124,58,237,0.3)", backdropFilter: "blur(20px)", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                  style={{ background: "rgba(15,15,24,0.95)", border: "1px solid rgba(0,200,255,0.3)", backdropFilter: "blur(20px)", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
                 >
                   <p className="text-[10px] font-semibold mb-1" style={{ color: "#34D399" }}>{s.bars}</p>
                   <p className="text-[11px] leading-relaxed" style={{ color: "#8B8FA8" }}>{s.tip}</p>
@@ -54,7 +54,7 @@ export const BlankPageStage3 = () => {
 
             {/* Connecting line */}
             {i < sections.length - 1 && (
-              <div className="flex-1 h-[2px] mt-4 mx-1 rounded-full" style={{ background: `linear-gradient(90deg, #7C3AED, #34D399)`, minWidth: 40, opacity: 0.4 }} />
+              <div className="flex-1 h-[2px] mt-4 mx-1 rounded-full" style={{ background: `linear-gradient(90deg, #00C8FF, #34D399)`, minWidth: 40, opacity: 0.4 }} />
             )}
           </div>
         ))}

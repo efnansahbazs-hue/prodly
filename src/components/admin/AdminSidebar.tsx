@@ -33,7 +33,7 @@ export const AdminSidebar = () => {
       <div className="flex items-center gap-2 px-3 mb-8">
         <span
           className="w-2 h-2 rounded-full"
-          style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+          style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
         />
         <span className="text-sm font-bold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
           Prodly Admin
@@ -50,7 +50,7 @@ export const AdminSidebar = () => {
               onClick={() => navigate(item.path)}
               className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all"
               style={{
-                background: active ? "rgba(124,58,237,0.15)" : "transparent",
+                background: active ? "rgba(0,200,255,0.15)" : "transparent",
                 color: active ? "#fff" : "#8B8FA8",
                 borderLeft: active ? "3px solid #34D399" : "3px solid transparent",
               }}

@@ -18,8 +18,8 @@ export const ToolkitCards = ({ items }: Props) => {
     const base = "text-[10px] font-semibold px-2 py-0.5 rounded-full";
     const styles: Record<string, React.CSSProperties> = {
       free: { background: "rgba(52,211,153,0.15)", color: "#34D399" },
-      premium: { background: "rgba(124,58,237,0.2)", color: "#A78BFA" },
-      studio: { background: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+      premium: { background: "rgba(0,200,255,0.2)", color: "#00C8FF" },
+      studio: { background: "linear-gradient(135deg, #00C8FF, #34D399)", color: "#FFFFFF" },
     };
     const label = plan === "free" ? t("price.free") : plan === "studio" ? t("price.studio") : "Premium";
     return (
@@ -42,7 +42,7 @@ export const ToolkitCards = ({ items }: Props) => {
             animationDelay: `${i * 60}ms`,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.border = "1px solid rgba(124,58,237,0.4)";
+            e.currentTarget.style.border = "1px solid rgba(0,200,255,0.4)";
             e.currentTarget.style.boxShadow = "0 0 20px rgba(52,211,153,0.08)";
             e.currentTarget.style.transform = "translateY(-2px)";
           }}

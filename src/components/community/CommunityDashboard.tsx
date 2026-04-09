@@ -21,7 +21,7 @@ export const CommunityDashboard = () => {
         className="glass-card-static p-6 mb-6"
         style={{
           borderLeft: "3px solid transparent",
-          borderImage: "linear-gradient(to bottom, #7C3AED, #34D399) 1",
+          borderImage: "linear-gradient(to bottom, #00C8FF, #34D399) 1",
         }}
       >
         <h2 className="text-xl font-bold text-white" style={{ fontFamily: "'Space Grotesk'" }}>

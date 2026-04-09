@@ -52,8 +52,8 @@ export const PromoCodeInput = ({ onApplied }: Props) => {
           onClick={handleApply}
           className="h-10 px-5 text-sm font-semibold text-white rounded-xl transition-all duration-200 active:scale-[0.97]"
           style={{
-            background: "rgba(124,58,237,0.2)",
-            border: "1px solid rgba(124,58,237,0.4)",
+            background: "rgba(0,200,255,0.2)",
+            border: "1px solid rgba(0,200,255,0.4)",
             fontFamily: "'Space Grotesk'",
           }}
         >

@@ -53,9 +53,9 @@ export const GrooveBuilder = () => {
             onClick={() => selectGenre(g)}
             className="px-3 py-1.5 rounded-lg text-[11px] font-semibold capitalize transition-all active:scale-[0.95]"
             style={{
-              background: g === genre ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-              border: `1px solid ${g === genre ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.08)"}`,
-              color: g === genre ? "#A78BFA" : "#8B8FA8",
+              background: g === genre ? "rgba(0,200,255,0.2)" : "rgba(255,255,255,0.04)",
+              border: `1px solid ${g === genre ? "rgba(0,200,255,0.5)" : "rgba(255,255,255,0.08)"}`,
+              color: g === genre ? "#00C8FF" : "#8B8FA8",
             }}
           >
             {g}
@@ -78,9 +78,9 @@ export const GrooveBuilder = () => {
                   className="w-4 h-4 rounded-[3px] transition-all duration-100 active:scale-[0.85]"
                   style={{
                     background: active
-                      ? "linear-gradient(135deg, #7C3AED, #34D399)"
+                      ? "linear-gradient(135deg, #00C8FF, #34D399)"
                       : "rgba(255,255,255,0.08)",
-                    boxShadow: active ? "0 0 6px rgba(124,58,237,0.3)" : "none",
+                    boxShadow: active ? "0 0 6px rgba(0,200,255,0.3)" : "none",
                   }}
                 />
               ))}

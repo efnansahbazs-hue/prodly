@@ -19,7 +19,7 @@ export const Footer = () => {
       {/* Gradient top border */}
       <div
         className="absolute top-0 left-0 right-0 h-[1px]"
-        style={{ background: "linear-gradient(90deg, #7C3AED, #34D399, transparent)" }}
+        style={{ background: "linear-gradient(90deg, #00C8FF, #34D399, transparent)" }}
       />
 
       <div className="container mx-auto max-w-6xl">
@@ -87,7 +87,7 @@ export const Footer = () => {
                 }`}
                 style={{
                   color: lang === l.code ? "#fff" : "#6B7280",
-                  background: lang === l.code ? "rgba(124,58,237,0.2)" : "transparent",
+                  background: lang === l.code ? "rgba(0,200,255,0.2)" : "transparent",
                 }}
               >
                 {l.label}

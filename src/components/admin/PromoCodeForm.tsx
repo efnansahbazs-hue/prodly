@@ -87,7 +87,7 @@ export const PromoCodeForm = ({ onSubmit }: Props) => {
       </div>
 
       <button type="submit" className="h-9 px-5 rounded-lg text-sm font-semibold text-white active:scale-[0.97] transition-all"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}>
+        style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}>
         Create
       </button>
     </form>

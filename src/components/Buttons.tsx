@@ -10,14 +10,14 @@ export const MovingBorderButton = ({ children, className = "", onClick }: Moving
   <div
     className="inline-block rounded-full p-[2px] animate-move-border"
     style={{
-      background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+      background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
       backgroundSize: "200% 200%",
     }}
   >
     <button
       onClick={onClick}
       className={`rounded-full px-8 py-3 font-semibold text-white transition-transform duration-200 active:scale-[0.97] ${className}`}
-      style={{ background: "#7C3AED" }}
+      style={{ background: "#00C8FF" }}
     >
       {children}
     </button>

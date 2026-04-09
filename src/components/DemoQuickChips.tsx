@@ -20,7 +20,7 @@ export const DemoQuickChips = ({ onSelect }: Props) => {
             border: "1px solid rgba(255,255,255,0.08)",
             color: "#8B8FA8",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(124,58,237,0.4)"; }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(0,200,255,0.4)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
         >
           {chip}

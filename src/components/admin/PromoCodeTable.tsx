@@ -38,7 +38,7 @@ export const PromoCodeTable = ({ codes, onToggle, onSelect, selectedCode }: Prop
                   className="cursor-pointer transition-colors duration-150"
                   style={{
                     borderBottom: "1px solid rgba(255,255,255,0.04)",
-                    background: isSelected ? "rgba(124,58,237,0.08)" : "transparent",
+                    background: isSelected ? "rgba(0,200,255,0.08)" : "transparent",
                   }}
                   onMouseEnter={(e) => { if (!isSelected) e.currentTarget.style.background = "rgba(255,255,255,0.02)"; }}
                   onMouseLeave={(e) => { if (!isSelected) e.currentTarget.style.background = "transparent"; }}

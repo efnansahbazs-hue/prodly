@@ -12,8 +12,8 @@ interface Challenge {
 
 const TYPE_META: Record<string, { icon: React.ReactNode; label: string; bg: string; border: string }> = {
   weekly: { icon: <Trophy className="w-4 h-4" />, label: "comm.chWeekly", bg: "rgba(52,211,153,0.08)", border: "#34D399" },
-  studio: { icon: <Star className="w-4 h-4" />, label: "comm.chStudio", bg: "rgba(124,58,237,0.1)", border: "#7C3AED" },
-  grandprix: { icon: <Trophy className="w-4 h-4" />, label: "comm.chGrandPrix", bg: "rgba(124,58,237,0.12)", border: "transparent" },
+  studio: { icon: <Star className="w-4 h-4" />, label: "comm.chStudio", bg: "rgba(0,200,255,0.1)", border: "#00C8FF" },
+  grandprix: { icon: <Trophy className="w-4 h-4" />, label: "comm.chGrandPrix", bg: "rgba(0,200,255,0.12)", border: "transparent" },
   flash: { icon: <Zap className="w-4 h-4" />, label: "comm.chFlash", bg: "rgba(52,211,153,0.1)", border: "#34D399" },
 };
 
@@ -66,7 +66,7 @@ export const CommunityChallenges = () => {
             className="glass-card-static p-6 transition-all hover:border-[var(--border-accent)]"
             style={{
               borderLeft: isGrandPrix ? "3px solid transparent" : `3px solid ${meta.border}`,
-              ...(isGrandPrix ? { borderImage: "linear-gradient(to bottom, #7C3AED, #34D399) 1" } : {}),
+              ...(isGrandPrix ? { borderImage: "linear-gradient(to bottom, #00C8FF, #34D399) 1" } : {}),
             }}
           >
             <div className="flex items-start justify-between gap-4">
@@ -75,7 +75,7 @@ export const CommunityChallenges = () => {
                 <div className="flex items-center gap-2 mb-2">
                   <span
                     className="flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full"
-                    style={{ background: meta.bg, color: meta.border === "transparent" ? "#A78BFA" : meta.border }}
+                    style={{ background: meta.bg, color: meta.border === "transparent" ? "#00C8FF" : meta.border }}
                   >
                     {meta.icon} {t(meta.label)}
                   </span>
@@ -100,7 +100,7 @@ export const CommunityChallenges = () => {
                 <div
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium"
                   style={{
-                    background: "linear-gradient(135deg, rgba(124,58,237,0.15), rgba(52,211,153,0.1))",
+                    background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(52,211,153,0.1))",
                     color: "#fff",
                   }}
                 >

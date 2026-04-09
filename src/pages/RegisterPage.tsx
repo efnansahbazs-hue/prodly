@@ -118,14 +118,14 @@ export default function RegisterPage() {
           <div
             className="rounded-full p-[2px] animate-move-border"
             style={{
-              background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+              background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
               backgroundSize: "200% 200%",
             }}
           >
             <button
               type="submit"
               className="w-full rounded-full py-2.5 text-sm font-semibold text-white active:scale-[0.97] transition-transform"
-              style={{ background: "#7C3AED" }}
+              style={{ background: "#00C8FF" }}
             >
               {t("auth.register")}
             </button>

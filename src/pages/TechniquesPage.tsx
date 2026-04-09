@@ -36,8 +36,8 @@ const TechniquesPage = () => {
         <NoiseOverlay /><DotGrid /><Orbs /><Navbar />
         <div className="relative z-10 flex items-center justify-center min-h-screen px-5">
           <div className="text-center max-w-md">
-            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: "rgba(124,58,237,0.15)" }}>
-              <Lock className="w-7 h-7" style={{ color: "#A78BFA" }} />
+            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: "rgba(0,200,255,0.15)" }}>
+              <Lock className="w-7 h-7" style={{ color: "#00C8FF" }} />
             </div>
             <h2 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk'" }}>
               Production Techniques Panel
@@ -45,7 +45,7 @@ const TechniquesPage = () => {
             <p className="text-sm mb-6" style={{ color: "#8B8FA8" }}>
               87 expert-level techniques with DAW-specific steps. Exclusive to Studio members.
             </p>
-            <div className="inline-block rounded-full p-[2px] animate-move-border" style={{ background: "linear-gradient(135deg, #34D399, #7C3AED, #34D399)", backgroundSize: "200% 200%" }}>
+            <div className="inline-block rounded-full p-[2px] animate-move-border" style={{ background: "linear-gradient(135deg, #34D399, #00C8FF, #34D399)", backgroundSize: "200% 200%" }}>
               <button className="px-8 py-3 rounded-full text-sm font-semibold text-white" style={{ background: "#0F0F18" }}>
                 Upgrade to Studio →
               </button>

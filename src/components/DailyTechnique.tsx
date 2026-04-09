@@ -36,8 +36,8 @@ export const DailyTechnique = () => {
 
   const diffStyles: Record<Difficulty, { bg: string; color: string }> = {
     beginner: { bg: "rgba(52,211,153,0.15)", color: "#34D399" },
-    intermediate: { bg: "rgba(124,58,237,0.2)", color: "#A78BFA" },
-    advanced: { bg: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+    intermediate: { bg: "rgba(0,200,255,0.2)", color: "#00C8FF" },
+    advanced: { bg: "linear-gradient(135deg, #00C8FF, #34D399)", color: "#FFFFFF" },
   };
   const diff = diffStyles[technique.difficulty];
 
@@ -54,7 +54,7 @@ export const DailyTechnique = () => {
             }}
           >
             {/* Top gradient border */}
-            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
 
             <div className="flex items-center justify-between mb-4">
               <p className="text-[11px] font-semibold tracking-[0.1em] uppercase" style={{ color: "#34D399" }}>

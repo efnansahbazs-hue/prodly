@@ -80,9 +80,9 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
               onClick={() => setTab(t)}
               className="px-4 py-2 rounded-full text-[12px] font-semibold transition-all active:scale-95"
               style={{
-                background: tab === t ? "rgba(124,58,237,0.2)" : "transparent",
-                color: tab === t ? "#A78BFA" : "#6B7280",
-                border: tab === t ? "1px solid rgba(124,58,237,0.3)" : "1px solid transparent",
+                background: tab === t ? "rgba(0,200,255,0.2)" : "transparent",
+                color: tab === t ? "#00C8FF" : "#6B7280",
+                border: tab === t ? "1px solid rgba(0,200,255,0.3)" : "1px solid transparent",
               }}
             >
               {t === "avatars" ? (tr ? "Avatarlar" : "Avatars") : (tr ? "Fotoğraf Yükle" : "Upload Photo")}
@@ -91,7 +91,7 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
         </div>
 
         {/* Content */}
-        <div className="px-5 py-4 max-h-[420px] overflow-y-auto" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(124,58,237,0.4) transparent" }}>
+        <div className="px-5 py-4 max-h-[420px] overflow-y-auto" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(0,200,255,0.4) transparent" }}>
           {tab === "avatars" ? (
             <div className="space-y-4">
               {AVATAR_CATEGORIES.map((cat) => (
@@ -108,8 +108,8 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
                         style={{
                           width: 72,
                           height: 72,
-                          border: selectedId === av.id ? "3px solid #7C3AED" : "2px solid rgba(255,255,255,0.08)",
-                          boxShadow: selectedId === av.id ? "0 0 16px rgba(124,58,237,0.4)" : "none",
+                          border: selectedId === av.id ? "3px solid #00C8FF" : "2px solid rgba(255,255,255,0.08)",
+                          boxShadow: selectedId === av.id ? "0 0 16px rgba(0,200,255,0.4)" : "none",
                         }}
                       >
                         {av.render}
@@ -125,7 +125,7 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
                 <div className="flex flex-col items-center gap-4">
                   <div
                     className="w-32 h-32 rounded-full overflow-hidden"
-                    style={{ border: "3px solid rgba(124,58,237,0.4)" }}
+                    style={{ border: "3px solid rgba(0,200,255,0.4)" }}
                   >
                     <img src={preview} alt="Preview" className="w-full h-full object-cover" />
                   </div>
@@ -142,11 +142,11 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
                   onClick={() => fileRef.current?.click()}
                   className="w-full py-12 rounded-xl flex flex-col items-center gap-3 transition-all active:scale-[0.98]"
                   style={{
-                    border: "2px dashed rgba(124,58,237,0.3)",
-                    background: "rgba(124,58,237,0.04)",
+                    border: "2px dashed rgba(0,200,255,0.3)",
+                    background: "rgba(0,200,255,0.04)",
                   }}
                 >
-                  <Upload size={28} style={{ color: "#7C3AED" }} />
+                  <Upload size={28} style={{ color: "#00C8FF" }} />
                   <span className="text-[13px] font-medium" style={{ color: "#8B8FA8" }}>
                     {tr ? "Fotoğrafını sürükle veya tıkla" : "Drag your photo or click"}
                   </span>
@@ -171,7 +171,7 @@ export const AvatarPickerModal = ({ open, onClose }: Props) => {
             onClick={tab === "avatars" ? handleSaveAvatar : handleSavePhoto}
             disabled={tab === "avatars" ? !selectedId : !preview}
             className="px-5 py-2 rounded-full text-[12px] font-semibold text-white transition-all active:scale-95 disabled:opacity-30"
-            style={{ background: "#7C3AED" }}
+            style={{ background: "#00C8FF" }}
           >
             {tr ? "Kaydet" : "Save"}
           </button>

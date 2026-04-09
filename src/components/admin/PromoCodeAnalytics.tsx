@@ -12,7 +12,7 @@ export const PromoCodeAnalytics = ({ code }: Props) => {
     : code.usedCount * 15;
 
   const stats = [
-    { label: "Total Uses", value: code.usedCount.toLocaleString(), color: "#A78BFA" },
+    { label: "Total Uses", value: code.usedCount.toLocaleString(), color: "#00C8FF" },
     { label: "Est. Revenue", value: `$${estimatedRevenue.toLocaleString()}`, color: "#34D399" },
     { label: "Unique Users", value: Math.round(code.usedCount * 0.92).toLocaleString(), color: "#FFFFFF" },
     { label: "Conversion", value: `${conversionRate}%`, color: "#34D399" },
@@ -21,7 +21,7 @@ export const PromoCodeAnalytics = ({ code }: Props) => {
   return (
     <div
       className="rounded-2xl p-5"
-      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.2)", backdropFilter: "blur(20px)" }}
+      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(0,200,255,0.2)", backdropFilter: "blur(20px)" }}
     >
       <div className="flex items-center gap-3 mb-4">
         <span className="font-mono font-bold text-white text-lg">{code.code}</span>
@@ -56,7 +56,7 @@ export const PromoCodeAnalytics = ({ code }: Props) => {
             className="h-full rounded-full transition-all duration-500"
             style={{
               width: `${Math.min((code.usedCount / code.maxUses) * 100, 100)}%`,
-              background: "linear-gradient(90deg, #7C3AED, #34D399)",
+              background: "linear-gradient(90deg, #00C8FF, #34D399)",
             }}
           />
         </div>

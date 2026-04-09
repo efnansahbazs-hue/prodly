@@ -16,7 +16,7 @@ export const Hero = () => {
             fontWeight: 800,
             lineHeight: 1,
             letterSpacing: "-0.03em",
-            textShadow: "0 4px 24px rgba(0,0,0,0.5), 0 0 60px rgba(124,58,237,0.25)",
+            textShadow: "0 4px 24px rgba(0,0,0,0.5), 0 0 60px rgba(0,200,255,0.25)",
             animation: "heroFadeUp 0.4s ease forwards",
             opacity: 0,
           }}
@@ -27,7 +27,7 @@ export const Hero = () => {
           <span
             className="text-gradient-purple"
             style={{
-              filter: "drop-shadow(0 2px 12px rgba(124,58,237,0.4))",
+              filter: "drop-shadow(0 2px 12px rgba(0,200,255,0.4))",
             }}
           >
             {t("hero.titleLine2")}

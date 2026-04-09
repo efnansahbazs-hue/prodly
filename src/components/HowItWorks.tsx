@@ -27,7 +27,7 @@ export const HowItWorks = () => {
             <svg width="100%" height="2" className="overflow-visible">
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="0%" stopColor="#00C8FF" />
                   <stop offset="100%" stopColor="#34D399" />
                 </linearGradient>
               </defs>
@@ -46,7 +46,7 @@ export const HowItWorks = () => {
             <svg width="2" height="100%" className="overflow-visible">
               <defs>
                 <linearGradient id="lineGradV" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="0%" stopColor="#00C8FF" />
                   <stop offset="100%" stopColor="#34D399" />
                 </linearGradient>
               </defs>
@@ -67,8 +67,8 @@ export const HowItWorks = () => {
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #34D399)",
-                    boxShadow: "0 0 20px rgba(124,58,237,0.3)",
+                    background: "linear-gradient(135deg, #00C8FF, #34D399)",
+                    boxShadow: "0 0 20px rgba(0,200,255,0.3)",
                   }}
                 >
                   <s.icon className="w-6 h-6 text-white" />

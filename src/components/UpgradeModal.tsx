@@ -40,7 +40,7 @@ export const UpgradeModal = ({ onClose }: Props) => {
         <div className="text-center mb-5">
           <div
             className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center text-lg"
-            style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)", boxShadow: "0 0 20px rgba(124,58,237,0.4)" }}
+            style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)", boxShadow: "0 0 20px rgba(0,200,255,0.4)" }}
           >
             🎛️
           </div>
@@ -68,11 +68,11 @@ export const UpgradeModal = ({ onClose }: Props) => {
 
         <div
           className="rounded-full p-[2px] animate-move-border mb-3"
-          style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
+          style={{ background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)", backgroundSize: "200% 200%" }}
         >
           <button
             className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]"
-            style={{ background: "#7C3AED" }}
+            style={{ background: "#00C8FF" }}
           >
             {t("upgrade.cta")}
           </button>

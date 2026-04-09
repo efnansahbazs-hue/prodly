@@ -78,10 +78,10 @@ export default function ProfilePage() {
               className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white flex-shrink-0"
               style={{
                 background: isHighLevel
-                  ? "linear-gradient(135deg, #7C3AED, #34D399)"
-                  : "rgba(124,58,237,0.2)",
-                border: `3px solid ${isHighLevel ? "rgba(52,211,153,0.5)" : "rgba(124,58,237,0.3)"}`,
-                boxShadow: isHighLevel ? "0 0 30px rgba(124,58,237,0.3), 0 0 60px rgba(52,211,153,0.15)" : undefined,
+                  ? "linear-gradient(135deg, #00C8FF, #34D399)"
+                  : "rgba(0,200,255,0.2)",
+                border: `3px solid ${isHighLevel ? "rgba(52,211,153,0.5)" : "rgba(0,200,255,0.3)"}`,
+                boxShadow: isHighLevel ? "0 0 30px rgba(0,200,255,0.3), 0 0 60px rgba(52,211,153,0.15)" : undefined,
               }}
             >
               {level.level}
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                     className="h-full rounded-full transition-all duration-1000 ease-out"
                     style={{
                       width: `${progress}%`,
-                      background: "linear-gradient(90deg, #7C3AED, #34D399)",
+                      background: "linear-gradient(90deg, #00C8FF, #34D399)",
                     }}
                   />
                 </div>
@@ -199,7 +199,7 @@ function ArchiveTab() {
           </div>
           <span
             className="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0"
-            style={{ background: "rgba(124,58,237,0.15)", color: "#A78BFA" }}
+            style={{ background: "rgba(0,200,255,0.15)", color: "#00C8FF" }}
           >
             {item.genre}
           </span>
@@ -312,7 +312,7 @@ function SettingsTab({ t }: { t: (k: string) => string }) {
 
       <button
         className="px-5 py-2 rounded-lg text-sm font-medium text-white transition-all active:scale-[0.97]"
-        style={{ background: "#7C3AED" }}
+        style={{ background: "#00C8FF" }}
       >
         {t("profile.save")}
       </button>

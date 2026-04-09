@@ -48,9 +48,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         purple: {
-          DEFAULT: "#7C3AED",
-          mid: "#9333EA",
-          light: "rgba(124,58,237,0.2)",
+          DEFAULT: "#00C8FF",
+          mid: "#00C8FF",
+          light: "rgba(0,200,255,0.2)",
         },
         mint: {
           DEFAULT: "#34D399",

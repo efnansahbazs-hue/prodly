@@ -17,7 +17,7 @@ export const Orbs = () => (
       className="absolute -top-48 -left-48"
       style={{
         width: 480, height: 480,
-        background: "radial-gradient(circle, rgba(124,58,237,0.16), transparent 70%)",
+        background: "radial-gradient(circle, rgba(0,200,255,0.16), transparent 70%)",
         filter: "blur(120px)",
       }}
     />
@@ -33,7 +33,7 @@ export const Orbs = () => (
       className="absolute -bottom-32 left-1/3 animate-float-orb-reverse"
       style={{
         width: 420, height: 420,
-        background: "radial-gradient(circle, rgba(124,58,237,0.07), transparent 70%)",
+        background: "radial-gradient(circle, rgba(0,200,255,0.07), transparent 70%)",
         filter: "blur(120px)",
       }}
     />

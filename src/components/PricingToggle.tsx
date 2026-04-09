@@ -14,7 +14,7 @@ export const PricingToggle = ({ annual, onToggle }: Props) => {
       <button
         onClick={onToggle}
         className="relative w-12 h-6 rounded-full transition-colors duration-300"
-        style={{ background: annual ? "#7C3AED" : "rgba(255,255,255,0.12)" }}
+        style={{ background: annual ? "#00C8FF" : "rgba(255,255,255,0.12)" }}
       >
         <span
           className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-transform duration-300"

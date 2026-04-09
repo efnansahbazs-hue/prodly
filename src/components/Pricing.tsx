@@ -104,10 +104,10 @@ export const Pricing = () => {
           <ScrollReveal delay={160}>
             <div
               className="rounded-[20px] p-7 h-full flex flex-col relative overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.5)", backdropFilter: "blur(20px)", boxShadow: "0 0 60px rgba(124,58,237,0.15)" }}
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(0,200,255,0.5)", backdropFilter: "blur(20px)", boxShadow: "0 0 60px rgba(0,200,255,0.15)" }}
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
-              <span className="inline-block self-start text-[11px] font-semibold rounded-full px-3 py-1 mb-4" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
+              <span className="inline-block self-start text-[11px] font-semibold rounded-full px-3 py-1 mb-4" style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF" }}>
                 {t("price.popular")}
               </span>
 
@@ -136,9 +136,9 @@ export const Pricing = () => {
 
               <div
                 className="rounded-full p-[2px] animate-move-border"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
+                style={{ background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)", backgroundSize: "200% 200%" }}
               >
-                <button className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#7C3AED" }}>
+                <button className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#00C8FF" }}>
                   {t("price.cta.pro")}
                 </button>
               </div>
@@ -176,7 +176,7 @@ export const Pricing = () => {
 
               <div
                 className="rounded-full p-[2px] animate-move-border"
-                style={{ background: "linear-gradient(135deg, #34D399, #7C3AED, #34D399)", backgroundSize: "200% 200%" }}
+                style={{ background: "linear-gradient(135deg, #34D399, #00C8FF, #34D399)", backgroundSize: "200% 200%" }}
               >
                 <button className="w-full rounded-full py-3 text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#0F0F18" }}>
                   {t("price.cta.studio")}

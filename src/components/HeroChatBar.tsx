@@ -50,7 +50,7 @@ export const HeroChatBar = () => {
       style={{
         background: "rgba(15,15,25,0.8)",
         border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 0 0 1px rgba(255,255,255,0.1), 0 20px 80px rgba(0,0,0,0.6), 0 0 40px rgba(124,58,237,0.15)",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.1), 0 20px 80px rgba(0,0,0,0.6), 0 0 40px rgba(0,200,255,0.15)",
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
       }}
@@ -66,13 +66,13 @@ export const HeroChatBar = () => {
       {userType === "free" && exhausted && (
         <div
           className="flex items-center justify-between rounded-[12px] px-4 py-3 mb-4 animate-fade-in"
-          style={{ background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
+          style={{ background: "rgba(0,200,255,0.08)", border: "1px solid rgba(0,200,255,0.2)" }}
         >
-          <p className="text-xs" style={{ color: "#A78BFA" }}>{t("upgrade.dailyLimit")}</p>
+          <p className="text-xs" style={{ color: "#00C8FF" }}>{t("upgrade.dailyLimit")}</p>
           <button
             onClick={() => setShowUpgrade(true)}
             className="text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95"
-            style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA", border: "1px solid rgba(124,58,237,0.4)" }}
+            style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF", border: "1px solid rgba(0,200,255,0.4)" }}
           >
             {t("upgrade.seePremium")}
           </button>
@@ -93,7 +93,7 @@ export const HeroChatBar = () => {
           <button
             onClick={() => setShowUpgrade(true)}
             className="text-xs font-medium transition-opacity hover:opacity-80"
-            style={{ color: "#A78BFA" }}
+            style={{ color: "#00C8FF" }}
           >
             {t("hero.upgradeCta")}
           </button>
@@ -110,9 +110,9 @@ export const HeroChatBar = () => {
               onClick={() => setSelectedDaw(isSelected ? null : d.id)}
               className="px-4 py-1.5 rounded-full text-[12px] font-medium transition-all active:scale-95"
               style={{
-                background: isSelected ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.03)",
-                border: `1px solid ${isSelected ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
-                color: isSelected ? "#A78BFA" : "rgba(139,143,168,0.7)",
+                background: isSelected ? "rgba(0,200,255,0.15)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${isSelected ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.06)"}`,
+                color: isSelected ? "#00C8FF" : "rgba(139,143,168,0.7)",
               }}
             >
               {d.labelKey ? t(d.labelKey) : d.label}
@@ -133,8 +133,8 @@ export const HeroChatBar = () => {
           className="flex-1 rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-[#555] focus:outline-none transition-all disabled:opacity-50"
           style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "rgba(124,58,237,0.5)";
-            e.currentTarget.style.boxShadow = "0 0 20px rgba(124,58,237,0.1)";
+            e.currentTarget.style.borderColor = "rgba(0,200,255,0.5)";
+            e.currentTarget.style.boxShadow = "0 0 20px rgba(0,200,255,0.1)";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
@@ -146,8 +146,8 @@ export const HeroChatBar = () => {
           disabled={exhausted}
           className="rounded-xl px-5 py-3.5 text-xs font-semibold text-white whitespace-nowrap transition-all active:scale-[0.96] disabled:opacity-50"
           style={{
-            background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
-            boxShadow: "0 4px 16px rgba(124,58,237,0.3)",
+            background: "linear-gradient(135deg, #00C8FF, #0099CC)",
+            boxShadow: "0 4px 16px rgba(0,200,255,0.3)",
           }}
         >
           {t("hero.askProdly")}

@@ -26,7 +26,7 @@ export const TechniquesTopBar = ({ daw, onDawChange, completed }: Props) => {
             className="h-full rounded-full transition-all duration-500"
             style={{
               width: `${pct}%`,
-              background: pct >= 100 ? "#34D399" : "linear-gradient(90deg, #7C3AED, #A78BFA)",
+              background: pct >= 100 ? "#34D399" : "linear-gradient(90deg, #00C8FF, #00C8FF)",
             }}
           />
         </div>

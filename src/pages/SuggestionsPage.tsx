@@ -19,7 +19,7 @@ interface Suggestion {
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {
   under_review: { bg: "rgba(234,179,8,0.12)", color: "#EAB308", label: "sug.statusReview" },
-  planned: { bg: "rgba(124,58,237,0.12)", color: "#A78BFA", label: "sug.statusPlanned" },
+  planned: { bg: "rgba(0,200,255,0.12)", color: "#00C8FF", label: "sug.statusPlanned" },
   implemented: { bg: "rgba(52,211,153,0.12)", color: "#34D399", label: "sug.statusDone" },
 };
 

@@ -15,8 +15,8 @@ export const DailyUsageBar = ({ used, max, onUpgrade }: DailyUsageBarProps) => {
   const barBg = isExhausted
     ? "linear-gradient(90deg, #EF4444, #DC2626)"
     : isWarning
-    ? "linear-gradient(90deg, #7C3AED, #F59E0B)"
-    : "linear-gradient(90deg, #7C3AED, #34D399)";
+    ? "linear-gradient(90deg, #00C8FF, #F59E0B)"
+    : "linear-gradient(90deg, #00C8FF, #34D399)";
 
   return (
     <div className="glass-card-static px-4 py-3 flex items-center gap-3">

@@ -62,7 +62,7 @@ export const StreakShowcase = () => {
                       className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300"
                       style={{
                         background: isDone
-                          ? "linear-gradient(135deg, #7C3AED, #9333EA)"
+                          ? "linear-gradient(135deg, #00C8FF, #00C8FF)"
                           : "rgba(255,255,255,0.04)",
                         border: isToday && !isDone
                           ? "2px solid #34D399"
@@ -72,7 +72,7 @@ export const StreakShowcase = () => {
                         boxShadow: isToday && !isDone
                           ? "0 0 12px rgba(52,211,153,0.3)"
                           : isDone
-                          ? "0 0 8px rgba(124,58,237,0.2)"
+                          ? "0 0 8px rgba(0,200,255,0.2)"
                           : "none",
                         animation: isToday && !isDone ? "pulse 2s ease-in-out infinite" : "none",
                       }}
@@ -99,13 +99,13 @@ export const StreakShowcase = () => {
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
                   style={{
                     background: m.unlocked
-                      ? "linear-gradient(135deg, rgba(124,58,237,0.15), rgba(52,211,153,0.1))"
+                      ? "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(52,211,153,0.1))"
                       : "rgba(255,255,255,0.03)",
-                    border: `1px solid ${m.unlocked ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.06)"}`,
+                    border: `1px solid ${m.unlocked ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.06)"}`,
                   }}
                 >
-                  <Trophy className="w-3 h-3" style={{ color: m.unlocked ? "#A78BFA" : "#6B7280" }} />
-                  <span className="text-[11px] font-semibold" style={{ color: m.unlocked ? "#A78BFA" : "#6B7280" }}>
+                  <Trophy className="w-3 h-3" style={{ color: m.unlocked ? "#00C8FF" : "#6B7280" }} />
+                  <span className="text-[11px] font-semibold" style={{ color: m.unlocked ? "#00C8FF" : "#6B7280" }}>
                     {t(m.labelKey)}
                   </span>
                 </div>

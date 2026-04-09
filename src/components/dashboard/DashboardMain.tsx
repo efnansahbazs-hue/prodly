@@ -43,9 +43,9 @@ const StreakContent = ({ weekdays }: { weekdays: string[] }) => (
             className="rounded-full flex items-center justify-center text-[9px] font-bold"
             style={{
               width: 28, height: 28,
-              background: done ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.04)",
-              border: i === 5 ? "2px solid #34D399" : done ? "1px solid rgba(124,58,237,0.4)" : "1px solid rgba(255,255,255,0.06)",
-              color: done ? "#A78BFA" : "#555",
+              background: done ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.04)",
+              border: i === 5 ? "2px solid #34D399" : done ? "1px solid rgba(0,200,255,0.4)" : "1px solid rgba(255,255,255,0.06)",
+              color: done ? "#00C8FF" : "#555",
             }}
           >
             {done ? "✓" : ""}
@@ -64,7 +64,7 @@ const ChallengeContent = ({ lang }: { lang: string }) => (
     <p className="text-sm font-semibold text-white mt-2">🎯 Minimal Techno</p>
     <p className="text-[11px] mt-1" style={{ color: "#8B8FA8" }}>{lang === "tr" ? "3 gün kaldı" : "3 days left"}</p>
     <div className="w-full h-1 rounded-full mt-3" style={{ background: "rgba(255,255,255,0.06)" }}>
-      <div className="h-full rounded-full" style={{ width: "62%", background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+      <div className="h-full rounded-full" style={{ width: "62%", background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
     </div>
   </div>
 );
@@ -79,7 +79,7 @@ const ExpContent = ({ exp, level, progress, lang }: { exp: number; level: any; p
         : (lang === "tr" ? `Level ${level.level + 1}'e ${level.maxExp - exp} EXP` : `${level.maxExp - exp} EXP to Level ${level.level + 1}`)}
     </p>
     <div className="w-full h-1.5 rounded-full mt-3" style={{ background: "rgba(255,255,255,0.06)" }}>
-      <div className="h-full rounded-full transition-all duration-700 ease-out" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+      <div className="h-full rounded-full transition-all duration-700 ease-out" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
     </div>
   </div>
 );
@@ -119,7 +119,7 @@ export const DashboardMain = ({ plan }: { plan: "free" | "premium" | "studio" })
             <p className="text-[22px] font-bold text-white" style={{ fontFamily: "'Space Grotesk'" }}>{greeting}</p>
             <div className="flex items-center gap-3 mt-2">
               <span className="text-xs font-medium" style={{ color: "#8B8FA8" }}>Level {level.level}</span>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF" }}>
                 {lang === "tr" ? level.name.tr : level.name.en}
               </span>
               {!isFree && <span className="text-sm">🔥 5</span>}
@@ -137,13 +137,13 @@ export const DashboardMain = ({ plan }: { plan: "free" | "premium" | "studio" })
         <ScrollReveal className="md:col-span-4">
           <div
             className="glass-card rounded-2xl p-5 h-full"
-            style={{ borderTop: "2px solid transparent", borderImage: "linear-gradient(90deg, #7C3AED, #34D399) 1" }}
+            style={{ borderTop: "2px solid transparent", borderImage: "linear-gradient(90deg, #00C8FF, #34D399) 1" }}
           >
             <span className="section-label text-[10px]">{lang === "tr" ? "GÜNÜN TEKNİĞİ" : "TODAY'S TECHNIQUE"}</span>
             <h3 className="text-lg font-bold text-white mt-2" style={{ fontFamily: "'Space Grotesk'" }}>
               {lang === "tr" ? TECHNIQUE.title.tr : TECHNIQUE.title.en}
             </h3>
-            <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-2" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+            <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-2" style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF" }}>
               Intermediate
             </span>
             <p className="text-[13px] mt-3 line-clamp-3 overflow-hidden" style={{ color: "#8B8FA8", lineHeight: 1.6, maxHeight: "4.8em" }}>

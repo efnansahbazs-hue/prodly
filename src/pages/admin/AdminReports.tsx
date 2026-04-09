@@ -18,7 +18,7 @@ const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }
 const TYPE_STYLES: Record<string, { bg: string; color: string }> = {
   bug: { bg: "rgba(234,179,8,0.12)", color: "#EAB308" },
   crash: { bg: "rgba(239,68,68,0.12)", color: "#EF4444" },
-  violation: { bg: "rgba(124,58,237,0.12)", color: "#A78BFA" },
+  violation: { bg: "rgba(0,200,255,0.12)", color: "#00C8FF" },
 };
 
 const REPORTS: Report[] = [
@@ -47,9 +47,9 @@ export default function AdminReports() {
             onClick={() => setFilter(f)}
             className="px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all capitalize"
             style={{
-              background: filter === f ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.04)",
-              color: filter === f ? "#A78BFA" : "#8B8FA8",
-              border: `1px solid ${filter === f ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.08)"}`,
+              background: filter === f ? "rgba(0,200,255,0.15)" : "rgba(255,255,255,0.04)",
+              color: filter === f ? "#00C8FF" : "#8B8FA8",
+              border: `1px solid ${filter === f ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.08)"}`,
             }}
           >
             {f.replace("_", " ")}

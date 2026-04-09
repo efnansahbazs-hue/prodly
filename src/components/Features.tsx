@@ -6,8 +6,8 @@ const cards = [
   {
     num: "01",
     icon: Brain,
-    iconBg: "rgba(124,58,237,0.15)",
-    iconColor: "#A78BFA",
+    iconBg: "rgba(0,200,255,0.15)",
+    iconColor: "#00C8FF",
     titleKey: "feat.ask.title",
     descKey: "feat.ask.desc",
     badgeKey: "feat.badge.verified",
@@ -26,8 +26,8 @@ const cards = [
   {
     num: "03",
     icon: FolderLock,
-    iconBg: "rgba(124,58,237,0.15)",
-    iconColor: "#A78BFA",
+    iconBg: "rgba(0,200,255,0.15)",
+    iconColor: "#00C8FF",
     titleKey: "feat.archive.title",
     descKey: "feat.archive.desc",
     badgeKey: "feat.badge.neverLose",
@@ -70,8 +70,8 @@ export const Features = () => {
                   backgroundClip: "padding-box",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(124,58,237,0.4)";
-                  e.currentTarget.style.boxShadow = "0 0 30px rgba(124,58,237,0.15)";
+                  e.currentTarget.style.borderColor = "rgba(0,200,255,0.4)";
+                  e.currentTarget.style.boxShadow = "0 0 30px rgba(0,200,255,0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
@@ -81,7 +81,7 @@ export const Features = () => {
                 {/* Top gradient border */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px]"
-                  style={{ background: "linear-gradient(90deg, #7C3AED, transparent)" }}
+                  style={{ background: "linear-gradient(90deg, #00C8FF, transparent)" }}
                 />
                 {/* Ghost number */}
                 <span

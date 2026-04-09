@@ -165,7 +165,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
       {/* Reels */}
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div>
-          <span className="text-[9px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: "#A78BFA" }}>
+          <span className="text-[9px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: "#00C8FF" }}>
             Genre
           </span>
           <ReelStrip
@@ -173,7 +173,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
             spinning={spinning}
             result={result?.genre || "—"}
             delay={0}
-            colorStyle={{ color: "#A78BFA" }}
+            colorStyle={{ color: "#00C8FF" }}
           />
         </div>
         <div>
@@ -218,7 +218,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
           <div
             className="rounded-full p-[2px] animate-move-border"
             style={{
-              background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+              background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
               backgroundSize: "200% 200%",
             }}
           >
@@ -226,7 +226,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
               onClick={doSpin}
               disabled={spinning}
               className="rounded-full px-10 py-3 text-sm font-bold text-white transition-transform duration-200 active:scale-[0.95] disabled:opacity-60"
-              style={{ background: "#7C3AED" }}
+              style={{ background: "#00C8FF" }}
             >
               {spinning ? "Spinning..." : "🎰 SPIN"}
             </button>
@@ -244,7 +244,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
           <button
             onClick={() => setShowShare(!showShare)}
             className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium transition-all active:scale-[0.97]"
-            style={{ color: "#A78BFA", border: "1px solid rgba(124,58,237,0.3)" }}
+            style={{ color: "#00C8FF", border: "1px solid rgba(0,200,255,0.3)" }}
           >
             <Share2 size={13} /> Share this brief
           </button>
@@ -265,7 +265,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
             className="p-5 rounded-xl mb-3 relative overflow-hidden"
             style={{
               background: "#0A0A0F",
-              border: "1px solid rgba(124,58,237,0.3)",
+              border: "1px solid rgba(0,200,255,0.3)",
             }}
           >
             <div className="space-y-2">
@@ -273,7 +273,7 @@ export const ProdlySpin = ({ compact = false }: ProdlySpinProps) => {
                 Prodly Spin Brief
               </span>
               <p className="text-lg font-bold" style={{ fontFamily: "'Space Grotesk'" }}>
-                <span style={{ color: "#A78BFA" }}>{result.genre}</span>
+                <span style={{ color: "#00C8FF" }}>{result.genre}</span>
                 <span style={{ color: "#6B7280" }}> × </span>
                 <span style={{ color: "#34D399" }}>{result.mood}</span>
               </p>

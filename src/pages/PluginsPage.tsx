@@ -72,7 +72,7 @@ export default function PluginsPage() {
         <ScrollReveal delay={100}>
           <div
             className="glass-card-static p-6 rounded-2xl mb-8 relative overflow-hidden"
-            style={{ borderTop: "2px solid transparent", backgroundImage: "linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.04)), linear-gradient(90deg, #7C3AED, #34D399)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box", borderTopWidth: 2 }}
+            style={{ borderTop: "2px solid transparent", backgroundImage: "linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.04)), linear-gradient(90deg, #00C8FF, #34D399)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box", borderTopWidth: 2 }}
           >
             <div className="relative z-10">
               <div className="flex items-center gap-2 mb-2">
@@ -185,7 +185,7 @@ export default function PluginsPage() {
                     style={
                       plugin.price === "free"
                         ? { background: "#34D399", color: "#0A0A0F" }
-                        : { background: "rgba(124,58,237,0.2)", color: "#A78BFA" }
+                        : { background: "rgba(0,200,255,0.2)", color: "#00C8FF" }
                     }
                   >
                     {plugin.price === "free" ? "FREE" : plugin.priceLabel}

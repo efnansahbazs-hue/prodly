@@ -27,7 +27,7 @@ export default function AdminPromoCodesPage() {
         <button
           onClick={() => setShowForm(!showForm)}
           className="px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-[0.97]"
-          style={{ background: "#7C3AED", color: "white" }}
+          style={{ background: "#00C8FF", color: "white" }}
         >
           {showForm ? "Cancel" : "Create Code"}
         </button>

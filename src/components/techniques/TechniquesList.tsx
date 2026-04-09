@@ -11,8 +11,8 @@ interface Props {
 const diffBadge = (d: Difficulty) => {
   const styles: Record<Difficulty, React.CSSProperties> = {
     beginner: { background: "rgba(52,211,153,0.15)", color: "#34D399" },
-    intermediate: { background: "rgba(124,58,237,0.2)", color: "#A78BFA" },
-    advanced: { background: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+    intermediate: { background: "rgba(0,200,255,0.2)", color: "#00C8FF" },
+    advanced: { background: "linear-gradient(135deg, #00C8FF, #34D399)", color: "#FFFFFF" },
   };
   return (
     <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full capitalize" style={styles[d]}>
@@ -43,7 +43,7 @@ export const TechniquesList = ({ category, completed, onSelect, onToggleComplete
               }}
               onClick={() => onSelect(t.id)}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(124,58,237,0.4)";
+                e.currentTarget.style.borderColor = "rgba(0,200,255,0.4)";
                 e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseLeave={(e) => {

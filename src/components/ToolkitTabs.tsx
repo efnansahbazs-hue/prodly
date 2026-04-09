@@ -28,9 +28,9 @@ export const ToolkitTabs = ({ tabs, active, onSelect }: Props) => {
             className="relative px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-[0.97]"
             style={{
               fontFamily: "'Space Grotesk'",
-              background: isActive ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-              border: `1px solid ${isActive ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.08)"}`,
-              color: isActive ? "#A78BFA" : "#8B8FA8",
+              background: isActive ? "rgba(0,200,255,0.2)" : "rgba(255,255,255,0.04)",
+              border: `1px solid ${isActive ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.08)"}`,
+              color: isActive ? "#00C8FF" : "#8B8FA8",
               backdropFilter: "blur(20px)",
             }}
           >

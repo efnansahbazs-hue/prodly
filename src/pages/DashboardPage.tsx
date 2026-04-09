@@ -60,9 +60,9 @@ export default function DashboardPage() {
               onClick={() => setTab(t.id)}
               className="px-4 py-2 rounded-full text-[12px] font-semibold transition-all active:scale-95"
               style={{
-                background: tab === t.id ? "rgba(124,58,237,0.2)" : "transparent",
-                color: tab === t.id ? "#A78BFA" : "#6B7280",
-                border: tab === t.id ? "1px solid rgba(124,58,237,0.3)" : "1px solid transparent",
+                background: tab === t.id ? "rgba(0,200,255,0.2)" : "transparent",
+                color: tab === t.id ? "#00C8FF" : "#6B7280",
+                border: tab === t.id ? "1px solid rgba(0,200,255,0.3)" : "1px solid transparent",
               }}
             >
               {tr ? t.tr : t.en}
@@ -92,7 +92,7 @@ export default function DashboardPage() {
           className="w-full flex items-center justify-center gap-2 rounded-2xl py-3 text-[13px] font-semibold text-white active:scale-[0.97] transition-transform"
           style={{ background: "rgba(15,15,25,0.9)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(20px)", boxShadow: "0 8px 30px rgba(0,0,0,0.5)" }}
         >
-          <span className="rounded-full flex-shrink-0" style={{ width: 8, height: 8, background: "linear-gradient(135deg, #7C3AED, #34D399)" }} />
+          <span className="rounded-full flex-shrink-0" style={{ width: 8, height: 8, background: "linear-gradient(135deg, #00C8FF, #34D399)" }} />
           Prodly'ye Sor
         </button>
       </div>

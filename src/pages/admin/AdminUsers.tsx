@@ -13,7 +13,7 @@ interface User {
 
 const PLAN_COLORS: Record<string, { bg: string; color: string }> = {
   free: { bg: "rgba(255,255,255,0.06)", color: "#8B8FA8" },
-  premium: { bg: "rgba(124,58,237,0.15)", color: "#A78BFA" },
+  premium: { bg: "rgba(0,200,255,0.15)", color: "#00C8FF" },
   studio: { bg: "rgba(52,211,153,0.12)", color: "#34D399" },
 };
 
@@ -65,9 +65,9 @@ export default function AdminUsers() {
             onClick={() => setFilter(f)}
             className="px-3 py-2 rounded-lg text-[11px] font-medium transition-all capitalize"
             style={{
-              background: filter === f ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.04)",
-              color: filter === f ? "#A78BFA" : "#8B8FA8",
-              border: `1px solid ${filter === f ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.08)"}`,
+              background: filter === f ? "rgba(0,200,255,0.15)" : "rgba(255,255,255,0.04)",
+              color: filter === f ? "#00C8FF" : "#8B8FA8",
+              border: `1px solid ${filter === f ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.08)"}`,
             }}
           >
             {f}

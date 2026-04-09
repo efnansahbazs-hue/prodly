@@ -41,9 +41,9 @@ export const ChordStarter = () => {
             onClick={() => setKey(k)}
             className="w-8 h-8 rounded-lg text-[12px] font-semibold transition-all active:scale-[0.95]"
             style={{
-              background: k === key ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-              border: `1px solid ${k === key ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.08)"}`,
-              color: k === key ? "#A78BFA" : "#8B8FA8",
+              background: k === key ? "rgba(0,200,255,0.2)" : "rgba(255,255,255,0.04)",
+              border: `1px solid ${k === key ? "rgba(0,200,255,0.5)" : "rgba(255,255,255,0.08)"}`,
+              color: k === key ? "#00C8FF" : "#8B8FA8",
             }}
           >
             {k}
@@ -74,7 +74,7 @@ export const ChordStarter = () => {
         {progs.map((p) => (
           <div key={p.name} className="rounded-xl px-3 py-2" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
             <p className="text-[10px] mb-0.5" style={{ color: "#6B7280" }}>{p.name}</p>
-            <p className="text-sm font-mono" style={{ color: "#A78BFA" }}>{p.chords}</p>
+            <p className="text-sm font-mono" style={{ color: "#00C8FF" }}>{p.chords}</p>
           </div>
         ))}
       </div>

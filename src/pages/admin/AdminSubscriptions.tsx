@@ -63,7 +63,7 @@ export default function AdminSubscriptions() {
                 </td>
                 <td className="px-4 py-3">
                   <span className="text-[10px] px-2 py-0.5 rounded-full font-medium capitalize"
-                    style={{ background: s.plan === "studio" ? "rgba(52,211,153,0.12)" : "rgba(124,58,237,0.15)", color: s.plan === "studio" ? "#34D399" : "#A78BFA" }}>
+                    style={{ background: s.plan === "studio" ? "rgba(52,211,153,0.12)" : "rgba(0,200,255,0.15)", color: s.plan === "studio" ? "#34D399" : "#00C8FF" }}>
                     {s.plan}
                   </span>
                 </td>

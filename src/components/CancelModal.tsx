@@ -103,15 +103,15 @@ export const CancelModal = ({ open, onClose, currentPlan, billingEnd }: Props) =
                   className="w-full text-left p-4 rounded-xl transition-all"
                   style={{
                     background: choice === opt.key ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
-                    border: `1px solid ${choice === opt.key ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
+                    border: `1px solid ${choice === opt.key ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.06)"}`,
                   }}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: choice === opt.key ? "rgba(124,58,237,0.15)" : "rgba(255,255,255,0.04)",
-                        color: choice === opt.key ? "#A78BFA" : "#8B8FA8",
+                        background: choice === opt.key ? "rgba(0,200,255,0.15)" : "rgba(255,255,255,0.04)",
+                        color: choice === opt.key ? "#00C8FF" : "#8B8FA8",
                       }}
                     >
                       {opt.icon}
@@ -133,7 +133,7 @@ export const CancelModal = ({ open, onClose, currentPlan, billingEnd }: Props) =
                 onClick={onClose}
                 className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition-all active:scale-[0.97]"
                 style={{
-                  background: "linear-gradient(135deg, #7C3AED, #34D399)",
+                  background: "linear-gradient(135deg, #00C8FF, #34D399)",
                 }}
               >
                 {t("cancel.keepPlan")}

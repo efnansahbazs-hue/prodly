@@ -42,7 +42,7 @@ const AdminPromoCodes = () => {
             onClick={() => setShowForm(!showForm)}
             className="h-9 px-5 text-sm font-semibold rounded-xl transition-all active:scale-[0.97]"
             style={{
-              background: "linear-gradient(135deg, #7C3AED, #9333EA)",
+              background: "linear-gradient(135deg, #00C8FF, #00C8FF)",
               color: "white",
               fontFamily: "'Space Grotesk'",
             }}

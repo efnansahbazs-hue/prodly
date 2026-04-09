@@ -18,7 +18,7 @@ const EXP_OPTIONS = [
 const ProdlyAvatar = () => (
   <div
     className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
-    style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+    style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
   >
     P
   </div>
@@ -44,8 +44,8 @@ const UserBubble = ({ children }: { children: React.ReactNode }) => (
     <div
       className="px-4 py-2.5 rounded-2xl rounded-tr-md text-sm text-white"
       style={{
-        background: "rgba(124,58,237,0.15)",
-        border: "1px solid rgba(124,58,237,0.3)",
+        background: "rgba(0,200,255,0.15)",
+        border: "1px solid rgba(0,200,255,0.3)",
       }}
     >
       {children}
@@ -121,7 +121,7 @@ export default function OnboardingPage() {
             <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
               <div
                 className="h-full rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${progress}%`, background: "linear-gradient(90deg, #7C3AED, #34D399)" }}
+                style={{ width: `${progress}%`, background: "linear-gradient(90deg, #00C8FF, #34D399)" }}
               />
             </div>
             <span className="text-[10px] font-medium" style={{ color: "#8B8FA8" }}>
@@ -141,7 +141,7 @@ export default function OnboardingPage() {
               <button
                 onClick={() => advanceWithTyping(1)}
                 className="px-5 py-2 rounded-full text-sm font-semibold text-white active:scale-[0.96] transition-transform"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+                style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
               >
                 Let's go →
               </button>
@@ -192,7 +192,7 @@ export default function OnboardingPage() {
                           onClick={() => toggleGenre(g)}
                           className="px-3.5 py-2 rounded-full text-xs font-medium transition-all active:scale-[0.96]"
                           style={{
-                            background: sel ? "linear-gradient(135deg, #7C3AED, #34D399)" : "rgba(255,255,255,0.04)",
+                            background: sel ? "linear-gradient(135deg, #00C8FF, #34D399)" : "rgba(255,255,255,0.04)",
                             border: sel ? "1px solid transparent" : "1px solid rgba(255,255,255,0.1)",
                             color: "#fff",
                           }}
@@ -303,13 +303,13 @@ export default function OnboardingPage() {
                     onClick={finish}
                     className="rounded-full p-[2px] animate-move-border"
                     style={{
-                      background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+                      background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
                       backgroundSize: "200% 200%",
                     }}
                   >
                     <span
                       className="block rounded-full px-6 py-2 text-sm font-semibold text-white active:scale-[0.96] transition-transform"
-                      style={{ background: "#7C3AED" }}
+                      style={{ background: "#00C8FF" }}
                     >
                       Let's go →
                     </span>

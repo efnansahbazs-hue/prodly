@@ -15,7 +15,7 @@ interface Phase {
 
 const PHASE_STYLES = {
   live:      { border: "#34D399", bg: "rgba(52,211,153,0.06)",  badge: "#34D399", badgeBg: "rgba(52,211,153,0.12)", icon: <Check className="w-3.5 h-3.5" /> },
-  building:  { border: "#7C3AED", bg: "rgba(124,58,237,0.06)", badge: "#A78BFA", badgeBg: "rgba(124,58,237,0.12)", icon: <Sparkles className="w-3.5 h-3.5" /> },
+  building:  { border: "#00C8FF", bg: "rgba(0,200,255,0.06)", badge: "#00C8FF", badgeBg: "rgba(0,200,255,0.12)", icon: <Sparkles className="w-3.5 h-3.5" /> },
   planned:   { border: "#60A5FA", bg: "rgba(96,165,250,0.06)", badge: "#60A5FA", badgeBg: "rgba(96,165,250,0.12)", icon: <Clock className="w-3.5 h-3.5" /> },
   exploring: { border: "rgba(255,255,255,0.15)", bg: "rgba(255,255,255,0.02)", badge: "#8B8FA8", badgeBg: "rgba(255,255,255,0.06)", icon: <HelpCircle className="w-3.5 h-3.5" /> },
 };
@@ -116,10 +116,10 @@ export default function RoadmapPage() {
                     style={{
                       background: s.bg,
                       borderLeft: `3px solid ${s.border}`,
-                      border: `1px solid ${phase.status === "building" ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.06)"}`,
+                      border: `1px solid ${phase.status === "building" ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.06)"}`,
                       borderLeftWidth: 3,
                       borderLeftColor: s.border,
-                      boxShadow: phase.status === "building" ? "0 0 30px rgba(124,58,237,0.1)" : undefined,
+                      boxShadow: phase.status === "building" ? "0 0 30px rgba(0,200,255,0.1)" : undefined,
                     }}
                   >
                     {/* Status badge */}
@@ -177,7 +177,7 @@ export default function RoadmapPage() {
                   <div
                     className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-move-border"
                     style={{
-                      background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+                      background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
                       backgroundSize: "200% 200%",
                       padding: 1.5,
                       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",

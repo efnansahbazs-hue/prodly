@@ -30,7 +30,7 @@ interface ContextCard {
 
 const FreqBar = () => (
   <div className="mt-3 relative h-6 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.04)" }}>
-    <div className="absolute h-full rounded-full" style={{ left: "4%", width: "12%", background: "rgba(124,58,237,0.5)" }} />
+    <div className="absolute h-full rounded-full" style={{ left: "4%", width: "12%", background: "rgba(0,200,255,0.5)" }} />
     <div className="flex justify-between text-[9px] px-2 pt-1" style={{ color: "#555" }}>
       <span>20Hz</span><span>200</span><span>1kHz</span><span>5kHz</span><span>20kHz</span>
     </div>
@@ -81,9 +81,9 @@ function getCards(topic: ChatTopic, lang: string): ContextCard[] {
           border: "purple",
           content: (
             <div className="space-y-1.5 text-[11px]" style={{ color: "#8B8FA8" }}>
-              <p><span className="text-[#A78BFA] font-medium">Ableton:</span> EQ Eight → HPF 30Hz</p>
-              <p><span className="text-[#A78BFA] font-medium">FL:</span> Parametric EQ 2 → HPF</p>
-              <p><span className="text-[#A78BFA] font-medium">Logic:</span> Channel EQ → HPF</p>
+              <p><span className="text-[#00C8FF] font-medium">Ableton:</span> EQ Eight → HPF 30Hz</p>
+              <p><span className="text-[#00C8FF] font-medium">FL:</span> Parametric EQ 2 → HPF</p>
+              <p><span className="text-[#00C8FF] font-medium">Logic:</span> Channel EQ → HPF</p>
             </div>
           ),
         },
@@ -106,9 +106,9 @@ function getCards(topic: ChatTopic, lang: string): ContextCard[] {
           border: "purple",
           content: (
             <div className="space-y-1 text-[11px]" style={{ color: "#8B8FA8" }}>
-              <p><span style={{ color: "#7C3AED" }}>■</span> 20-60Hz — Sub bass</p>
-              <p><span style={{ color: "#8B5CF6" }}>■</span> 60-250Hz — Warmth / mud</p>
-              <p><span style={{ color: "#A78BFA" }}>■</span> 250Hz-2kHz — Body</p>
+              <p><span style={{ color: "#00C8FF" }}>■</span> 20-60Hz — Sub bass</p>
+              <p><span style={{ color: "#00C8FF" }}>■</span> 60-250Hz — Warmth / mud</p>
+              <p><span style={{ color: "#00C8FF" }}>■</span> 250Hz-2kHz — Body</p>
               <p><span style={{ color: "#6EE7B7" }}>■</span> 2-8kHz — Presence</p>
               <p><span style={{ color: "#34D399" }}>■</span> 8-20kHz — Air</p>
             </div>
@@ -137,9 +137,9 @@ function getCards(topic: ChatTopic, lang: string): ContextCard[] {
           border: "purple",
           content: (
             <div className="space-y-1.5 text-[11px]" style={{ color: "#8B8FA8" }}>
-              <p><span className="text-[#A78BFA] font-medium">Ableton:</span> {tr ? "Compressor → Sidechain → Kick input" : "Compressor → Sidechain → Kick input"}</p>
-              <p><span className="text-[#A78BFA] font-medium">FL:</span> {tr ? "Fruity Limiter → Sidechain" : "Fruity Limiter → Sidechain"}</p>
-              <p><span className="text-[#A78BFA] font-medium">Logic:</span> Compressor → Side Chain → Bus</p>
+              <p><span className="text-[#00C8FF] font-medium">Ableton:</span> {tr ? "Compressor → Sidechain → Kick input" : "Compressor → Sidechain → Kick input"}</p>
+              <p><span className="text-[#00C8FF] font-medium">FL:</span> {tr ? "Fruity Limiter → Sidechain" : "Fruity Limiter → Sidechain"}</p>
+              <p><span className="text-[#00C8FF] font-medium">Logic:</span> Compressor → Side Chain → Bus</p>
             </div>
           ),
         },
@@ -227,7 +227,7 @@ function getCards(topic: ChatTopic, lang: string): ContextCard[] {
 }
 
 const BORDER_COLORS: Record<string, string> = {
-  purple: "#7C3AED",
+  purple: "#00C8FF",
   mint: "#34D399",
   gray: "rgba(255,255,255,0.1)",
 };
@@ -325,14 +325,14 @@ export const ContextPanel = ({ topic }: Props) => {
                   className="rounded-[14px] p-4"
                   style={{
                     background: "rgba(255,255,255,0.04)",
-                    borderLeft: "3px solid #7C3AED",
+                    borderLeft: "3px solid #00C8FF",
                     animation: "contextCardIn 0.3s ease 80ms both",
                   }}
                 >
                   <p className="text-[12px] font-semibold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>EXP</p>
                   <p className="text-lg font-bold text-white tabular-nums">{exp}</p>
                   <div className="w-full h-1 rounded-full mt-2" style={{ background: "rgba(255,255,255,0.06)" }}>
-                    <div className="h-full rounded-full" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+                    <div className="h-full rounded-full" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
                   </div>
                   <p className="text-[10px] mt-1" style={{ color: "#8B8FA8" }}>
                     Level {level.level} — {tr ? level.name.tr : level.name.en}

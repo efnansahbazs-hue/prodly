@@ -27,9 +27,9 @@ export const LockedOverlay = ({ label, plan, children }: LockedOverlayProps) => 
           onClick={() => setShowUpgrade(true)}
           className="text-[11px] font-semibold px-3 py-1.5 rounded-full transition-all active:scale-95"
           style={{
-            background: "rgba(124,58,237,0.2)",
-            border: "1px solid rgba(124,58,237,0.4)",
-            color: "#A78BFA",
+            background: "rgba(0,200,255,0.2)",
+            border: "1px solid rgba(0,200,255,0.4)",
+            color: "#00C8FF",
           }}
         >
           {plan === "studio" ? "Studio'ya geç →" : "Premium'a geç →"}

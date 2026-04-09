@@ -24,7 +24,7 @@ export const AdminLogin = () => {
     >
       <div className="glass-card-static p-8 w-full max-w-sm">
         <div className="flex items-center justify-center gap-2 mb-6">
-          <Lock className="w-5 h-5" style={{ color: "#7C3AED" }} />
+          <Lock className="w-5 h-5" style={{ color: "#00C8FF" }} />
           <h1 className="text-lg font-bold text-white" style={{ fontFamily: "'Space Grotesk'" }}>
             Admin Access
           </h1>
@@ -69,7 +69,7 @@ export const AdminLogin = () => {
             <button
               type="submit"
               className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-all active:scale-[0.97]"
-              style={{ background: "#7C3AED" }}
+              style={{ background: "#00C8FF" }}
             >
               Sign In
             </button>

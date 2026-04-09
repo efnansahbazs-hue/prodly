@@ -12,8 +12,8 @@ interface Props {
 const diffBadge = (d: Difficulty) => {
   const styles: Record<Difficulty, React.CSSProperties> = {
     beginner: { background: "rgba(52,211,153,0.15)", color: "#34D399" },
-    intermediate: { background: "rgba(124,58,237,0.2)", color: "#A78BFA" },
-    advanced: { background: "linear-gradient(135deg, #7C3AED, #34D399)", color: "#FFFFFF" },
+    intermediate: { background: "rgba(0,200,255,0.2)", color: "#00C8FF" },
+    advanced: { background: "linear-gradient(135deg, #00C8FF, #34D399)", color: "#FFFFFF" },
   };
   return <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full capitalize" style={styles[d]}>{d}</span>;
 };
@@ -64,14 +64,14 @@ export const TechniqueDetail = ({ id, daw, completed, onToggleComplete, onBack }
 
       {/* 3. DAW steps */}
       {dawSteps && (
-        <div className="rounded-[14px] p-4 mb-4" style={{ ...glass, borderColor: "rgba(124,58,237,0.2)" }}>
-          <h3 className="text-[11px] font-semibold uppercase tracking-wider mb-3" style={{ color: "#A78BFA" }}>
+        <div className="rounded-[14px] p-4 mb-4" style={{ ...glass, borderColor: "rgba(0,200,255,0.2)" }}>
+          <h3 className="text-[11px] font-semibold uppercase tracking-wider mb-3" style={{ color: "#00C8FF" }}>
             Step-by-step — {daw.replace("-", " ")}
           </h3>
           <ol className="space-y-2">
             {dawSteps.steps.map((step, i) => (
               <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: "#8B8FA8" }}>
-                <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+                <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF" }}>
                   {i + 1}
                 </span>
                 {step}
@@ -88,7 +88,7 @@ export const TechniqueDetail = ({ id, daw, completed, onToggleComplete, onBack }
           {t.parameters.map((p) => (
             <div key={p.name} className="flex items-center gap-3 text-sm">
               <span className="font-semibold text-white w-24 flex-shrink-0" style={{ fontFamily: "'Space Grotesk'" }}>{p.name}</span>
-              <span className="font-mono text-[12px]" style={{ color: "#A78BFA" }}>{p.value}</span>
+              <span className="font-mono text-[12px]" style={{ color: "#00C8FF" }}>{p.value}</span>
               <span className="text-[11px]" style={{ color: "#6B7280" }}>{p.note}</span>
             </div>
           ))}
@@ -137,7 +137,7 @@ export const TechniqueDetail = ({ id, daw, completed, onToggleComplete, onBack }
         onClick={onToggleComplete}
         className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-[0.97]"
         style={{
-          background: completed ? "rgba(52,211,153,0.15)" : "linear-gradient(135deg, #7C3AED, #9333EA)",
+          background: completed ? "rgba(52,211,153,0.15)" : "linear-gradient(135deg, #00C8FF, #00C8FF)",
           color: completed ? "#34D399" : "white",
           border: completed ? "1px solid rgba(52,211,153,0.3)" : "none",
         }}

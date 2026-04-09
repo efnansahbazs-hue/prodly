@@ -9,7 +9,7 @@ export const HolographicMesh = () => (
       className="absolute inset-0"
       style={{
         background: [
-          "radial-gradient(ellipse 80% 60% at 20% 20%, rgba(124,58,237,0.20) 0%, transparent 60%)",
+          "radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,200,255,0.20) 0%, transparent 60%)",
           "radial-gradient(ellipse 60% 80% at 80% 80%, rgba(52,211,153,0.12) 0%, transparent 60%)",
           "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(167,139,250,0.08) 0%, transparent 70%)",
           "radial-gradient(ellipse 40% 60% at 70% 20%, rgba(99,102,241,0.10) 0%, transparent 50%)",
@@ -22,7 +22,7 @@ export const HolographicMesh = () => (
       className="absolute inset-0"
       style={{
         background:
-          "linear-gradient(105deg, transparent 20%, rgba(124,58,237,0.04) 30%, rgba(52,211,153,0.06) 40%, rgba(167,139,250,0.04) 50%, rgba(99,102,241,0.03) 60%, transparent 70%)",
+          "linear-gradient(105deg, transparent 20%, rgba(0,200,255,0.04) 30%, rgba(52,211,153,0.06) 40%, rgba(167,139,250,0.04) 50%, rgba(99,102,241,0.03) 60%, transparent 70%)",
         backgroundSize: "200% 200%",
         animation: "holoShimmer 8s ease-in-out infinite",
       }}

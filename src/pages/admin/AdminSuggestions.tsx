@@ -11,7 +11,7 @@ interface Suggestion {
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {
   under_review: { bg: "rgba(234,179,8,0.12)", color: "#EAB308", label: "Under Review" },
-  planned: { bg: "rgba(124,58,237,0.12)", color: "#A78BFA", label: "Planned" },
+  planned: { bg: "rgba(0,200,255,0.12)", color: "#00C8FF", label: "Planned" },
   implemented: { bg: "rgba(52,211,153,0.12)", color: "#34D399", label: "Implemented" },
 };
 

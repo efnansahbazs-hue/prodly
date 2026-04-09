@@ -21,7 +21,7 @@ export const EffectDetail = ({ effect }: Props) => (
 
     {/* When to use */}
     <div className="glass-card-static p-5 rounded-2xl">
-      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#A78BFA" }}>
+      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#00C8FF" }}>
         When to use
       </h3>
       <ul className="space-y-2">
@@ -36,7 +36,7 @@ export const EffectDetail = ({ effect }: Props) => (
 
     {/* Parameters */}
     <div className="glass-card-static p-5 rounded-2xl">
-      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#A78BFA" }}>
+      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#00C8FF" }}>
         Key Parameters
       </h3>
       <div className="space-y-3">
@@ -96,7 +96,7 @@ export const EffectDetail = ({ effect }: Props) => (
 
     {/* DAW Paths */}
     <div className="glass-card-static p-5 rounded-2xl">
-      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#A78BFA" }}>
+      <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#00C8FF" }}>
         Find it in your DAW
       </h3>
       <div className="space-y-2">
@@ -105,8 +105,8 @@ export const EffectDetail = ({ effect }: Props) => (
             <span
               className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
               style={{
-                color: "#A78BFA",
-                background: "rgba(124,58,237,0.15)",
+                color: "#00C8FF",
+                background: "rgba(0,200,255,0.15)",
               }}
             >
               {d.daw}

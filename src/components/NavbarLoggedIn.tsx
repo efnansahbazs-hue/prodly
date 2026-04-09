@@ -10,8 +10,8 @@ import { getAvatarById } from "@/components/AvatarPresets";
 const getLevelGradient = (level: number) => {
   if (level >= 10) return "linear-gradient(135deg, #F59E0B, #D97706)";
   if (level >= 7) return "linear-gradient(135deg, #34D399, #0D9488)";
-  if (level >= 4) return "linear-gradient(135deg, #7C3AED, #34D399)";
-  return "linear-gradient(135deg, #7C3AED, #6D28D9)";
+  if (level >= 4) return "linear-gradient(135deg, #00C8FF, #34D399)";
+  return "linear-gradient(135deg, #00C8FF, #0099CC)";
 };
 
 export const NavbarLoggedIn = () => {
@@ -93,7 +93,7 @@ export const NavbarLoggedIn = () => {
                   className="h-full rounded-full transition-all duration-700 ease-out"
                   style={{
                     width: `${progress}%`,
-                    background: "linear-gradient(90deg, #7C3AED, #34D399)",
+                    background: "linear-gradient(90deg, #00C8FF, #34D399)",
                   }}
                 />
               </div>

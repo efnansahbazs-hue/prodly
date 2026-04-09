@@ -4,7 +4,7 @@ const shadow = "0 8px 32px rgba(0,0,0,0.4)";
 const AnswerWidget = () => (
   <div className={widgetCard} style={{ width: 240, boxShadow: shadow }}>
     <p className="text-[10px] mb-2" style={{ color: "#6B7280" }}>Latest answer</p>
-    <div className="rounded-lg px-2.5 py-1.5 mb-1.5 text-[11px]" style={{ background: "rgba(124,58,237,0.12)", color: "#A78BFA" }}>
+    <div className="rounded-lg px-2.5 py-1.5 mb-1.5 text-[11px]" style={{ background: "rgba(0,200,255,0.12)", color: "#00C8FF" }}>
       Why does my kick sound muddy?
     </div>
     <div className="rounded-lg px-2.5 py-1.5 text-[11px] leading-snug border-l-2" style={{ borderColor: "#34D399", color: "#8B8FA8" }}>
@@ -21,7 +21,7 @@ const StreakWidget = () => (
     <p className="text-[10px] mb-2" style={{ color: "#8B8FA8" }}>days in a row</p>
     <div className="flex gap-1">
       {[1,2,3,4,5,6,7].map(i => (
-        <span key={i} className="w-2 h-2 rounded-full" style={{ background: i <= 5 ? "linear-gradient(135deg, #7C3AED, #34D399)" : "rgba(255,255,255,0.08)" }} />
+        <span key={i} className="w-2 h-2 rounded-full" style={{ background: i <= 5 ? "linear-gradient(135deg, #00C8FF, #34D399)" : "rgba(255,255,255,0.08)" }} />
       ))}
     </div>
   </div>
@@ -29,7 +29,7 @@ const StreakWidget = () => (
 
 const TechniqueWidget = () => (
   <div className={widgetCard} style={{ width: 180, boxShadow: shadow }}>
-    <span className="inline-block text-[9px] font-semibold rounded-full px-2 py-0.5 mb-2" style={{ background: "rgba(124,58,237,0.2)", color: "#A78BFA" }}>
+    <span className="inline-block text-[9px] font-semibold rounded-full px-2 py-0.5 mb-2" style={{ background: "rgba(0,200,255,0.2)", color: "#00C8FF" }}>
       Today's technique
     </span>
     <p className="text-[12px] font-semibold text-white mb-1">Parallel Compression</p>
@@ -42,10 +42,10 @@ const TechniqueWidget = () => (
 const LevelWidget = () => (
   <div className={widgetCard} style={{ width: 160, boxShadow: shadow }}>
     <p className="text-[10px] mb-1.5" style={{ color: "#6B7280" }}>Your level</p>
-    <p className="text-[12px] font-semibold mb-0.5" style={{ color: "#A78BFA", fontFamily: "'Space Grotesk'" }}>Beat Architect</p>
+    <p className="text-[12px] font-semibold mb-0.5" style={{ color: "#00C8FF", fontFamily: "'Space Grotesk'" }}>Beat Architect</p>
     <p className="text-[10px] mb-2" style={{ color: "#8B8FA8" }}>1,240 / 2,000 EXP</p>
     <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-      <div className="h-full rounded-full" style={{ width: "62%", background: "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+      <div className="h-full rounded-full" style={{ width: "62%", background: "linear-gradient(90deg, #00C8FF, #34D399)" }} />
     </div>
   </div>
 );
@@ -68,9 +68,9 @@ const ChallengeWidget = () => (
 export const HeroWidgets = () => (
   <div className="absolute inset-0">
     {/* Atmospheric glow blobs */}
-    <div className="absolute pointer-events-none" style={{ width: 600, height: 600, top: "5%", left: "-5%", background: "radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%)", filter: "blur(100px)", animation: "floatDrift 14s ease-in-out infinite" }} />
+    <div className="absolute pointer-events-none" style={{ width: 600, height: 600, top: "5%", left: "-5%", background: "radial-gradient(circle, rgba(0,200,255,0.25), transparent 70%)", filter: "blur(100px)", animation: "floatDrift 14s ease-in-out infinite" }} />
     <div className="absolute pointer-events-none" style={{ width: 500, height: 500, bottom: "5%", right: "-3%", background: "radial-gradient(circle, rgba(52,211,153,0.18), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 16s ease-in-out infinite 3s" }} />
-    <div className="absolute pointer-events-none" style={{ width: 400, height: 400, top: "15%", right: "10%", background: "radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 12s ease-in-out infinite 6s" }} />
+    <div className="absolute pointer-events-none" style={{ width: 400, height: 400, top: "15%", right: "10%", background: "radial-gradient(circle, rgba(0,200,255,0.15), transparent 70%)", filter: "blur(80px)", animation: "floatDrift 12s ease-in-out infinite 6s" }} />
     <div className="absolute pointer-events-none" style={{ width: 300, height: 300, top: "10%", right: "25%", background: "radial-gradient(circle, rgba(52,211,153,0.10), transparent 70%)", filter: "blur(70px)", animation: "floatDrift 13s ease-in-out infinite 2s" }} />
 
     {/* Scattered ghost widgets */}

@@ -84,8 +84,8 @@ export default function EffectsPage() {
                   className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all active:scale-[0.97]"
                   style={{
                     color: selectedEffect === effect.id ? "#fff" : "#8B8FA8",
-                    background: selectedEffect === effect.id ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-                    border: `1px solid ${selectedEffect === effect.id ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.08)"}`,
+                    background: selectedEffect === effect.id ? "rgba(0,200,255,0.2)" : "rgba(255,255,255,0.04)",
+                    border: `1px solid ${selectedEffect === effect.id ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.08)"}`,
                   }}
                 >
                   {effect.name}

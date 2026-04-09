@@ -54,7 +54,7 @@ export const ReturningGreeting = ({ streakDays = 5 }: Props) => {
       {/* Prodly avatar */}
       <div
         className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+        style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
       >
         P
       </div>

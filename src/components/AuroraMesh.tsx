@@ -7,7 +7,7 @@ export const AuroraMesh = () => (
         height: 700,
         top: "-5%",
         left: "-5%",
-        background: "rgba(124,58,237,0.25)",
+        background: "rgba(0,200,255,0.25)",
         filter: "blur(120px)",
         mixBlendMode: "screen",
         animation: "auroraOrb1 16s ease-in-out infinite alternate",

@@ -103,7 +103,7 @@ export const ProblemSolver = () => {
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 {msg.role === "user" ? (
-                  <div className="rounded-[14px] px-4 py-3 text-sm ml-8" style={{ background: "rgba(124,58,237,0.12)", color: "#A78BFA" }}>
+                  <div className="rounded-[14px] px-4 py-3 text-sm ml-8" style={{ background: "rgba(0,200,255,0.12)", color: "#00C8FF" }}>
                     {t(msg.textKey)}
                   </div>
                 ) : (

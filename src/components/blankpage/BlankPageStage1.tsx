@@ -35,10 +35,10 @@ export const BlankPageStage1 = ({ active, onSelect }: Props) => {
               <div
                 key={c.labelKey}
                 className="rounded-full p-[2px] animate-move-border cursor-pointer"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)", backgroundSize: "200% 200%" }}
+                style={{ background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)", backgroundSize: "200% 200%" }}
                 onClick={onSelect}
               >
-                <button className="px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#7C3AED" }}>
+                <button className="px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-transform active:scale-[0.97]" style={{ background: "#00C8FF" }}>
                   {t(c.labelKey)}
                 </button>
               </div>
@@ -50,7 +50,7 @@ export const BlankPageStage1 = ({ active, onSelect }: Props) => {
                 key={c.labelKey}
                 onClick={onSelect}
                 className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all active:scale-[0.97]"
-                style={{ border: "1px solid rgba(124,58,237,0.4)", color: "#A78BFA", background: "transparent" }}
+                style={{ border: "1px solid rgba(0,200,255,0.4)", color: "#00C8FF", background: "transparent" }}
               >
                 {t(c.labelKey)}
               </button>

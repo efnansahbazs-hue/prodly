@@ -25,8 +25,8 @@ export const TechniquesSidebar = ({ category, onSelect, completed }: Props) => {
             onClick={() => onSelect(cat.id)}
             className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-left text-sm transition-all duration-150 active:scale-[0.97]"
             style={{
-              background: isActive ? "rgba(124,58,237,0.15)" : "transparent",
-              color: isActive ? "#A78BFA" : "#8B8FA8",
+              background: isActive ? "rgba(0,200,255,0.15)" : "transparent",
+              color: isActive ? "#00C8FF" : "#8B8FA8",
               fontFamily: "'Space Grotesk'",
             }}
           >

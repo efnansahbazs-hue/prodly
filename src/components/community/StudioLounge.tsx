@@ -44,7 +44,7 @@ export const StudioLounge = () => {
         {/* Gate overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="glass-card-static p-8 text-center max-w-md">
-            <Lock className="w-8 h-8 mx-auto mb-3" style={{ color: "#7C3AED" }} />
+            <Lock className="w-8 h-8 mx-auto mb-3" style={{ color: "#00C8FF" }} />
             <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk'" }}>
               {t("comm.slLocked")}
             </h3>
@@ -54,13 +54,13 @@ export const StudioLounge = () => {
             <div
               className="inline-block rounded-full p-[2px] animate-move-border"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #34D399, #7C3AED)",
+                background: "linear-gradient(135deg, #00C8FF, #34D399, #00C8FF)",
                 backgroundSize: "200% 200%",
               }}
             >
               <button
                 className="rounded-full px-6 py-2 text-sm font-semibold text-white active:scale-[0.96] transition-transform"
-                style={{ background: "#7C3AED" }}
+                style={{ background: "#00C8FF" }}
               >
                 {t("comm.slUpgrade")}
               </button>
@@ -81,8 +81,8 @@ function LoungeContent({ t }: { t: (k: string) => string }) {
       <div
         className="rounded-2xl p-8 mb-6 text-center"
         style={{
-          background: "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(52,211,153,0.08))",
-          border: "1px solid rgba(124,58,237,0.2)",
+          background: "linear-gradient(135deg, rgba(0,200,255,0.12), rgba(52,211,153,0.08))",
+          border: "1px solid rgba(0,200,255,0.2)",
         }}
       >
         <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk'" }}>
@@ -101,7 +101,7 @@ function LoungeContent({ t }: { t: (k: string) => string }) {
             <div className="flex items-start gap-3">
               <span
                 className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(124,58,237,0.12)", color: "#A78BFA" }}
+                style={{ background: "rgba(0,200,255,0.12)", color: "#00C8FF" }}
               >
                 {room.icon}
               </span>

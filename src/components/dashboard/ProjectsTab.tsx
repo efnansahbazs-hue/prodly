@@ -5,8 +5,8 @@ import { useLang } from "@/hooks/useLang";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const GENRE_COLORS: Record<string, string> = {
-  Techno: "#7C3AED", House: "#34D399", Trap: "#F59E0B", "Hip-Hop": "#3B82F6",
-  "Drum & Bass": "#8B5CF6", Electronic: "#6366F1", Dubstep: "#A78BFA",
+  Techno: "#00C8FF", House: "#34D399", Trap: "#F59E0B", "Hip-Hop": "#3B82F6",
+  "Drum & Bass": "#00C8FF", Electronic: "#6366F1", Dubstep: "#00C8FF",
   Ambient: "#6EE7B7", Trance: "#818CF8", Pop: "#F472B6", "R&B": "#FB923C",
   Jazz: "#FBBF24", Indie: "#A3E635", World: "#2DD4BF", Garage: "#C084FC",
   "Future Bass": "#22D3EE",
@@ -59,7 +59,7 @@ export const ProjectsTab = () => {
   };
 
   const statusBorder = (s: Project["status"]) =>
-    s === "active" ? "#7C3AED" : s === "completed" ? "#34D399" : "rgba(255,255,255,0.15)";
+    s === "active" ? "#00C8FF" : s === "completed" ? "#34D399" : "rgba(255,255,255,0.15)";
 
   if (projects.length === 0 && !showNew) {
     return (
@@ -73,7 +73,7 @@ export const ProjectsTab = () => {
               style={{
                 width: s * 2, height: s * 2,
                 top: `calc(50% - ${s}px)`, left: `calc(50% - ${s}px)`,
-                border: `1px solid rgba(${i % 2 === 0 ? "124,58,237" : "52,211,153"}, ${0.15 + i * 0.05})`,
+                border: `1px solid rgba(${i % 2 === 0 ? "0,200,255" : "52,211,153"}, ${0.15 + i * 0.05})`,
               }}
             />
           ))}
@@ -86,7 +86,7 @@ export const ProjectsTab = () => {
           onClick={() => setShowNew(true)}
           className="px-5 py-2.5 rounded-full text-[13px] font-semibold text-white animate-move-border transition-all active:scale-[0.96]"
           style={{
-            background: "linear-gradient(90deg, #7C3AED, #34D399, #7C3AED)",
+            background: "linear-gradient(90deg, #00C8FF, #34D399, #00C8FF)",
             backgroundSize: "200% 100%",
           }}
         >
@@ -140,9 +140,9 @@ export const ProjectsTab = () => {
                   onClick={() => { setNewGenre(g); setNewStep(2); }}
                   className="px-3 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95"
                   style={{
-                    background: newGenre === g ? "rgba(124,58,237,0.18)" : "rgba(255,255,255,0.05)",
-                    border: `1px solid ${newGenre === g ? "rgba(124,58,237,0.5)" : "rgba(255,255,255,0.1)"}`,
-                    color: newGenre === g ? "#A78BFA" : "#8B8FA8",
+                    background: newGenre === g ? "rgba(0,200,255,0.18)" : "rgba(255,255,255,0.05)",
+                    border: `1px solid ${newGenre === g ? "rgba(0,200,255,0.5)" : "rgba(255,255,255,0.1)"}`,
+                    color: newGenre === g ? "#00C8FF" : "#8B8FA8",
                   }}
                 >
                   {g}
@@ -173,9 +173,9 @@ export const ProjectsTab = () => {
                         onClick={() => setNewKey(k)}
                         className="w-8 h-8 rounded-lg text-[11px] font-medium transition-all active:scale-95"
                         style={{
-                          background: newKey === k ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.04)",
-                          border: `1px solid ${newKey === k ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.06)"}`,
-                          color: newKey === k ? "#A78BFA" : "#8B8FA8",
+                          background: newKey === k ? "rgba(0,200,255,0.2)" : "rgba(255,255,255,0.04)",
+                          border: `1px solid ${newKey === k ? "rgba(0,200,255,0.4)" : "rgba(255,255,255,0.06)"}`,
+                          color: newKey === k ? "#00C8FF" : "#8B8FA8",
                         }}
                       >
                         {k}
@@ -206,7 +206,7 @@ export const ProjectsTab = () => {
               <button
                 onClick={() => setNewStep(3)}
                 className="px-4 py-2 rounded-full text-[12px] font-semibold text-white transition-all active:scale-95"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                style={{ background: "linear-gradient(135deg, #00C8FF, #0099CC)" }}
               >
                 {tr ? "Devam →" : "Continue →"}
               </button>
@@ -226,7 +226,7 @@ export const ProjectsTab = () => {
               <button
                 onClick={handleCreate}
                 className="px-5 py-2.5 rounded-full text-[13px] font-semibold text-white transition-all active:scale-95"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+                style={{ background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
               >
                 {tr ? "Oluştur" : "Create"}
               </button>
@@ -239,7 +239,7 @@ export const ProjectsTab = () => {
       <div className={expandedId ? "space-y-4" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
         {projects.map((p) => {
           const isExpanded = expandedId === p.id;
-          const genreColor = GENRE_COLORS[p.genre] || "#7C3AED";
+          const genreColor = GENRE_COLORS[p.genre] || "#00C8FF";
 
           if (expandedId && !isExpanded) {
             return (
@@ -265,9 +265,9 @@ export const ProjectsTab = () => {
               className="rounded-2xl overflow-hidden transition-all"
               style={{
                 background: "rgba(255,255,255,0.04)",
-                border: `1px solid ${isExpanded ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.08)"}`,
+                border: `1px solid ${isExpanded ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.08)"}`,
                 borderLeft: `3px solid ${statusBorder(p.status)}`,
-                boxShadow: p.status === "active" ? "0 0 20px rgba(124,58,237,0.08)" : "none",
+                boxShadow: p.status === "active" ? "0 0 20px rgba(0,200,255,0.08)" : "none",
                 opacity: p.status === "paused" ? 0.7 : 1,
                 animation: "contextCardIn 0.3s cubic-bezier(0.16,1,0.3,1) both",
               }}
@@ -332,7 +332,7 @@ export const ProjectsTab = () => {
 
                 {/* Progress */}
                 <div className="w-full h-1 rounded-full mb-2" style={{ background: "rgba(255,255,255,0.06)" }}>
-                  <div className="h-full rounded-full transition-all duration-500" style={{ width: `${p.progress}%`, background: p.progress >= 100 ? "#34D399" : "linear-gradient(90deg, #7C3AED, #34D399)" }} />
+                  <div className="h-full rounded-full transition-all duration-500" style={{ width: `${p.progress}%`, background: p.progress >= 100 ? "#34D399" : "linear-gradient(90deg, #00C8FF, #34D399)" }} />
                 </div>
 
                 <p className="text-[10px]" style={{ color: "#555" }}>

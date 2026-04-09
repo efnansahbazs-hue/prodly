@@ -73,9 +73,9 @@ export const CommunityTrending = () => {
                   className="text-[10px] px-1.5 py-0.5 rounded-full"
                   style={{
                     background: item.genre === activeGenre && activeGenre !== "All"
-                      ? "rgba(52,211,153,0.12)" : "rgba(124,58,237,0.1)",
+                      ? "rgba(52,211,153,0.12)" : "rgba(0,200,255,0.1)",
                     color: item.genre === activeGenre && activeGenre !== "All"
-                      ? "#34D399" : "#A78BFA",
+                      ? "#34D399" : "#00C8FF",
                   }}
                 >
                   {item.genre}
@@ -84,8 +84,8 @@ export const CommunityTrending = () => {
             </div>
 
             <div className="flex items-center gap-1 flex-shrink-0">
-              <TrendingUp className="w-3.5 h-3.5" style={{ color: item.trend === "new" ? "#34D399" : "#A78BFA" }} />
-              <span className="text-[10px] font-medium" style={{ color: item.trend === "new" ? "#34D399" : "#A78BFA" }}>
+              <TrendingUp className="w-3.5 h-3.5" style={{ color: item.trend === "new" ? "#34D399" : "#00C8FF" }} />
+              <span className="text-[10px] font-medium" style={{ color: item.trend === "new" ? "#34D399" : "#00C8FF" }}>
                 {item.trend === "new" ? "NEW" : "↑"}
               </span>
             </div>

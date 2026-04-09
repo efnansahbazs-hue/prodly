@@ -65,7 +65,7 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
         <div className="flex items-center gap-2.5">
           <div
             className="flex items-center justify-center rounded-full text-white text-[11px] font-bold flex-shrink-0"
-            style={{ width: 28, height: 28, background: "linear-gradient(135deg, #7C3AED, #34D399)" }}
+            style={{ width: 28, height: 28, background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
           >
             P
           </div>
@@ -95,7 +95,7 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
                 fontSize: expanded ? 14 : 13,
                 lineHeight: 1.5,
                 color: msg.from === "user" ? "#E0D4FC" : "#C4C7D4",
-                background: msg.from === "user" ? "rgba(124,58,237,0.25)" : "rgba(255,255,255,0.06)",
+                background: msg.from === "user" ? "rgba(0,200,255,0.25)" : "rgba(255,255,255,0.06)",
                 borderRadius: msg.from === "user" ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
                 transition: "font-size 0.3s ease",
               }}
@@ -124,7 +124,7 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
           <button
             onClick={handleSend}
             className="p-1.5 rounded-full transition-all active:scale-90"
-            style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+            style={{ background: "linear-gradient(135deg, #00C8FF, #0099CC)" }}
           >
             <Send size={12} className="text-white" />
           </button>

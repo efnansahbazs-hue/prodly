@@ -18,7 +18,7 @@ interface Post {
 
 const BORDER_COLORS: Record<PostType, string> = {
   technique: "#34D399",
-  project: "#7C3AED",
+  project: "#00C8FF",
   question: "#34D399",
   tip: "#60A5FA",
   challenge: "transparent",
@@ -34,10 +34,10 @@ const TYPE_LABELS: Record<PostType, string> = {
 
 const TYPE_BG: Record<PostType, string> = {
   technique: "rgba(52,211,153,0.1)",
-  project: "rgba(124,58,237,0.1)",
+  project: "rgba(0,200,255,0.1)",
   question: "rgba(52,211,153,0.08)",
   tip: "rgba(96,165,250,0.1)",
-  challenge: "rgba(124,58,237,0.15)",
+  challenge: "rgba(0,200,255,0.15)",
 };
 
 const POSTS: Post[] = [
@@ -94,7 +94,7 @@ export const CommunityFeed = () => {
               ? "3px solid transparent"
               : `3px solid ${BORDER_COLORS[post.type]}`,
             ...(post.type === "challenge" ? {
-              borderImage: "linear-gradient(to bottom, #7C3AED, #34D399) 1",
+              borderImage: "linear-gradient(to bottom, #00C8FF, #34D399) 1",
             } : {}),
           }}
         >
@@ -103,7 +103,7 @@ export const CommunityFeed = () => {
             <div className="flex items-center gap-2">
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
-                style={{ background: post.level >= 8 ? "linear-gradient(135deg, #7C3AED, #34D399)" : "rgba(124,58,237,0.25)" }}
+                style={{ background: post.level >= 8 ? "linear-gradient(135deg, #00C8FF, #34D399)" : "rgba(0,200,255,0.25)" }}
               >
                 {post.level}
               </div>
@@ -112,7 +112,7 @@ export const CommunityFeed = () => {
             </div>
             <span
               className="text-[10px] px-2 py-0.5 rounded-full font-medium"
-              style={{ background: TYPE_BG[post.type], color: BORDER_COLORS[post.type] === "transparent" ? "#A78BFA" : BORDER_COLORS[post.type] }}
+              style={{ background: TYPE_BG[post.type], color: BORDER_COLORS[post.type] === "transparent" ? "#00C8FF" : BORDER_COLORS[post.type] }}
             >
               {post.badge && `${post.badge} `}{t(TYPE_LABELS[post.type])}
             </span>
@@ -131,7 +131,7 @@ export const CommunityFeed = () => {
             <button className="flex items-center gap-1.5 text-[11px] transition-colors hover:text-[#34D399]" style={{ color: "#8B8FA8" }}>
               <Heart className="w-3.5 h-3.5" /> {post.likes}
             </button>
-            <button className="flex items-center gap-1.5 text-[11px] transition-colors hover:text-[#A78BFA]" style={{ color: "#8B8FA8" }}>
+            <button className="flex items-center gap-1.5 text-[11px] transition-colors hover:text-[#00C8FF]" style={{ color: "#8B8FA8" }}>
               <MessageCircle className="w-3.5 h-3.5" /> {post.comments}
             </button>
             <button className="flex items-center gap-1.5 text-[11px] transition-colors hover:text-white" style={{ color: "#8B8FA8" }}>
