@@ -55,18 +55,46 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
         return;
       }
 
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify({ question }),
-      });
+      console.log("Sending request to /api/chat");
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30_000);
+
+      let res: Response;
+      try {
+        res = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ question }),
+          signal: controller.signal,
+        });
+      } catch (fetchErr) {
+        if ((fetchErr as Error).name === "AbortError") {
+          toast.error("İstek zaman aşımına uğradı (30s). Tekrar dene.");
+        } else {
+          throw fetchErr;
+        }
+        setLoading(false);
+        return;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+
+      console.log("Response status:", res.status);
+      const rawText = await res.text();
+      console.log("Response body:", rawText);
+
+      let parsedBody: { error?: string; answer?: string; cached?: boolean; model?: string };
+      try {
+        parsedBody = JSON.parse(rawText);
+      } catch {
+        throw new Error(`Non-JSON response: ${rawText.slice(0, 200)}`);
+      }
 
       if (res.status === 429) {
-        const body = await res.json().catch(() => ({}));
-        if (body.error === "limit_reached") {
+        if (parsedBody.error === "limit_reached") {
           setMessages((prev) => [
             ...prev,
             {
@@ -87,10 +115,9 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
         throw new Error(`API error: ${res.status}`);
       }
 
-      const data = await res.json();
       setMessages((prev) => [
         ...prev,
-        { id: Date.now() + 1, from: "prodly", text: data.answer, time: nowTime() },
+        { id: Date.now() + 1, from: "prodly", text: parsedBody.answer ?? "", time: nowTime() },
       ]);
     } catch (err) {
       console.error(err);

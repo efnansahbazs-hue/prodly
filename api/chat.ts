@@ -35,6 +35,9 @@ async function sha256(text: string): Promise<string> {
 }
 
 export default async function handler(req: Request): Promise<Response> {
+  console.log("=== /api/chat called ===");
+  console.log("method:", req.method);
+
   if (req.method !== "POST") {
     return Response.json({ error: "Method not allowed" }, { status: 405 });
   }
@@ -42,6 +45,7 @@ export default async function handler(req: Request): Promise<Response> {
   // Auth
   const authHeader = req.headers.get("Authorization");
   if (!authHeader?.startsWith("Bearer ")) {
+    console.log("auth check done: missing/invalid header");
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
   const token = authHeader.slice(7);
@@ -57,12 +61,15 @@ export default async function handler(req: Request): Promise<Response> {
   } = await supabase.auth.getUser(token);
 
   if (authError || !user) {
+    console.log("auth check done: invalid token", authError?.message);
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
+  console.log("auth check done: user", user.id);
 
   // Rate limit: 1 request per 10 seconds per user
   const lastRequest = rateLimitMap.get(user.id);
   if (lastRequest && Date.now() - lastRequest < RATE_LIMIT_MS) {
+    console.log("rate limit hit for user", user.id);
     return Response.json({ error: "rate_limit" }, { status: 429 });
   }
   rateLimitMap.set(user.id, Date.now());
@@ -81,6 +88,7 @@ export default async function handler(req: Request): Promise<Response> {
   if (!question) {
     return Response.json({ error: "Empty question" }, { status: 400 });
   }
+  console.log("body parsed: question length", question.length);
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -102,6 +110,7 @@ export default async function handler(req: Request): Promise<Response> {
   const plan: Plan = ((profileRes.data?.plan as Plan) ?? "free") as Plan;
   const questionsUsed: number = usageRes.data?.questions_used ?? 0;
   const totalQuestions: number = archiveRes.count ?? 0;
+  console.log("limit check done: plan", plan, "questionsUsed", questionsUsed, "totalQuestions", totalQuestions);
 
   // Daily limit check
   if (questionsUsed >= PLAN_LIMITS[plan]) {
@@ -117,6 +126,7 @@ export default async function handler(req: Request): Promise<Response> {
     .maybeSingle();
 
   if (cachedRow) {
+    console.log("cache check done: HIT");
     // Increment hit_count (fire-and-forget)
     supabase
       .from("cached_answers")
@@ -129,12 +139,14 @@ export default async function handler(req: Request): Promise<Response> {
       { status: 200 }
     );
   }
+  console.log("cache check done: MISS");
 
   const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
 
   // Classify: simple or complex (Haiku, max 10 tokens)
   let isComplex = false;
   try {
+    console.log("classification: starting");
     const classification = await anthropic.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 10,
@@ -151,7 +163,9 @@ export default async function handler(req: Request): Promise<Response> {
       .toLowerCase()
       .trim();
     isComplex = label.includes("complex");
-  } catch {
+    console.log("classification done: isComplex", isComplex);
+  } catch (e) {
+    console.log("classification failed, defaulting to simple:", e);
     isComplex = false;
   }
 
@@ -178,6 +192,7 @@ export default async function handler(req: Request): Promise<Response> {
       : "deneyimli";
   const dynamicPart = `Kullanıcı ${totalQuestions} soru sormuş.\nSeviye ipucu: ${levelHint}.`;
 
+  console.log("anthropic call: starting with model", model);
   // Anthropic API call — static part marked for prompt caching
   const response = await anthropic.messages.create({
     model,
@@ -200,8 +215,10 @@ export default async function handler(req: Request): Promise<Response> {
   const answer = (response.content[0] as { text: string }).text;
   const tokensUsed =
     response.usage.input_tokens + response.usage.output_tokens;
+  console.log("anthropic call done: tokensUsed", tokensUsed, "answer length", answer.length);
 
   // Persist: cache + archive + usage (parallel, fire-and-forget errors)
+  console.log("db write: starting");
   await Promise.all([
     supabase.from("cached_answers").insert({
       question_hash: questionHash,
@@ -226,5 +243,7 @@ export default async function handler(req: Request): Promise<Response> {
     ),
   ]);
 
+  console.log("db write done");
+  console.log("=== /api/chat done ===");
   return Response.json({ answer, cached: false, model }, { status: 200 });
 }
