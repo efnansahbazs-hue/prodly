@@ -75,13 +75,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const register = useCallback(async (username: string, email: string, password: string): Promise<AuthUser> => {
+    console.log("Register called: email=" + email);
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { username, plan: "free" } },
     });
+    console.log("signUp result:" + JSON.stringify(data));
+    console.log("signUp error:" + JSON.stringify(error));
     if (error) throw error;
     const u: AuthUser = { id: data.user?.id ?? "", username, email, plan: "free" };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+    setUser(u);
     return u;
   }, []);
 
