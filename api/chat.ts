@@ -1,19 +1,40 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+export const config = { runtime: 'edge' }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: Request): Promise<Response> {
+  console.log("=== /api/chat called ===")
+
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    })
   }
 
-  const { question } = req.body as { question?: string };
+  let question: string | undefined
+  try {
+    const body = await req.json() as { question?: string }
+    question = body.question
+  } catch {
+    return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
+
   if (!question?.trim()) {
-    return res.status(400).json({ error: "question is required" });
+    return new Response(JSON.stringify({ error: "question is required" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    })
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) {
-    console.error("OPENAI_API_KEY not set");
-    return res.status(500).json({ error: "API key not configured" });
+    console.error("OPENAI_API_KEY not set")
+    return new Response(JSON.stringify({ error: "API key not configured" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    })
   }
 
   try {
@@ -35,21 +56,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           { role: "user", content: question },
         ],
       }),
-    });
+    })
 
     if (!openaiRes.ok) {
-      const err = await openaiRes.text();
-      console.error("OpenAI error:", err);
-      return res.status(502).json({ error: "Upstream AI error" });
+      const err = await openaiRes.text()
+      console.error("OpenAI error:", err)
+      return new Response(JSON.stringify({ error: "Upstream AI error" }), {
+        status: 502,
+        headers: { "Content-Type": "application/json" },
+      })
     }
 
     const data = await openaiRes.json() as {
-      choices: Array<{ message: { content: string } }>;
-    };
-    const answer = data.choices[0]?.message?.content ?? "";
-    return res.status(200).json({ answer });
+      choices: Array<{ message: { content: string } }>
+    }
+    const answer = data.choices[0]?.message?.content ?? ""
+    return new Response(JSON.stringify({ answer }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    })
   } catch (err) {
-    console.error("chat handler error:", err);
-    return res.status(500).json({ error: "Internal server error" });
+    console.error("chat handler error:", err)
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    })
   }
 }
