@@ -27,11 +27,16 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
     const now = new Date();
     const time = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
     const userMsg = input.trim();
+
+    console.log("BUTTON CLICKED");
+    console.log("question:", userMsg);
+    console.log("sending to /api/chat...");
+
     setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: userMsg, time }]);
     setInput("");
 
@@ -39,13 +44,26 @@ export const DashboardChat = ({ onTopicChange }: Props) => {
     const topic = detectTopic(userMsg);
     onTopicChange?.(topic);
 
-    // Simulated response
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: userMsg }),
+      });
+      console.log("/api/chat status:", res.status);
+      const data = await res.json();
+      console.log("/api/chat response:", data);
       setMessages((prev) => [
         ...prev,
-        { id: Date.now() + 1, from: "prodly", text: "Bunu bi kontrol edeyim. Bir saniye...", time },
+        { id: Date.now() + 1, from: "prodly", text: data.answer ?? "...", time },
       ]);
-    }, 800);
+    } catch (err) {
+      console.error("/api/chat error:", err);
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, from: "prodly", text: "Bağlantı hatası. Tekrar dene.", time },
+      ]);
+    }
   };
 
   return (
