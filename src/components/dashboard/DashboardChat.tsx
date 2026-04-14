@@ -9,8 +9,9 @@ export const DashboardChat = () => {
   const [loading, setLoading] = useState(false)
 
   const handleSend = async () => {
-    console.log("BUTTON CLICKED", question)
     if (!question.trim() || loading) return
+
+    console.log("BUTTON CLICKED:", question)
 
     const userMsg = question.trim()
     setQuestion("")
@@ -21,33 +22,42 @@ export const DashboardChat = () => {
       const {
         data: { session },
       } = await supabase.auth.getSession()
-      console.log("session:", session?.user?.email)
+      console.log("SESSION:", session?.access_token ? "OK" : "NULL")
 
+      if (!session) {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", text: "Oturum bulunamadı, tekrar giriş yap." },
+        ])
+        return
+      }
+
+      console.log("FETCHING /api/chat...")
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${session?.access_token}`,
+          Authorization: `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({ question: userMsg }),
       })
 
-      console.log("Response status:", res.status)
+      console.log("RESPONSE STATUS:", res.status)
       const data = await res.json()
-      console.log("Response data:", data)
+      console.log("RESPONSE DATA:", data)
 
       if (data.answer) {
         setMessages((prev) => [...prev, { role: "assistant", text: data.answer }])
       } else if (data.error === "limit_reached") {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", text: "Günlük limitine ulaştın 🎛️ Yarın devam et veya planını yükselt." },
+          { role: "assistant", text: "Günlük limitine ulaştın. Yarın devam et veya planını yükselt." },
         ])
       } else {
         setMessages((prev) => [...prev, { role: "assistant", text: "Bir hata oluştu, tekrar dene." }])
       }
     } catch (err) {
-      console.error("Chat error:", err)
+      console.error("FETCH ERROR:", err)
       setMessages((prev) => [...prev, { role: "assistant", text: "Bağlantı hatası." }])
     } finally {
       setLoading(false)
