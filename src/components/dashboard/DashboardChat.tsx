@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { toast } from "sonner"
 import { supabase } from "@/lib/supabase"
 
 export const DashboardChat = () => {
@@ -12,32 +13,38 @@ export const DashboardChat = () => {
     if (!question.trim() || loading) return
 
     console.log("BUTTON CLICKED:", question)
+    console.log("getting session...")
 
     const userMsg = question.trim()
     setQuestion("")
     setMessages((prev) => [...prev, { role: "user", text: userMsg }])
     setLoading(true)
 
+    let token: string | null = null
+
     try {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-      console.log("SESSION:", session?.access_token ? "OK" : "NULL")
+      const { data, error } = await supabase.auth.getSession()
+      console.log("session data:", data?.session?.access_token ? "OK" : "NULL")
+      console.log("session error:", error)
+      token = data?.session?.access_token ?? null
+    } catch (e) {
+      console.error("getSession threw:", e)
+    }
 
-      if (!session) {
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", text: "Oturum bulunamadı, tekrar giriş yap." },
-        ])
-        return
-      }
+    if (!token) {
+      toast.error("Oturum bulunamadı, tekrar giriş yap")
+      setLoading(false)
+      return
+    }
 
-      console.log("FETCHING /api/chat...")
+    console.log("FETCHING /api/chat with token:", token.slice(0, 20) + "...")
+
+    try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ question: userMsg }),
       })
