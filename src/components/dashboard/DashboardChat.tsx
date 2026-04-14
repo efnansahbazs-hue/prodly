@@ -1,153 +1,147 @@
-import { useState, useRef, useEffect } from "react";
-import { ArrowLeftRight, Send } from "lucide-react";
-import { detectTopic, type ChatTopic } from "@/components/dashboard/ContextPanel";
+import { useState } from "react"
+import { supabase } from "@/lib/supabase"
 
-interface Message {
-  id: number;
-  from: "user" | "prodly";
-  text: string;
-  time: string;
-}
-
-const INITIAL_MESSAGES: Message[] = [
-  { id: 1, from: "prodly", text: "Stüdyo açık. Ne üzerinde çalışıyorsun?", time: "23:41" },
-];
-
-interface Props {
-  onTopicChange?: (topic: ChatTopic) => void;
-}
-
-export const DashboardChat = ({ onTopicChange }: Props) => {
-  const [expanded, setExpanded] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
-  const [input, setInput] = useState("");
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages]);
+export const DashboardChat = () => {
+  const [question, setQuestion] = useState("")
+  const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([
+    { role: "assistant", text: "Stüdyo açık. Ne üzerinde çalışıyorsun?" },
+  ])
+  const [loading, setLoading] = useState(false)
 
   const handleSend = async () => {
-    if (!input.trim()) return;
-    const now = new Date();
-    const time = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
-    const userMsg = input.trim();
+    console.log("BUTTON CLICKED", question)
+    if (!question.trim() || loading) return
 
-    console.log("BUTTON CLICKED");
-    console.log("question:", userMsg);
-    console.log("sending to /api/chat...");
-
-    setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: userMsg, time }]);
-    setInput("");
-
-    // Detect topic and notify parent
-    const topic = detectTopic(userMsg);
-    onTopicChange?.(topic);
+    const userMsg = question.trim()
+    setQuestion("")
+    setMessages((prev) => [...prev, { role: "user", text: userMsg }])
+    setLoading(true)
 
     try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
+      console.log("session:", session?.user?.email)
+
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.access_token}`,
+        },
         body: JSON.stringify({ question: userMsg }),
-      });
-      console.log("/api/chat status:", res.status);
-      const data = await res.json();
-      console.log("/api/chat response:", data);
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now() + 1, from: "prodly", text: data.answer ?? "...", time },
-      ]);
+      })
+
+      console.log("Response status:", res.status)
+      const data = await res.json()
+      console.log("Response data:", data)
+
+      if (data.answer) {
+        setMessages((prev) => [...prev, { role: "assistant", text: data.answer }])
+      } else if (data.error === "limit_reached") {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", text: "Günlük limitine ulaştın 🎛️ Yarın devam et veya planını yükselt." },
+        ])
+      } else {
+        setMessages((prev) => [...prev, { role: "assistant", text: "Bir hata oluştu, tekrar dene." }])
+      }
     } catch (err) {
-      console.error("/api/chat error:", err);
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now() + 1, from: "prodly", text: "Bağlantı hatası. Tekrar dene.", time },
-      ]);
+      console.error("Chat error:", err)
+      setMessages((prev) => [...prev, { role: "assistant", text: "Bağlantı hatası." }])
+    } finally {
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div
-      className="h-full flex flex-col rounded-2xl overflow-hidden transition-all"
       style={{
-        width: expanded ? 480 : 280,
-        minWidth: expanded ? 480 : 280,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
         background: "rgba(255,255,255,0.03)",
         border: "1px solid rgba(255,255,255,0.08)",
-        backdropFilter: "blur(20px)",
-        transition: "width 0.4s cubic-bezier(0.34,1.56,0.64,1), min-width 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+        borderRadius: 16,
+        overflow: "hidden",
       }}
     >
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="flex items-center gap-2.5">
-          <div
-            className="flex items-center justify-center rounded-full text-white text-[11px] font-bold flex-shrink-0"
-            style={{ width: 28, height: 28, background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
-          >
-            P
-          </div>
-          <span className="text-[13px] font-semibold text-white" style={{ fontFamily: "'Space Grotesk'" }}>Prodly</span>
-          <span className="rounded-full animate-pulse-dot flex-shrink-0" style={{ width: 6, height: 6, background: "#34D399" }} />
-        </div>
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="p-1.5 rounded-lg transition-all active:scale-95"
-          style={{ background: "rgba(255,255,255,0.05)" }}
-        >
-          <ArrowLeftRight
-            size={14}
-            className="text-[#8B8FA8] transition-transform"
-            style={{ transform: expanded ? "rotate(180deg)" : "none", transition: "transform 0.3s ease" }}
-          />
-        </button>
-      </div>
-
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 py-3 space-y-2.5" style={{ scrollbarWidth: "none" }}>
-        {messages.map((msg) => (
-          <div key={msg.id} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+      <div style={{ flex: 1, overflowY: "auto", padding: "12px", scrollbarWidth: "none" }}>
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
+              marginBottom: 8,
+            }}
+          >
             <div
-              className="max-w-[85%] px-3.5 py-2.5 transition-all"
               style={{
-                fontSize: expanded ? 14 : 13,
+                maxWidth: "85%",
+                padding: "10px 14px",
+                background:
+                  msg.role === "user" ? "rgba(0,200,255,0.25)" : "rgba(255,255,255,0.06)",
+                borderRadius:
+                  msg.role === "user" ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
+                color: msg.role === "user" ? "#E0D4FC" : "#C4C7D4",
+                fontSize: 13,
                 lineHeight: 1.5,
-                color: msg.from === "user" ? "#E0D4FC" : "#C4C7D4",
-                background: msg.from === "user" ? "rgba(0,200,255,0.25)" : "rgba(255,255,255,0.06)",
-                borderRadius: msg.from === "user" ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
-                transition: "font-size 0.3s ease",
               }}
             >
-              <p className="break-words">{msg.text}</p>
-              {expanded && <span className="block text-[10px] mt-1.5 opacity-40">{msg.time}</span>}
+              {msg.text}
             </div>
           </div>
         ))}
+        {loading && (
+          <p style={{ color: "#555", fontSize: 12, padding: "4px 8px" }}>düşünüyor...</p>
+        )}
       </div>
 
       {/* Input */}
-      <div className="px-3 pb-3 pt-1">
-        <div
-          className="flex items-center gap-2 rounded-full px-4 py-2.5"
-          style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          padding: "8px 12px 12px",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
+        <input
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
+          placeholder="Sor..."
+          disabled={loading}
+          style={{
+            flex: 1,
+            background: "#0d0d0d",
+            border: "1px solid #1a1a1a",
+            borderRadius: 8,
+            padding: "10px 14px",
+            color: "#e0e0e0",
+            fontSize: 14,
+            outline: "none",
+          }}
+        />
+        <button
+          onClick={handleSend}
+          disabled={loading}
+          style={{
+            background: "linear-gradient(135deg, #00C8FF, #0099CC)",
+            border: "none",
+            borderRadius: 8,
+            padding: "10px 16px",
+            color: "white",
+            cursor: loading ? "not-allowed" : "pointer",
+            fontSize: 16,
+            opacity: loading ? 0.6 : 1,
+          }}
         >
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Sor..."
-            className="flex-1 bg-transparent text-[13px] text-white placeholder:text-[#555] focus:outline-none"
-          />
-          <button
-            onClick={handleSend}
-            className="p-1.5 rounded-full transition-all active:scale-90"
-            style={{ background: "linear-gradient(135deg, #00C8FF, #0099CC)" }}
-          >
-            <Send size={12} className="text-white" />
-          </button>
-        </div>
+          →
+        </button>
       </div>
     </div>
-  );
-};
+  )
+}
