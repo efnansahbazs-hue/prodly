@@ -17,14 +17,16 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password) { setError(t("auth.required")); return; }
+    if (!email || !password) return;
     setLoading(true);
-    setError("");
     try {
+      console.log("LOGIN ATTEMPT:", email);
       await login(email, password);
+      console.log("LOGIN SUCCESS");
       navigate("/dashboard");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Giriş başarısız");
+    } catch (err: any) {
+      console.error("LOGIN ERROR:", err);
+      setError(err.message || "Giriş başarısız");
     } finally {
       setLoading(false);
     }
