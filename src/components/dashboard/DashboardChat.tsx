@@ -12,9 +12,6 @@ export const DashboardChat = () => {
   const handleSend = async () => {
     if (!question.trim() || loading) return
 
-    console.log("BUTTON CLICKED:", question)
-    console.log("getting session...")
-
     const userMsg = question.trim()
     setQuestion("")
     setMessages((prev) => [...prev, { role: "user", text: userMsg }])
@@ -24,8 +21,7 @@ export const DashboardChat = () => {
 
     try {
       const { data, error } = await supabase.auth.getSession()
-      console.log("session data:", data?.session?.access_token ? "OK" : "NULL")
-      console.log("session error:", error)
+      if (error) console.error("getSession error:", error)
       token = data?.session?.access_token ?? null
     } catch (e) {
       console.error("getSession threw:", e)
@@ -37,8 +33,6 @@ export const DashboardChat = () => {
       return
     }
 
-    console.log("FETCHING /api/chat with token:", token.slice(0, 20) + "...")
-
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -49,9 +43,7 @@ export const DashboardChat = () => {
         body: JSON.stringify({ question: userMsg }),
       })
 
-      console.log("RESPONSE STATUS:", res.status)
       const data = await res.json()
-      console.log("RESPONSE DATA:", data)
 
       if (data.answer) {
         setMessages((prev) => [...prev, { role: "assistant", text: data.answer }])
