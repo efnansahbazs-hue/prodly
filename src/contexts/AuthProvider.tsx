@@ -37,19 +37,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mevcut session'ı kontrol et
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session?.user) {
-        const u = await toAuthUser(session.user);
-        setUser(u);
-        setPlan(u.plan);
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    });
-
-    // Session değişikliklerini dinle
+    // onAuthStateChange INITIAL_SESSION event'iyle mevcut session'ı zaten tetikler.
+    // getSession() ile paralel çalıştırmak auth token lock çakışmasına yol açar.
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
