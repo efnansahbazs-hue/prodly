@@ -13,7 +13,7 @@ export type AuthContextType = {
   plan: "free" | "premium" | "studio";
   isLoggedIn: boolean;
   loading: boolean;
-  login: (u: AuthUser) => void;
+  login: (email: string, password: string) => Promise<AuthUser>;
   logout: () => Promise<void>;
   register: (username: string, email: string, password: string) => Promise<AuthUser>;
 };

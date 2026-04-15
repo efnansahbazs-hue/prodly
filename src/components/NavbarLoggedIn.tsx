@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
 
 export const NavbarLoggedIn = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -19,12 +18,7 @@ export const NavbarLoggedIn = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.href = "/";
-  };
+  const handleLogout = () => logout();
 
   return (
     <div className="relative" ref={dropdownRef}>

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
 import { NoiseOverlay, DotGrid, Orbs } from "@/components/BackgroundEffects";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -21,23 +20,14 @@ export default function LoginPage() {
     if (!email || !password) { setError(t("auth.required")); return; }
     setLoading(true);
     setError("");
-    const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
-    if (authError) {
-      setError(authError.message);
-      return;
+    try {
+      await login(email, password);
+      navigate("/dashboard");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Giriş başarısız");
+    } finally {
+      setLoading(false);
     }
-    // Explicitly sync auth context before navigating so Navbar renders correctly
-    if (data.user) {
-      login({
-        id: data.user.id,
-        username: data.user.user_metadata?.username ?? data.user.email?.split("@")[0] ?? "user",
-        email: data.user.email ?? "",
-        plan: data.user.user_metadata?.plan ?? "free",
-        avatar: data.user.user_metadata?.avatar,
-      });
-    }
-    navigate("/dashboard");
   };
 
   return (
