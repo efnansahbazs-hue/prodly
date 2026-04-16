@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { AuthContext } from "@/hooks/useAuth";
 import type { AuthUser } from "@/hooks/useAuth";
@@ -36,22 +36,36 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [plan, setPlan] = useState<"free" | "premium" | "studio">("free");
   const [loading, setLoading] = useState(true);
 
+  const initialized = useRef(false);
+
   useEffect(() => {
-    // onAuthStateChange INITIAL_SESSION event'iyle mevcut session'ı zaten tetikler.
-    // getSession() ile paralel çalıştırmak auth token lock çakışmasına yol açar.
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const initSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
         const u = await toAuthUser(session.user);
         setUser(u);
         setPlan(u.plan);
-      } else {
-        setUser(null);
-        setPlan("free");
       }
       setLoading(false);
-    });
+      initialized.current = true;
+    };
+
+    initSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (event === "INITIAL_SESSION" && !initialized.current) return;
+        if (session?.user) {
+          const u = await toAuthUser(session.user);
+          setUser(u);
+          setPlan(u.plan);
+        } else {
+          setUser(null);
+          setPlan("free");
+        }
+        setLoading(false);
+      }
+    );
 
     return () => subscription.unsubscribe();
   }, []);
@@ -59,10 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string): Promise<AuthUser> => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    const u = await toAuthUser(data.user);
-    setUser(u);
-    setPlan(u.plan);
-    return u;
+    return await toAuthUser(data.user);
   };
 
   const register = async (

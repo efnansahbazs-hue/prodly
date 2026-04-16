@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk"
+import { createClient } from "@supabase/supabase-js"
 
 export const config = { runtime: 'edge' }
 
@@ -10,6 +11,26 @@ export default async function handler(req: Request): Promise<Response> {
       status: 405,
       headers: { "Content-Type": "application/json" },
     })
+  }
+
+  const authHeader = req.headers.get("Authorization");
+  const token = authHeader?.replace("Bearer ", "");
+  if (!token) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  const supabaseAdmin = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(token);
+  if (authError || !user) {
+    return new Response(JSON.stringify({ error: "Invalid or expired token" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   let question: string | undefined
