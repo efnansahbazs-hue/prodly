@@ -43,9 +43,11 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
+      console.log("Register called: email=" + email);
       await register(username, email, password);
       navigate("/onboarding");
     } catch (err: unknown) {
+      console.log("Register error:", err);
       setError(err instanceof Error ? err.message : t("auth.required"));
     } finally {
       setLoading(false);

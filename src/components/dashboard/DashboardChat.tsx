@@ -1,156 +1,243 @@
-import { useState } from "react"
-import { toast } from "sonner"
-import { supabase } from "@/lib/supabase"
+import { useState, useRef, useEffect } from "react";
+import { ArrowLeftRight, Send, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { detectTopic, type ChatTopic } from "@/components/dashboard/ContextPanel";
+import { supabase } from "@/lib/supabase";
 
-export const DashboardChat = () => {
-  const [question, setQuestion] = useState("")
-  const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([
-    { role: "assistant", text: "Stüdyo açık. Ne üzerinde çalışıyorsun?" },
-  ])
-  const [loading, setLoading] = useState(false)
+interface Message {
+  id: number;
+  from: "user" | "prodly";
+  text: string;
+  time: string;
+}
+
+const INITIAL_MESSAGES: Message[] = [
+  { id: 1, from: "prodly", text: "Stüdyo açık. Ne üzerinde çalışıyorsun?", time: "23:41" },
+];
+
+interface Props {
+  onTopicChange?: (topic: ChatTopic) => void;
+}
+
+function nowTime() {
+  const now = new Date();
+  return `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
+}
+
+export const DashboardChat = ({ onTopicChange }: Props) => {
+  const [expanded, setExpanded] = useState(false);
+  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+  }, [messages]);
 
   const handleSend = async () => {
-    if (!question.trim() || loading) return
+    const question = input.trim();
+    if (!question || loading) return;
 
-    const userMsg = question.trim()
-    setQuestion("")
-    setMessages((prev) => [...prev, { role: "user", text: userMsg }])
-    setLoading(true)
+    const time = nowTime();
+    setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: question, time }]);
+    setInput("");
+    setLoading(true);
 
-    let token: string | null = null
-
-    try {
-      const { data, error } = await supabase.auth.getSession()
-      if (error) console.error("getSession error:", error)
-      token = data?.session?.access_token ?? null
-    } catch (e) {
-      console.error("getSession threw:", e)
-    }
-
-    if (!token) {
-      toast.error("Oturum bulunamadı, tekrar giriş yap")
-      setLoading(false)
-      return
-    }
+    const topic = detectTopic(question);
+    onTopicChange?.(topic);
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ question: userMsg }),
-      })
-
-      const data = await res.json()
-
-      if (data.answer) {
-        setMessages((prev) => [...prev, { role: "assistant", text: data.answer }])
-      } else if (data.error === "limit_reached") {
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", text: "Günlük limitine ulaştın. Yarın devam et veya planını yükselt." },
-        ])
-      } else {
-        setMessages((prev) => [...prev, { role: "assistant", text: "Bir hata oluştu, tekrar dene." }])
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) {
+        toast.error("Oturum bulunamadı. Lütfen tekrar giriş yap.");
+        setLoading(false);
+        return;
       }
+
+      console.log("Sending request to /api/chat");
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30_000);
+
+      let res: Response;
+      try {
+        res = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ question }),
+          signal: controller.signal,
+        });
+      } catch (fetchErr) {
+        if ((fetchErr as Error).name === "AbortError") {
+          toast.error("İstek zaman aşımına uğradı (30s). Tekrar dene.");
+        } else {
+          throw fetchErr;
+        }
+        setLoading(false);
+        return;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+
+      console.log("Response status:", res.status);
+      const rawText = await res.text();
+      console.log("Response body:", rawText);
+
+      let parsedBody: { error?: string; answer?: string; cached?: boolean; model?: string };
+      try {
+        parsedBody = JSON.parse(rawText);
+      } catch {
+        throw new Error(`Non-JSON response: ${rawText.slice(0, 200)}`);
+      }
+
+      if (res.status === 429) {
+        if (parsedBody.error === "limit_reached") {
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: Date.now() + 1,
+              from: "prodly",
+              text: "Günlük limitine ulaştın 🎛️ Yarın devam et veya planını yükselt.",
+              time: nowTime(),
+            },
+          ]);
+        } else {
+          toast.error("Çok hızlı soruyorsun. 10 saniye bekle.");
+        }
+        setLoading(false);
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error(`API error: ${res.status}`);
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, from: "prodly", text: parsedBody.answer ?? "", time: nowTime() },
+      ]);
     } catch (err) {
-      console.error("FETCH ERROR:", err)
-      setMessages((prev) => [...prev, { role: "assistant", text: "Bağlantı hatası." }])
+      console.error(err);
+      toast.error("Bir hata oluştu. Tekrar dene.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div
+      className="h-full flex flex-col rounded-2xl overflow-hidden transition-all"
       style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
+        width: expanded ? 480 : 280,
+        minWidth: expanded ? 480 : 280,
         background: "rgba(255,255,255,0.03)",
         border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: 16,
-        overflow: "hidden",
+        backdropFilter: "blur(20px)",
+        transition: "width 0.4s cubic-bezier(0.34,1.56,0.64,1), min-width 0.4s cubic-bezier(0.34,1.56,0.64,1)",
       }}
     >
-      {/* Messages */}
-      <div style={{ flex: 1, overflowY: "auto", padding: "12px", scrollbarWidth: "none" }}>
-        {messages.map((msg, i) => (
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="flex items-center gap-2.5">
           <div
-            key={i}
-            style={{
-              display: "flex",
-              justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
-              marginBottom: 8,
-            }}
+            className="flex items-center justify-center rounded-full text-white text-[11px] font-bold flex-shrink-0"
+            style={{ width: 28, height: 28, background: "linear-gradient(135deg, #00C8FF, #34D399)" }}
           >
+            P
+          </div>
+          <span className="text-[13px] font-semibold text-white" style={{ fontFamily: "'Space Grotesk'" }}>Prodly</span>
+          <span
+            className={`rounded-full flex-shrink-0 ${loading ? "" : "animate-pulse-dot"}`}
+            style={{ width: 6, height: 6, background: loading ? "#F59E0B" : "#34D399" }}
+          />
+        </div>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="p-1.5 rounded-lg transition-all active:scale-95"
+          style={{ background: "rgba(255,255,255,0.05)" }}
+        >
+          <ArrowLeftRight
+            size={14}
+            className="text-[#8B8FA8] transition-transform"
+            style={{ transform: expanded ? "rotate(180deg)" : "none", transition: "transform 0.3s ease" }}
+          />
+        </button>
+      </div>
+
+      {/* Messages */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 py-3 space-y-2.5" style={{ scrollbarWidth: "none" }}>
+        {messages.map((msg) => (
+          <div key={msg.id} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
             <div
+              className="max-w-[85%] px-3.5 py-2.5 transition-all"
               style={{
-                maxWidth: "85%",
-                padding: "10px 14px",
-                background:
-                  msg.role === "user" ? "rgba(0,200,255,0.25)" : "rgba(255,255,255,0.06)",
-                borderRadius:
-                  msg.role === "user" ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
-                color: msg.role === "user" ? "#E0D4FC" : "#C4C7D4",
-                fontSize: 13,
+                fontSize: expanded ? 14 : 13,
                 lineHeight: 1.5,
+                color: msg.from === "user" ? "#E0D4FC" : "#C4C7D4",
+                background: msg.from === "user" ? "rgba(0,200,255,0.25)" : "rgba(255,255,255,0.06)",
+                borderRadius: msg.from === "user" ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
+                transition: "font-size 0.3s ease",
               }}
             >
-              {msg.text}
+              <p className="break-words whitespace-pre-wrap">{msg.text}</p>
+              {expanded && <span className="block text-[10px] mt-1.5 opacity-40">{msg.time}</span>}
             </div>
           </div>
         ))}
+
         {loading && (
-          <p style={{ color: "#555", fontSize: 12, padding: "4px 8px" }}>düşünüyor...</p>
+          <div className="flex justify-start">
+            <div
+              className="px-3.5 py-2.5 flex items-center gap-2"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                borderRadius: "4px 18px 18px 18px",
+              }}
+            >
+              <Loader2 size={12} className="text-[#00C8FF] animate-spin" />
+              <span className="text-[12px] text-[#8B8FA8]">düşünüyor...</span>
+            </div>
+          </div>
         )}
       </div>
 
       {/* Input */}
-      <div
-        style={{
-          display: "flex",
-          gap: 8,
-          padding: "8px 12px 12px",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <input
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          placeholder="Sor..."
-          disabled={loading}
+      <div className="px-3 pb-3 pt-1">
+        <div
+          className="flex items-center gap-2 rounded-full px-4 py-2.5"
           style={{
-            flex: 1,
-            background: "#0d0d0d",
-            border: "1px solid #1a1a1a",
-            borderRadius: 8,
-            padding: "10px 14px",
-            color: "#e0e0e0",
-            fontSize: 14,
-            outline: "none",
-          }}
-        />
-        <button
-          onClick={handleSend}
-          disabled={loading}
-          style={{
-            background: "linear-gradient(135deg, #00C8FF, #0099CC)",
-            border: "none",
-            borderRadius: 8,
-            padding: "10px 16px",
-            color: "white",
-            cursor: loading ? "not-allowed" : "pointer",
-            fontSize: 16,
-            opacity: loading ? 0.6 : 1,
+            background: "rgba(255,255,255,0.05)",
+            border: `1px solid ${loading ? "rgba(0,200,255,0.3)" : "rgba(255,255,255,0.08)"}`,
+            transition: "border-color 0.2s",
           }}
         >
-          →
-        </button>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && !loading && handleSend()}
+            placeholder="Sor..."
+            disabled={loading}
+            maxLength={500}
+            className="flex-1 bg-transparent text-[13px] text-white placeholder:text-[#555] focus:outline-none disabled:opacity-50"
+          />
+          <button
+            onClick={handleSend}
+            disabled={loading || !input.trim()}
+            className="p-1.5 rounded-full transition-all active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed"
+            style={{ background: "linear-gradient(135deg, #00C8FF, #0099CC)" }}
+          >
+            {loading ? (
+              <Loader2 size={12} className="text-white animate-spin" />
+            ) : (
+              <Send size={12} className="text-white" />
+            )}
+          </button>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
